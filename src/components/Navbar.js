@@ -31,7 +31,7 @@ const Navbar = () => {
               <li>
                 <Link
                   href="/"
-                  class="uppercase border-black pb-2 hover:font-semibold sm:hover:border-b-2"
+                  class="uppercase border-black pb-2 hover:text-[#FE5000] sm:hover:border-b-2"
                 >
                   Home
                 </Link>
@@ -39,7 +39,7 @@ const Navbar = () => {
               <li>
                 <Link
                   href="/showcase"
-                  class="hover:font-semibold sm:hover:border-b-2 uppercase border-black pb-2"
+                  class="hover:text-[#FE5000] sm:hover:border-b-2 uppercase border-black pb-2"
                 >
                   Showcase
                 </Link>
@@ -47,7 +47,7 @@ const Navbar = () => {
               <li>
                 <Link
                   href="#discover"
-                  class="uppercase border-black pb-2 hover:font-semibold sm:hover:border-b-2"
+                  class="uppercase border-black pb-2 hover:text-[#FE5000] sm:hover:border-b-2"
                 >
                   Features
                 </Link>
@@ -55,7 +55,7 @@ const Navbar = () => {
               <li>
                 <Link
                   href="/reseller"
-                  class="uppercase border-black pb-2 hover:font-semibold sm:hover:border-b-2"
+                  class="uppercase border-black pb-2 hover:text-[#FE5000] sm:hover:border-b-2"
                 >
                   Reseller
                 </Link>
@@ -63,7 +63,7 @@ const Navbar = () => {
               <li>
                 <Link
                   href="#faqs"
-                  class="uppercase border-black pb-2 hover:font-semibold sm:hover:border-b-2"
+                  class="uppercase border-black pb-2 hover:text-[#FE5000] sm:hover:border-b-2"
                 >
                   Faqs
                 </Link>
