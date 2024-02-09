@@ -11,6 +11,7 @@ import Publish from "@/components/Publish";
 import FreeRating from "@/components/FreeRating";
 import Promotion from "@/components/Promotion";
 import Help from "@/components/Help";
+import LogoutModal from "@/components/LogoutModal";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -293,7 +294,8 @@ const Account = () => {
                   className={`${
                     activeTab === "logout" ? "bg-blue-500" : "hover:bg-gray-100"
                   } flex items-center p-2 text-gray-900 rounded-lg dark:text-white cursor-pointer dark:hover:bg-gray-700 group`}
-                  onClick={() => setActiveTab("logout")}
+                  data-modal-target="logout-modal"
+                  data-modal-toggle="logout-modal"
                 >
                   <svg
                     className={`${
@@ -314,55 +316,54 @@ const Account = () => {
         </div>
       </aside>
 
-      <div className="p-4 sm:ml-64">
-        <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 min-h-[calc(100vh-32px)]">
-          {activeTab === "info" ? (
-            <div>
-              <General />
-            </div>
-          ) : activeTab === "design" ? (
-            <div>
-              <Design />
-            </div>
-          ) : activeTab === "setting" ? (
-            <div>
-              <Setting />
-            </div>
-          ) : activeTab === "push" ? (
-            <div>
-              <Notification />
-            </div>
-          ) : activeTab === "ads" ? (
-            <div>
-              <Monetization />
-            </div>
-          ) : activeTab === "download" ? (
-            <div>
-              <Download />
-            </div>
-          ) : activeTab === "publish" ? (
-            <div>
-              <Publish />
-            </div>
-          ) : activeTab === "pro" ? (
-            <div>
-              <Premium />
-            </div>
-          ) : activeTab === "review" ? (
-            <div>
-              <FreeRating />
-            </div>
-          ) : activeTab === "promote" ? (
-            <div>
-              <Promotion />
-            </div>
-          ) : activeTab === "help" ? (
-            <div>
-              <Help />
-            </div>
-          ) : null}
-        </div>
+      <div className="p-4 sm:p-8 sm:ml-64">
+        {activeTab === "info" ? (
+          <div>
+            <General />
+          </div>
+        ) : activeTab === "design" ? (
+          <div>
+            <Design />
+          </div>
+        ) : activeTab === "setting" ? (
+          <div>
+            <Setting />
+          </div>
+        ) : activeTab === "push" ? (
+          <div>
+            <Notification />
+          </div>
+        ) : activeTab === "ads" ? (
+          <div>
+            <Monetization />
+          </div>
+        ) : activeTab === "download" ? (
+          <div>
+            <Download />
+          </div>
+        ) : activeTab === "publish" ? (
+          <div>
+            <Publish />
+          </div>
+        ) : activeTab === "pro" ? (
+          <div>
+            <Premium />
+          </div>
+        ) : activeTab === "review" ? (
+          <div>
+            <FreeRating />
+          </div>
+        ) : activeTab === "promote" ? (
+          <div>
+            <Promotion />
+          </div>
+        ) : activeTab === "help" ? (
+          <div>
+            <Help />
+          </div>
+        ) : null}
       </div>
+      <LogoutModal />
     </main>
   );
 };

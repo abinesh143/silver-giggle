@@ -40,13 +40,13 @@ const Faqs = () => {
 
   return (
     <main id="faqs">
-      <section class="mt-10 sm:mt-24 mb-8 sm:mb-16">
-        <h2 class="text-xl sm:text-3xl lg:text-5xl font-semibold text-center mb-10 sm:mb-16">
+      <section className="mt-10 sm:mt-24 mb-8 sm:mb-16">
+        <h2 className="text-xl sm:text-3xl lg:text-5xl font-semibold text-center mb-10 sm:mb-16">
           FAQ&apos;s
         </h2>
-        <div class="flex justify-center bg-white rounded-[24px] sm:rounded-[40px] p-4 sm:p-8 xl:p-10 min-h-[384px] lg:h-[480px] xl:h-[620px]">
-          <div class="flex justify-center h-fit w-full lg:w-4/5">
-            <div class="relative w-full border-2 rounded-3xl px-4 pt-4 sm:px-7 sm:pt-7 bg-white">
+        <div className="flex justify-center bg-white rounded-[24px] sm:rounded-[40px] p-4 sm:p-8 xl:p-10 min-h-[384px] lg:h-[480px] xl:h-[620px]">
+          <div className="flex justify-center h-fit w-full lg:w-4/5">
+            <div className="relative w-full border-2 rounded-3xl px-4 pt-4 sm:px-7 sm:pt-7 bg-white">
               <div
                 data-accordion="collapse"
                 data-active-classes="bg-white"
@@ -58,19 +58,19 @@ const Faqs = () => {
                       <h2 id={`faq-heading-${index}`}>
                         <button
                           type="button"
-                          class={`flex items-center justify-between w-full sm:px-2 py-3 sm:py-5 font-medium text-left ${
+                          className={`flex items-center justify-between w-full sm:px-2 py-3 sm:py-5 font-medium text-left ${
                             !showAllFaq && index > 4 ? "hidden" : "border-b-2"
                           }`}
                           data-accordion-target={`#faq-body-${index}`}
                           aria-expanded="false"
                           aria-controls={`faq-body-${index}`}
                         >
-                          <span class="text-xs sm:text-lg lg:text-base xl:text-lg">
+                          <span className="text-xs sm:text-lg lg:text-base xl:text-lg">
                             {faq.question}
                           </span>
                           <Image
                             src="/svg/add.svg"
-                            class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10"
+                            className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10"
                             width="40"
                             height="40"
                             alt="add"
@@ -79,10 +79,10 @@ const Faqs = () => {
                       </h2>
                       <div
                         id={`faq-body-${index}`}
-                        class="hidden"
+                        className="hidden"
                         aria-labelledby={`faq-heading-${index}`}
                       >
-                        <p class="pl-2 pr-10 pb-5 border-b-2 text-[#6D6D6D] text-[11px] sm:text-base lg:text-sm xl:text-base">
+                        <p className="pl-2 pr-10 pb-5 border-b-2 text-[#6D6D6D] text-[11px] sm:text-base lg:text-sm xl:text-base">
                           {faq.answer}
                         </p>
                       </div>
@@ -90,23 +90,23 @@ const Faqs = () => {
                   );
                 })}
                 {!showAllFaq ? (
-                  <div class="flex justify-between items-center border-b-2 opacity-5 sm:px-2 py-4 sm:py-5 relative">
-                    <div class="font-medium text-xs sm:text-lg lg:text-base xl:text-lg">
+                  <div className="flex justify-between items-center border-b-2 opacity-5 sm:px-2 py-4 sm:py-5 relative">
+                    <div className="font-medium text-xs sm:text-lg lg:text-base xl:text-lg">
                       {faqs[5]?.question}
                     </div>
                     <Image
                       src="/svg/add.svg"
-                      class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10"
+                      className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10"
                       width="40"
                       height="40"
                       alt="add"
                     />
                   </div>
                 ) : (
-                  <div v-else class="h-14 sm:h-20"></div>
+                  <div v-else className="h-14 sm:h-20"></div>
                 )}
                 <p
-                  class="absolute bottom-5 md:bottom-7 left-0 right-0 opacity-100 font-semibold text-xs sm:text-lg lg:text-base xl:text-lg text-center cursor-pointer"
+                  className="absolute bottom-5 md:bottom-7 left-0 right-0 opacity-100 font-semibold text-xs sm:text-lg lg:text-base xl:text-lg text-center cursor-pointer"
                   onClick={() => setShowAllFaq(!showAllFaq)}
                 >
                   {showAllFaq ? "See Less" : "See More"}

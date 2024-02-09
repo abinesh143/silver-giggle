@@ -42,41 +42,41 @@ const Review = () => {
   ];
   return (
     <main>
-      <h2 class="text-xl sm:text-3xl lg:text-5xl font-semibold text-center mb-10 mt-10 sm:mt-24">
+      <h2 className="text-xl sm:text-3xl lg:text-5xl font-semibold text-center mb-10 mt-10 sm:mt-24">
         Reviews
       </h2>
       <div className="flex justify-center items-center mb-6 sm:mb-10">
-        <div class="flex items-center">
-          <div class="flex -space-x-4">
+        <div className="flex items-center">
+          <div className="flex -space-x-4">
             <Image
-              class="w-12 h-12 border-2 border-white rounded-full bg-[#FCE594]"
+              className="w-12 h-12 border-2 border-white rounded-full bg-[#FCE594]"
               src="/images/avatar1.png"
               alt="avatar1"
               width={48}
               height={48}
             />
             <Image
-              class="w-12 h-12 border-2 border-white rounded-full bg-[#A6DBE8]"
+              className="w-12 h-12 border-2 border-white rounded-full bg-[#A6DBE8]"
               src="/images/avatar2.png"
               alt="avatar2"
               width={48}
               height={48}
             />
             <Image
-              class="w-12 h-12 border-2 border-white rounded-full bg-[#FE5000]"
+              className="w-12 h-12 border-2 border-white rounded-full bg-[#FE5000]"
               src="/images/avatar3.png"
               alt="avatar3"
               width={48}
               height={48}
             />
           </div>
-          <div class="ml-4">
-            <p class="font-semibold text-lg">+ 20.000</p>
-            <p class="text-sm">Clients</p>
+          <div className="ml-4">
+            <p className="font-semibold text-lg">+ 20.000</p>
+            <p className="text-sm">Clients</p>
           </div>
         </div>
       </div>
-      <div class="flex gap-5 sm:gap-10 max-w-full overflow-x-auto [&::-webkit-scrollbar]:h-0 max-sm:px-4 sm:px-12 pb-4">
+      <div className="flex gap-5 sm:gap-10 max-w-full overflow-x-auto [&::-webkit-scrollbar]:h-0 max-sm:px-4 sm:px-12 pb-4">
         {userReviews.map((testimonial, index) => {
           return (
             <div
@@ -84,18 +84,18 @@ const Review = () => {
               className="flex flex-col xl:min-w-[20rem]"
               onMouseOver={() => setSelectedReview(index)}
             >
-              <div class="flex">
+              <div className="flex">
                 <div
-                  class={`basis-1/6 ${
+                  className={`basis-1/6 ${
                     selectedReview == index
                       ? "bg-[#000000] text-white"
                       : "bg-[#B5B5B5] opacity-60"
                   }`}
                 >
-                  <div class="bg-white rounded-br-[16px] sm:rounded-br-[22px] flex justify-center p-2">
+                  <div className="bg-white rounded-br-[16px] sm:rounded-br-[22px] flex justify-center p-2">
                     <Image
                       src="/svg/google.svg"
-                      class="w-5 h-5 sm:w-8 sm:h-8"
+                      className="w-5 h-5 sm:w-8 sm:h-8"
                       width={32}
                       height={32}
                       alt="google"
@@ -103,36 +103,36 @@ const Review = () => {
                   </div>
                 </div>
                 <div
-                  class={`basis-5/6 rounded-t-[16px] sm:rounded-t-[22px] flex justify-end sm:py-3 ${
+                  className={`basis-5/6 rounded-t-[16px] sm:rounded-t-[22px] flex justify-end sm:py-3 ${
                     selectedReview == index
                       ? "bg-[#000000] text-white"
                       : "bg-[#B5B5B5] opacity-60"
                   }`}
                 >
-                  <div class="flex items-center px-5">
+                  <div className="flex items-center px-5">
                     <Image
                       src={
                         selectedReview == index
                           ? "/svg/star-orange.svg"
                           : "/svg/star.svg"
                       }
-                      class="w-5 h-5"
+                      className="w-5 h-5"
                       width={20}
                       height={20}
                       alt="star"
                     />
-                    <p class="ml-1 max-sm:text-sm">{testimonial.rating}</p>
+                    <p className="ml-1 max-sm:text-sm">{testimonial.rating}</p>
                   </div>
                 </div>
               </div>
               <div
-                class={`flex flex-col grow rounded-b-[16px] rounded-tl-[16px] sm:rounded-b-[28px] sm:rounded-tl-[22px] p-3 xl:p-6 w-56 sm:w-[266px] xl:w-fit ${
+                className={`flex flex-col grow rounded-b-[16px] rounded-tl-[16px] sm:rounded-b-[28px] sm:rounded-tl-[22px] p-3 xl:p-6 w-56 sm:w-[266px] xl:w-fit ${
                   selectedReview == index
                     ? "bg-[#000000] text-white"
                     : "bg-[#B5B5B5] opacity-60"
                 }`}
               >
-                <div class="flex items-center justify-center mb-2 sm:mb-3">
+                <div className="flex items-center justify-center mb-2 sm:mb-3">
                   <Image
                     format="webp"
                     src={
@@ -140,16 +140,16 @@ const Review = () => {
                         ? testimonial.imageUrl
                         : "/images/review.png"
                     }
-                    class="rounded-full bg-yellow-500 w-12 h-12 sm:w-20 sm:h-20"
+                    className="rounded-full bg-yellow-500 w-12 h-12 sm:w-20 sm:h-20"
                     width={80}
                     height={80}
                     alt="user"
                   />
                 </div>
-                <div class="text-center text-sm sm:text-lg font-semibold">
+                <div className="text-center text-sm sm:text-lg font-semibold">
                   {testimonial.customerName}
                 </div>
-                <div class="text-center leading-none p-2 sm:p-3 text-[10px] sm:text-xs lg:text-[11px] xl:text-xs">
+                <div className="text-center leading-none p-2 sm:p-3 text-[10px] sm:text-xs lg:text-[11px] xl:text-xs">
                   {testimonial.description}
                 </div>
               </div>

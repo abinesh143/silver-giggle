@@ -45,8 +45,8 @@ const KeyFeatures = () => {
   ];
   return (
     <main>
-      <div class="mt-10 sm:mt-24 max-sm:px-4">
-        <h2 class="text-xl sm:text-3xl lg:text-5xl font-semibold text-center mb-8 sm:mb-16">
+      <div className="mt-10 sm:mt-24 max-sm:px-4">
+        <h2 className="text-xl sm:text-3xl lg:text-5xl font-semibold text-center mb-8 sm:mb-16">
           Why Choose Free App Maker Pro AI?
         </h2>
         <div className="grid grid-cols-6 gap-8">
@@ -66,27 +66,24 @@ const KeyFeatures = () => {
           })}
         </div>
         <div className="flex justify-center mt-8">
-          <a
-            href="#discover"
-            class="bg-[#FE5000] text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4"
-          >
+          <button className="bg-[#FE5000] text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4">
             Convert your Website to App for Free
-          </a>
+          </button>
         </div>
       </div>
-      <div class="mt-10 sm:mt-24 max-sm:px-4">
-        <h2 class="text-xl sm:text-3xl lg:text-5xl font-semibold text-center mb-4 ">
+      <div className="mt-10 sm:mt-24 max-sm:px-4">
+        <h2 className="text-xl sm:text-3xl lg:text-5xl font-semibold text-center mb-4 ">
           No Developer Account to Publish Apps
         </h2>
-        <h2 class="text-xl sm:text-3xl lg:text-5xl font-semibold text-center mb-8">
+        <h2 className="text-xl sm:text-3xl lg:text-5xl font-semibold text-center mb-8">
           Don&apos;t Worry!
         </h2>
         <div className="flex justify-center">
           <div className="basis-1/3 flex flex-col justify-center items-center">
-            <p class="text-2xl text-center mb-4 w-3/4  px-4">
+            <p className="text-2xl text-center mb-4 w-3/4  px-4">
               Your Success is our Priority !!
             </p>
-            <p class="text-2xl text-center mb-4 w-3/4  px-4">
+            <p className="text-2xl text-center mb-4 w-3/4  px-4">
               If you have no playstore account to publish Apps, Don&apos;t worry
               we will publish your app in our developer account.{" "}
             </p>
@@ -94,12 +91,9 @@ const KeyFeatures = () => {
               Our Support team will help you from start building apps,
               Publishing in playstore and for future updates.
             </p>
-            <a
-              href="#discover"
-              class="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4"
-            >
+            <button className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4">
               Start Now for Free
-            </a>
+            </button>
           </div>
           <div className="basis-1/3 flex justify-center">
             <Image
@@ -110,23 +104,20 @@ const KeyFeatures = () => {
             />
           </div>
           <div className="flex basis-1/3 flex-col justify-center items-center">
-            <p class="text-2xl text-center mb-4 w-3/4  px-4">
+            <p className="text-2xl text-center mb-4 w-3/4  px-4">
               Advantages of Apps:
             </p>
-            <p class="text-2xl text-center mb-4 w-3/4  px-4">
-              Your Customers have Apps Installed, So they always browse your
-              products.
+            <p className="text-2xl text-center mb-4 w-3/4  px-4">
+              When your Customers install the app, So they always browse your
+              products when they are free. Highly Chance to get more orders.
             </p>
             <p className="text-2xl text-center mb-10 w-3/4  px-4">
               You will get More Customers by Play Store Search if you get more 5
               Star Reviews
             </p>
-            <a
-              href="#discover"
-              class="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4"
-            >
+            <button className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4">
               Start Now for Free
-            </a>
+            </button>
           </div>
         </div>
       </div>
