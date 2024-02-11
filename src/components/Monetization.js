@@ -13,10 +13,10 @@ const Monetization = () => {
             <span className="font-semibold">18:26 ⏰</span>
           </p>
         </div>
-        <section className="flex gap-8">
+        <section className="flex flex-col lg:flex-row gap-8">
           <div className="basis-1/2">
             <div className="flex">
-              <div className="basis-2/5 relative bg-[#E3FFBF] rounded-t-[24px] sm:rounded-t-[32px] px-4 sm:px-10 lg:px-6 xl:px-10">
+              <div className="relative bg-[#E3FFBF] rounded-t-[24px] sm:rounded-t-[32px] px-4 sm:px-10 lg:px-6 xl:px-10">
                 <div className="absolute left-[100%] bottom-0 overflow-hidden before:block before:h-full before:rounded-bl-[40px] before:shadow-[0_0_0_40px_#E3FFBF] w-12 h-12"></div>
                 <div className="text-[#4E7923] text-xs sm:text-base lg:text-lg font-semibold py-3 sm:py-4">
                   Admob Ads
@@ -42,7 +42,7 @@ const Monetization = () => {
                 <input
                   type="text"
                   id="admob_appid"
-                  className="bg-white border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="your admob app id"
                   required
                 />
@@ -57,7 +57,7 @@ const Monetization = () => {
                 <input
                   type="text"
                   id="admob_banner"
-                  className="bg-white border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="your admob banner id"
                   required
                 />
@@ -72,14 +72,14 @@ const Monetization = () => {
                 <input
                   type="text"
                   id="admob_interstitial"
-                  className="bg-white border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="your admob interstitial id"
                   required
                 />
               </div>
               <button
                 type="submit"
-                className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-xs sm:text-base lg:text-sm xl:text-base font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3 mt-4"
+                className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-sm sm:text-base lg:text-sm xl:text-base font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3 mt-4"
               >
                 Save
               </button>
@@ -87,7 +87,7 @@ const Monetization = () => {
           </div>
           <div className="basis-1/2">
             <div className="flex">
-              <div className="basis-2/5 relative bg-[#F7FF9D] rounded-t-[24px] sm:rounded-t-[32px] px-4 sm:px-10 lg:px-6 xl:px-10">
+              <div className="relative bg-[#F7FF9D] rounded-t-[24px] sm:rounded-t-[32px] px-4 sm:px-10 lg:px-6 xl:px-10">
                 <div className="absolute left-[100%] bottom-0 overflow-hidden before:block before:h-full before:rounded-bl-[40px] before:shadow-[0_0_0_40px_#F7FF9D] w-12 h-12"></div>
                 <div className="text-[#767C2C] text-xs sm:text-base lg:text-lg font-semibold py-3 sm:py-4">
                   Unity Ads
@@ -113,7 +113,7 @@ const Monetization = () => {
                 <input
                   type="text"
                   id="unity_gameid"
-                  className="bg-white border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="com.crazy.shopy"
                   required
                 />
@@ -128,7 +128,7 @@ const Monetization = () => {
                 <input
                   type="text"
                   id="unity_banner"
-                  className="bg-white border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Crazy Shoppy"
                   required
                 />
@@ -143,14 +143,14 @@ const Monetization = () => {
                 <input
                   type="text"
                   id="unity_interstitial"
-                  className="bg-white border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="com.crazy.shopy"
                   required
                 />
               </div>
               <button
                 type="submit"
-                className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-xs sm:text-base lg:text-sm xl:text-base font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3 mt-4"
+                className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-sm sm:text-base lg:text-sm xl:text-base font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3 mt-4"
               >
                 Save
               </button>

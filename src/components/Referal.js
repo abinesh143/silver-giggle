@@ -1,7 +1,7 @@
 const Referal = () => {
   return (
     <main>
-      <div className="mt-6 sm:mt-10 max-sm:px-4">
+      <div className="mt-6 sm:mt-10 mx-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 bg-black p-4 sm:p-6 lg:p-10 rounded-[12px] sm:rounded-[32px] lg:rounded-[40px]">
           <div className="text-white font-medium">
             <h2 className="text-2xl sm:text-4xl lg:text-3xl xl:text-4xl font-semibold sm:mb-2">

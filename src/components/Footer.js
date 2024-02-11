@@ -4,7 +4,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <main>
-      <section>
+      <section className="mx-4">
         <div className="flex">
           <div className="basis-5/12 sm:basis-4/12 md:basis-3/12 lg:basis-1/5 xl:basis-1/6 2xl:basis-[14%] bg-[#FFF1E7] rounded-t-[24px] sm:rounded-t-[40px] flex justify-center py-2.5 sm:py-5">
             <div className="text-start text-lg md:text-2xl">&nbsp;</div>
@@ -13,11 +13,11 @@ const Footer = () => {
             <div className="absolute bottom-0 left-0 h-1/2 w-full overflow-hidden before:block before:h-full before:rounded-bl-[40px] before:shadow-[0_0_0_40px_#FFF1E7]"></div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row md:gap-6 xl:gap-10 bg-[#FFF1E7] rounded-b-[24px] rounded-tr-[24px] sm:rounded-b-[40px] sm:rounded-tr-[40px] p-4 sm:p-6 xl:p-8">
+        <div className="flex flex-col md:flex-row md:gap-6 xl:gap-10 bg-[#FFF1E7] rounded-b-[24px] rounded-tr-[24px] sm:rounded-b-[40px] sm:rounded-tr-[40px] p-3 sm:p-4 lg:p-6">
           <div className="basis-5/12 relative">
             <Image
-              src="/svg/logo-footer.svg"
-              className="absolute -top-12 h-20 sm:-top-16 sm:h-28 lg:-top-[72px] lg:h-36"
+              src="/images/logo.png"
+              className="absolute -top-12 w-24 h-24 sm:-top-16 sm:w-36 sm:h-32 lg:-top-[72px] lg:w-44 lg:h-40"
               width={144}
               height={144}
               alt="footer-logo"
@@ -65,7 +65,7 @@ const Footer = () => {
                 <Link href="/reseller">Reseller</Link>
               </li>
               <li className="mb-2">
-                <Link href="#faqs">FAQ&apos;s</Link>
+                <Link href="/#faqs">FAQ&apos;s</Link>
               </li>
             </ul>
           </div>
@@ -83,9 +83,9 @@ const Footer = () => {
               <li className="mb-2">
                 <Link href="/privacy-policy">Privacy Policy</Link>
               </li>
-              <li className="mb-2">
+              {/* <li className="mb-2">
                 <Link href="/refund-policy">Refund Policy</Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className="basis-3/12 max-md:mt-5">
@@ -94,15 +94,15 @@ const Footer = () => {
             </h2>
             <ul className="text-xs sm:text-base lg:text-sm xl:text-base font-medium">
               <li className="mb-2">
-                <Link href="tel:+971522638788">+971 52 263 8788</Link>
+                <Link href="https://wa.me/919385849750">+91 938 584 9750</Link>
               </li>
               <li className="mb-2">
-                <Link href="mailto:info@fitlab-me.com">info@fitlab-me.com</Link>
+                <Link href="mailto:smileysoftwares@gmail.com">smileysoftwares@gmail.com</Link>
               </li>
               <li className="leading-none mb-3">
                 <Link href="#">
-                  Office 301, Al Asmawi building, Dubai Investment Park 1, Dubai
-                  - UAE
+                  Tower B, Tek Meadows, Shollingallur Chennai
+                  - India
                 </Link>
               </li>
               <li>

@@ -3,7 +3,7 @@
 const Working = () => {
   return (
     <main>
-      <div className="mt-10 sm:mt-24 max-sm:px-4">
+      <div className="mt-10 sm:mt-24 px-4">
         <h2 className="text-xl sm:text-3xl lg:text-5xl font-semibold text-center mb-8 sm:mb-16">
           How it Works?
         </h2>

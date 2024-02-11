@@ -5,8 +5,11 @@ const FreeRating = () => {
     <main>
       <div className="p-4 sm:p-8 bg-[#F9F9F9] lg:rounded-2xl">
         <div className="flex justify-between border-b pb-3 sm:pb-4 mb-5 sm:mb-10">
-          <div className="sm:text-xl xl:text-2xl font-semibold">
+          <div className="sm:text-xl xl:text-2xl font-semibold max-sm:hidden">
             Free 5 Star Rating & Reviews
+          </div>
+          <div className="sm:text-xl xl:text-2xl font-semibold sm:hidden">
+            Free Rating
           </div>
           <p className="text-sm sm:text-lg xl:text-xl">
             06/02/2024,
@@ -33,14 +36,14 @@ const FreeRating = () => {
                   <div>
                     <label
                       for="first_name"
-                      className="block mb-2  font-medium text-gray-900 dark:text-white"
+                      className="block mb-2 text-sm sm:text-base font-medium text-gray-900 dark:text-white"
                     >
                       App Link:
                     </label>
                     <input
                       type="text"
                       id="app-link"
-                      className="bg-white border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Your App Link"
                       required
                     />
@@ -48,13 +51,13 @@ const FreeRating = () => {
                   <div>
                     <label
                       for="need-rating"
-                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      className="block mb-2 text-sm sm:text-base font-medium text-gray-900 dark:text-white"
                     >
                       Select a Rating
                     </label>
                     <select
                       id="need-rating"
-                      className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     >
                       <option value="5">5 Stars</option>
                       <option value="4">4 Stars</option>
@@ -64,20 +67,20 @@ const FreeRating = () => {
                   <div>
                     <label
                       for="keywords"
-                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      className="block mb-2 text-sm sm:text-base font-medium text-gray-900 dark:text-white"
                     >
                       Keywords for Review:
                     </label>
                     <textarea
                       id="keywords"
                       rows="4"
-                      className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="block p-2.5 w-full text-sm sm:text-base text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Enter Keywords"
                     ></textarea>
                   </div>
                   <button
                     type="submit"
-                    className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-xs sm:text-base lg:text-sm xl:text-base font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3"
+                    className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-sm sm:text-base lg:text-sm xl:text-base font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3"
                   >
                     Save
                   </button>

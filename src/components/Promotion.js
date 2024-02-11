@@ -21,7 +21,7 @@ const Promotion = () => {
             alt="gift"
             className="w-28 sm:w-40 mb-4 sm:mb-8"
           />
-          <h2 className="text-xl sm:text-4xl lg:text-3xl xl:text-4xl font-semibold mb-2 sm:mb-3">
+          <h2 className="text-xl sm:text-4xl lg:text-3xl xl:text-4xl text-center font-semibold mb-2 sm:mb-3">
             Reward 30% or Receive 10 Dollar
           </h2>
           <div className="text-xs sm:text-base lg:text-lg text-center sm:mb-6 px-5 sm:px-20 md:px-28 xl:px-24">

@@ -74,7 +74,7 @@ const Premium = () => {
   ];
   return (
     <main>
-      <div className="p-4 sm:p-8 bg-[#F9F9F9] lg:rounded-2xl">
+      <div className="2xl:p-8 bg-[#F9F9F9] lg:rounded-2xl">
         <section className="max-w-6xl mx-auto py-4 px-8">
           <div className=" mx-auto mb-14 text-center">
             <h1 className="text-4xl font-semibold mb-6 lg:text-5xl">
@@ -94,12 +94,12 @@ const Premium = () => {
                   className="rounded-3xl w-20 h-20"
                 />
                 <div className="ml-5">
-                  <span className="block text-2xl font-semibold">Andriod</span>
+                  <span className="block text-xl sm:text-2xl lg:text-xl 2xl:text-2xl font-semibold">Andriod</span>
                   <span>
-                    <span className="font-medium text-gray-500 text-xl align-top">
+                    <span className="font-medium text-gray-500 text-lg sm:text-xl align-top">
                       $&thinsp;
                     </span>
-                    <span className="text-3xl font-bold">25 </span>
+                    <span className="text-xl sm:text-3xl lg:text-xl 2xl:text-3xl font-bold">25 </span>
                   </span>
                   <span className="text-gray-500 font-medium">/ one time</span>
                 </div>
@@ -107,7 +107,7 @@ const Premium = () => {
               <ul className="mb-7 font-medium text-gray-500">
                 {andriodPremium.map((feature, index) => {
                   return (
-                    <li key={`andriod-${index}`} className="flex text-lg mb-2">
+                    <li key={`andriod-${index}`} className="flex sm:text-xl lg:text-base 2xl:text-xl mb-2">
                       <img
                         src="https://res.cloudinary.com/williamsondesign/check-grey.svg"
                         alt="unknown2"
@@ -120,7 +120,7 @@ const Premium = () => {
                   );
                 })}
               </ul>
-              <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-5 px-4 text-center text-white text-xl">
+              <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-6 text-center text-white  sm:text-xl">
                 Choose Plan
                 <img
                   src="https://res.cloudinary.com/williamsondesign/arrow-right.svg"
@@ -138,19 +138,19 @@ const Premium = () => {
                   className="rounded-3xl w-20 h-20"
                 />
                 <div className="ml-5">
-                  <span className="block text-2xl font-semibold text-white">
+                  <span className="block text-xl sm:text-2xl lg:text-xl 2xl:text-2xl font-semibold text-white">
                     Andriod & Ios
                   </span>
                   <span>
-                    <span className="font-medium text-xl align-top">
+                    <span className="font-medium text-lg sm:text-xl align-top">
                       $&thinsp;
                     </span>
-                    <span className="text-3xl font-bold text-white">99 </span>
+                    <span className="text-xl sm:text-3xl lg:text-xl 2xl:text-3xl font-bold text-white">99 </span>
                   </span>
                   <span className="font-medium">/ one time</span>
                 </div>
               </div>
-              <ul className="mb-10 font-medium text-xl">
+              <ul className="mb-10 font-medium sm:text-xl lg:text-base 2xl:text-xl">
                 {premium.map((pre, index) => {
                   return (
                     <li key={`premium-${index}`} className="flex mb-4">
@@ -166,7 +166,7 @@ const Premium = () => {
                   );
                 })}
               </ul>
-              <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-5 px-4 text-center text-white text-2xl">
+              <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-6 text-center text-white sm:text-2xl">
                 Choose Plan
                 <img
                   src="https://res.cloudinary.com/williamsondesign/arrow-right.svg"
@@ -184,12 +184,12 @@ const Premium = () => {
                   className="rounded-3xl w-20 h-20"
                 />
                 <div className="ml-5">
-                  <span className="block text-2xl font-semibold">Ios</span>
+                  <span className="block text-xl sm:text-2xl lg:text-xl 2xl:text-2xl font-semibold">Ios</span>
                   <span>
                     <span className="font-medium text-gray-500 text-xl align-top">
                       $&thinsp;
                     </span>
-                    <span className="text-3xl font-bold">79 </span>
+                    <span className="text-xl sm:text-3xl lg:text-xl 2xl:text-3xl font-bold">79 </span>
                   </span>
                   <span className="text-gray-500 font-medium">/ one time</span>
                 </div>
@@ -197,7 +197,7 @@ const Premium = () => {
               <ul className="mb-7 font-medium text-gray-500">
                 {iosPremium.map((ios, index) => {
                   return (
-                    <li key={`ios-${index}`} className="flex text-lg mb-2">
+                    <li key={`ios-${index}`} className="flex sm:text-xl lg:text-base 2xl:text-xl mb-2">
                       <img
                         src="https://res.cloudinary.com/williamsondesign/check-grey.svg"
                         alt="unknown8"
@@ -210,7 +210,7 @@ const Premium = () => {
                   );
                 })}
               </ul>
-              <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-5 px-4 text-center text-white text-xl">
+              <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-6 text-center text-white sm:text-xl">
                 Choose Plan
                 <img
                   src="https://res.cloudinary.com/williamsondesign/arrow-right.svg"

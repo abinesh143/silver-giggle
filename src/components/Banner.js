@@ -3,13 +3,13 @@ import Image from "next/image";
 const Banner = () => {
   return (
     <main>
-      <div className="h-[calc(100vh-150px)] min-h-[580px] xl:min-h-[550px] max-h-[812px] bg-[#FFF1E7] bg-no-repeat bg-cover bg-right-bottom sm:bg-[0_center] lg:bg-right rounded-3xl lg:rounded-[40px] px-4 sm:px-10 lg:px-16 sm:py-4 max-sm:mx-4">
+      <div className="h-[calc(100vh-88px)] min-h-[580px] xl:min-h-[550px] max-h-[812px] bg-[#FFF1E7] bg-no-repeat bg-cover bg-right-bottom sm:bg-[0_center] lg:bg-right rounded-3xl lg:rounded-[40px] px-4 sm:px-8 sm:py-4 max-lg:my-4 mx-4">
         <div className="h-full flex flex-col lg:flex-row">
-          <div className="px-6 pt-10 sm:p-10 lg:basis-[55%]">
+          <div className="px-2 pt-10 xl:p-10 lg:basis-[55%]">
             <div className="lg:h-full flex flex-col">
               <div className="lg:h-1/2 flex">
                 <div>
-                  <h1 className="text-3xl sm:text-5xl lg:text-5xl 2xl:text-6xl 2xl:!leading-[72px] text-[#FE5000] text-start font-bold mb-2 2xl:mb-4">
+                  <h1 className="text-2xl sm:text-4xl lg:text-5xl 2xl:text-6xl 2xl:!leading-[72px] text-[#FE5000] text-start font-bold mb-2 2xl:mb-4">
                     Convert Website to App
                     <span className="text-black block">in 10 MINUTES</span>
                   </h1>
@@ -65,7 +65,7 @@ const Banner = () => {
               </div>
             </div>
           </div>
-          <div className="lg:basis-[45%] lg:flex h-full relative">
+          <div className="lg:basis-[45%] hidden lg:flex h-full relative">
             <div className="pt-20">
               <Image
                 src="/images/screenshot.png"

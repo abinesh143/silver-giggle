@@ -27,7 +27,7 @@ const Design = () => {
                   <div className="text-lg sm:text-xl lg:text-lg xl:text-xl 2xl:text-2xl font-semibold">
                     1) Choose a Theme Color for your App?
                   </div>
-                  <div className="flex flex-col gap-y-4 ms-8">
+                  <div className="flex flex-col gap-y-4">
                     <div className="flex items-center me-4">
                       <input
                         id="red-radio"
@@ -156,7 +156,7 @@ const Design = () => {
                   <div className="text-lg sm:text-xl lg:text-lg xl:text-xl 2xl:text-2xl font-semibold">
                     2) Upload Splash Screen for your App?
                   </div>
-                  <div className="mb-6 ms-8">
+                  <div className="mb-6">
                     <input
                       className="block w-full  text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                       id="file_input"
@@ -166,7 +166,7 @@ const Design = () => {
 
                   <button
                     type="submit"
-                    className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-xs sm:text-lg lg:text-lg xl:text-lg font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3"
+                    className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-sm sm:text-lg lg:text-lg xl:text-lg font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3"
                   >
                     Save
                   </button>

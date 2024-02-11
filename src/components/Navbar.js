@@ -6,15 +6,16 @@ const Navbar = () => {
   const [user, setUser] = useState(false);
   return (
     <main className="sticky top-0 z-50 bg-white">
-      <nav className="sm:pb-8 sm:pt-4">
+      <nav className="sm:pb-8 lg:pt-4 px-4">
         <div className="max-w-screen flex flex-wrap items-center justify-between">
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center justify-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/svg/logo.svg"
+              src="/images/logo.png"
               className="h-8 lg:h-10"
               alt="App Maker Pro"
             />
+            <span className="ms-2 font-semibold text-[#FE5000] text-xl sm:text-3xl">Free App Maker Pro AI</span>
           </Link>
           <div className="flex md:hidden items-center md:order-2">
             <button
@@ -50,7 +51,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  href="#discover"
+                  href="/#discover"
                   className="uppercase border-black pb-2 hover:text-[#FE5000] sm:hover:border-b-2"
                 >
                   Features
@@ -66,7 +67,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  href="#faqs"
+                  href="/#faqs"
                   className="uppercase border-black pb-2 hover:text-[#FE5000] sm:hover:border-b-2"
                 >
                   Faqs

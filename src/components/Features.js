@@ -8,7 +8,7 @@ const Features = () => {
       <h2 className="text-xl sm:text-3xl lg:text-5xl font-semibold text-center mb-10 sm:mb-16 mt-10 sm:mt-24">
         Features of Our Software?
       </h2>
-      <div>
+      <div className="lg:mx-4">
         {section === "s1" ? (
           <section>
             <div className="flex">
@@ -77,11 +77,11 @@ const Features = () => {
                 </div>
               </div>
               <div className="sm:basis-[45%] flex items-center justify-center">
-                <div className="bg-white rounded-3xl p-5 sm:p-8 sm:mb-10 lg:p-5 xl:p-8 xl:mb-10 w-full xl:h-[526px]">
+                <div className="bg-white rounded-3xl max-md:m-4 p-5 sm:p-8 sm:mb-10 lg:p-5 xl:p-8 xl:mb-10 w-full xl:h-[526px]">
                   <div className="font-semibold text-xl sm:text-2xl lg:text-xl xl:text-3xl mb-5 sm:mb-5 lg:mb-4 xl:mb-5">
                     Get more features for your App.
                   </div>
-                  <div className="text-lg">
+                  <div className="sm:text-lg">
                     <p>We have more features for your Application.</p>
                     <p>which include:</p>
                     <ul className="list-disc pl-4 pt-4">
@@ -94,7 +94,7 @@ const Features = () => {
                       <li>Custom Features also applicable</li>
                     </ul>
                     <div className="mt-8">
-                      <a className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4">
+                      <a className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 2xl:px-16 2xl:py-4">
                         Contact Sales
                       </a>
                     </div>
@@ -170,11 +170,11 @@ const Features = () => {
                 </div>
               </div>
               <div className="sm:basis-[45%] flex items-center justify-center">
-                <div className="bg-white rounded-3xl p-5 sm:p-8 sm:mb-10 lg:p-5 xl:p-8 xl:mb-10 w-full xl:h-[526px]">
+                <div className="bg-white rounded-3xl max-sm:m-4 p-5 sm:p-8 sm:mb-10 lg:p-5 xl:p-8 xl:mb-10 w-full xl:h-[526px]">
                   <div className="font-semibold text-xl sm:text-2xl lg:text-xl xl:text-3xl mb-5 sm:mb-5 lg:mb-4 xl:mb-5">
                     Customise with Premium Design
                   </div>
-                  <div className="text-lg">
+                  <div className="sm:text-lg">
                     <p>We have more Designs for your Application.</p>
                     <p>which include:</p>
                     <ul className="list-disc pl-4 pt-4">
@@ -186,7 +186,7 @@ const Features = () => {
                       <li>Custom Design also applicable</li>
                     </ul>
                     <div className="mt-8">
-                      <a className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4">
+                      <a className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 2xl:px-16 2xl:py-4">
                         Contact Sales
                       </a>
                     </div>
@@ -265,7 +265,7 @@ const Features = () => {
                   <div className="font-semibold text-xl sm:text-2xl lg:text-xl xl:text-3xl mb-5 sm:mb-5 lg:mb-4 xl:mb-5">
                     Make More Apps and Publish.
                   </div>
-                  <div className="text-lg">
+                  <div className="sm:text-lg">
                     <p>We have more Templates for your Play Console.</p>
                     <p>Make More Apps and Publish Them in PlayStore.</p>
                     <p>Earn More Revenue from Ads.</p>
@@ -278,7 +278,7 @@ const Features = () => {
                       <li>Custom Apps also available.</li>
                     </ul>
                     <div className="mt-8">
-                      <a className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4">
+                      <a className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 2xl:px-16 2xl:py-4">
                         Contact Sales
                       </a>
                     </div>

@@ -7,8 +7,11 @@ const Download = () => {
     <main>
       <div className="p-4 sm:p-8 bg-[#F9F9F9] lg:rounded-2xl">
         <div className="flex justify-between border-b pb-3 sm:pb-4 mb-5 sm:mb-10">
-          <div className="sm:text-xl xl:text-2xl font-semibold">
+          <div className="sm:text-xl xl:text-2xl font-semibold max-sm:hidden">
             Download the Application
+          </div>
+          <div className="sm:text-xl xl:text-2xl font-semibold sm:hidden">
+            Download App
           </div>
           <p className="text-sm sm:text-lg xl:text-xl">
             06/02/2024,
@@ -24,11 +27,11 @@ const Download = () => {
               </div>
             </div>
           </div>
-          <div className="bg-[#FFF1E7] rounded-b-[24px] rounded-tr-[24px] sm:rounded-b-[32px] sm:rounded-tr-[32px] p-4 sm:p-10">
-            <div className="flex flex-col lg:flex-row lg:space-x-6 max-lg:space-y-6">
+          <div className="bg-[#FFF1E7] rounded-b-[24px] rounded-tr-[24px] sm:rounded-b-[32px] sm:rounded-tr-[32px] sm:p-10">
+            <div className="flex flex-col lg:flex-row lg:space-x-6 max-lg:space-y-16">
               <section className="basis-1/2">
                 {step === 1 ? (
-                  <div className="lg:basis-[45%] flex items-center justify-center">
+                  <div className=" flex items-center justify-center">
                     <div className="flex flex-col justify-between bg-white rounded-3xl p-4 sm:p-8 sm:mb-10 max-sm:mx-4 max-sm:mt-5 w-full h-[472px] xl:h-[526px]">
                       <div>
                         <div className="flex justify-between gap-1 sm:gap-4 lg:gap-1 xl:gap-4">
@@ -75,6 +78,7 @@ const Download = () => {
                             width={256}
                             height={256}
                             alt="download-start"
+                            className="max-sm:w-44 max-sm:h-44"
                             onClick={() => setStep(2)}
                           />
                         </div>
@@ -128,13 +132,14 @@ const Download = () => {
                               width={256}
                               height={256}
                               alt="download-build"
+                              className="max-sm:w-48 max-sm:h-48"
                             />
                             <Image
                               src="/gif/setting.gif"
                               width={128}
                               height={128}
                               alt="download-setting"
-                              className="absolute -bottom-10 right-0"
+                              className="absolute -bottom-10 right-0 max-sm:w-24 max-sm:h-24"
                             />
                           </div>
                         </div>
@@ -144,7 +149,7 @@ const Download = () => {
                       </p> */}
                       <div className="w-full flex justify-end">
                         <button
-                          className="bg-black hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none disabled:bg-gray-600 disabled:border-gray-600 text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-6 xl:py-3"
+                          className="bg-black hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none disabled:bg-gray-600 disabled:border-gray-600 text-sm sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-6 xl:py-3"
                           onClick={() => setStep(3)}
                         >
                           Next
@@ -192,28 +197,28 @@ const Download = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="flex  justify-center items-center mt-4 ">
-                          <div className="rounded-full p-4 bg-green-500">
+                        <div className="flex  justify-center items-center sm:mt-4 ">
+                          <div className="rounded-full p-2 sm:p-4 bg-green-500">
                             <div className="rounded-full p-3 bg-white">
                               <Image
                                 src="/gif/download.gif"
                                 width={140}
                                 height={140}
                                 alt="download-gif"
-                                className="rounded-full"
+                                className="rounded-full max-sm:w-20 max-sm:h-20"
                               />
                             </div>
                           </div>
                         </div>
                         <section className="mt-8">
-                          <div className="flex justify-center gap-6">
+                          <div className="flex flex-col lg:flex-row justify-center gap-6">
                             <button
                               type="button"
-                              className="focus:outline-none text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-10 py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                              className="focus:outline-none text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-10 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
                             >
                               Download
                             </button>
-                            <div className="relative w-3/4">
+                            <div className="relative lg:w-3/4">
                               <input
                                 type="search"
                                 id="search-dropdown"
@@ -229,7 +234,7 @@ const Download = () => {
                         </section>
                       </div>
 
-                      <div className="w-full flex justify-end">
+                      <div className="w-full flex justify-end mt-4">
                         <button
                           className="bg-black hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none disabled:bg-gray-600 disabled:border-gray-600 text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-6 xl:py-3"
                           onClick={() => setStep(1)}

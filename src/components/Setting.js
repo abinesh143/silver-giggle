@@ -40,7 +40,7 @@ const Setting = () => {
                       />
                       <label
                         for="link-checkbox"
-                        className="ms-2 text-lg font-medium text-gray-900 dark:text-gray-300"
+                        className="ms-2 sm:text-lg font-medium text-gray-900 dark:text-gray-300"
                       >
                         Show message in your app.
                       </label>

@@ -6,8 +6,11 @@ const General = () => {
     <main>
       <div className="p-4 sm:p-8 bg-[#F9F9F9] lg:rounded-2xl">
         <div className="flex justify-between border-b pb-3 sm:pb-4 mb-5 sm:mb-10">
-          <div className="sm:text-xl xl:text-2xl font-semibold capitalize">
+          <div className="sm:text-xl xl:text-2xl font-semibold capitalize max-sm:hidden">
             App Basic Information
+          </div>
+          <div className="sm:text-xl xl:text-2xl font-semibold capitalize sm:hidden">
+            App Info
           </div>
           <p className="text-sm sm:text-lg xl:text-xl">
             06/02/2024,
@@ -24,7 +27,7 @@ const General = () => {
             </div>
           </div>
           <div className="bg-[#FFF1E7] rounded-b-[24px] rounded-tr-[24px] sm:rounded-b-[32px] sm:rounded-tr-[32px] p-4 sm:p-10">
-            <div className="flex flex-col lg:flex-row lg:space-x-6 max-lg:space-y-6">
+            <div className="flex flex-col lg:flex-row lg:space-x-6 max-lg:space-y-16">
               <form className="basis-1/2">
                 <div className="grid gap-6 mb-6 md:grid-cols-1">
                   <div>
@@ -37,7 +40,7 @@ const General = () => {
                     <input
                       type="text"
                       id="app_name"
-                      className="bg-white border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-white border text-sm sm:text-base border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Crazy Shoppy"
                       required
                     />
@@ -52,7 +55,7 @@ const General = () => {
                     <input
                       type="text"
                       id="package_name"
-                      className="bg-white border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="com.crazy.shopy"
                       required
                     />
@@ -67,7 +70,7 @@ const General = () => {
                     <input
                       type="version_name"
                       id="company"
-                      className="bg-white border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="1.0"
                       required
                     />
@@ -82,7 +85,7 @@ const General = () => {
                     <input
                       type="tel"
                       id="version_code"
-                      className="bg-white border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="11"
                       required
                     />
@@ -97,7 +100,7 @@ const General = () => {
                     <input
                       type="url"
                       id="website"
-                      className="bg-white border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="flowbite.com"
                       required
                     />
@@ -111,7 +114,7 @@ const General = () => {
                     App icon: (Launcher)
                   </label>
                   <input
-                    className="block w-full  text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                    className="block w-full text-sm sm:text-base text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                     id="app_launcher"
                     type="file"
                   />
@@ -119,7 +122,7 @@ const General = () => {
 
                 <button
                   type="submit"
-                  className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-xs sm:text-base lg:text-sm xl:text-base font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3 mt-4"
+                  className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-sm sm:text-base lg:text-sm xl:text-base font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3 mt-4"
                 >
                   Save
                 </button>
