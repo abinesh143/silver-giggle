@@ -1,6 +1,29 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { setItemLocalStorage, getItemLocalStorage } from "@/helpers/utils";
 
 const Setting = () => {
+  const [appSetting, setAppSetting] = useState({
+    showMessage: false,
+    navLink1: "",
+    navLink2: "",
+    navLink3: "",
+  });
+
+  const saveAppSetting = (e) => {
+    e.preventDefault();
+    setItemLocalStorage("appSetting", {
+      ...appSetting,
+    });
+  };
+
+  useEffect(() => {
+    const appSetting = getItemLocalStorage("appSetting");
+    if (appSetting) {
+      setAppSetting({ ...appSetting });
+    }
+  }, []);
+
   return (
     <main>
       <div className="p-4 sm:p-8 bg-[#F9F9F9] lg:rounded-2xl">
@@ -24,7 +47,7 @@ const Setting = () => {
           </div>
           <div className="bg-[#FFF1E7] rounded-b-[24px] rounded-tr-[24px] sm:rounded-b-[32px] sm:rounded-tr-[32px] p-4 sm:p-10">
             <div className="flex flex-col lg:flex-row lg:space-x-6 max-lg:space-y-6">
-              <form className="basis-1/2">
+              <form onSubmit={(e) => saveAppSetting(e)} className="basis-1/2">
                 <div className="grid gap-6 mb-6 md:grid-cols-1 bg-white p-8 rounded-[24px]">
                   <div>
                     <div className="text-lg sm:text-xl lg:text-lg xl:text-xl 2xl:text-2xl font-semibold">
@@ -35,7 +58,13 @@ const Setting = () => {
                       <input
                         id="review-rating"
                         type="checkbox"
-                        value=""
+                        checked={appSetting.showMessage}
+                        onChange={(e) =>
+                          setAppSetting({
+                            ...appSetting,
+                            showMessage: e.target.checked,
+                          })
+                        }
                         className="w-5 h-5 text-black bg-gray-100 border-gray-300 rounded focus:ring-black dark:focus:ring-black dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                       />
                       <label
@@ -58,21 +87,39 @@ const Setting = () => {
                         id="navlink_1"
                         className="bg-white border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Link 1"
-                        required
+                        value={appSetting.navLink1}
+                        onChange={(e) =>
+                          setAppSetting({
+                            ...appSetting,
+                            navLink1: e.target.value,
+                          })
+                        }
                       />
                       <input
                         type="text"
                         id="navlink_2"
                         className="bg-white border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Link 2"
-                        required
+                        value={appSetting.navLink2}
+                        onChange={(e) =>
+                          setAppSetting({
+                            ...appSetting,
+                            navLink2: e.target.value,
+                          })
+                        }
                       />
                       <input
                         type="text"
                         id="navlink_3"
                         className="bg-white border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Link 3"
-                        required
+                        value={appSetting.navLink3}
+                        onChange={(e) =>
+                          setAppSetting({
+                            ...appSetting,
+                            navLink3: e.target.value,
+                          })
+                        }
                       />
                     </div>
                   </div>

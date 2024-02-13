@@ -1,3 +1,5 @@
+import { appMakerLogout } from '@/helpers/utils'
+
 const LogoutModal = () => {
   return (
     <main>
@@ -32,7 +34,8 @@ const LogoutModal = () => {
               >
                 No, Continue
               </button>
-              <button className="text-white bg-black hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none text-sm font-semibold rounded-xl px-6 py-2 sm:px-12 sm:py-3">
+              <button className="text-white bg-black hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none text-sm font-semibold rounded-xl px-6 py-2 sm:px-12 sm:py-3"
+              onClick={() => appMakerLogout()}>
                 Yes, Logout
               </button>
             </div>

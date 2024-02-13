@@ -1,7 +1,50 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { setItemLocalStorage, getItemLocalStorage } from "@/helpers/utils";
 
 const General = () => {
+  const [appInfo, setAppInfo] = useState({
+    appName: "",
+    packageName: "",
+    versionName: "",
+    versionCode: "",
+    website: "",
+  });
+  const [appError, setAppError] = useState("");
+  const [appIcon, setAppIcon] = useState(
+    "http://localhost:3000/images/logo.png"
+  );
+
+  const saveAppInfo = (e) => {
+    e.preventDefault();
+    if (!appInfo.appName) {
+      setAppError("App Name is Missing");
+    } else if (!appInfo.packageName) {
+      setAppError("package is missing.");
+    } else if (!appInfo.website) {
+      setAppError("website url is missing");
+    } else if (!appIcon) {
+      setAppError("App Icon is missing");
+    } else {
+      // first upload to cloudinary
+      // After Success make api call to localstorage
+      setItemLocalStorage("appInfo", {
+        ...appInfo,
+        appIcon: "http://localhost:3000/images/logo.png",
+      });
+
+      // Failed Case
+      setAppError("Image Failed to Upload. Please Retry");
+    }
+  };
+
+  useEffect(() => {
+    const appDetails = getItemLocalStorage("appInfo");
+    if (appDetails) {
+      setAppInfo({ ...appDetails });
+    }
+  }, []);
   return (
     <main>
       <div className="p-4 sm:p-8 bg-[#F9F9F9] lg:rounded-2xl">
@@ -28,7 +71,7 @@ const General = () => {
           </div>
           <div className="bg-[#FFF1E7] rounded-b-[24px] rounded-tr-[24px] sm:rounded-b-[32px] sm:rounded-tr-[32px] p-4 sm:p-10">
             <div className="flex flex-col lg:flex-row lg:space-x-6 max-lg:space-y-16">
-              <form className="basis-1/2">
+              <form onSubmit={(e) => saveAppInfo(e)} className="basis-1/2">
                 <div className="grid gap-6 mb-6 md:grid-cols-1">
                   <div>
                     <label
@@ -42,6 +85,10 @@ const General = () => {
                       id="app_name"
                       className="bg-white border text-sm sm:text-base border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Crazy Shoppy"
+                      value={appInfo.appName}
+                      onChange={(e) =>
+                        setAppInfo({ ...appInfo, appName: e.target.value })
+                      }
                       required
                     />
                   </div>
@@ -57,6 +104,10 @@ const General = () => {
                       id="package_name"
                       className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="com.crazy.shopy"
+                      value={appInfo.packageName}
+                      onChange={(e) =>
+                        setAppInfo({ ...appInfo, packageName: e.target.value })
+                      }
                       required
                     />
                   </div>
@@ -72,7 +123,10 @@ const General = () => {
                       id="company"
                       className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="1.0"
-                      required
+                      value={appInfo.versionName}
+                      onChange={(e) =>
+                        setAppInfo({ ...appInfo, versionName: e.target.value })
+                      }
                     />
                   </div>
                   <div>
@@ -87,7 +141,10 @@ const General = () => {
                       id="version_code"
                       className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="11"
-                      required
+                      value={appInfo.versionCode}
+                      onChange={(e) =>
+                        setAppInfo({ ...appInfo, versionCode: e.target.value })
+                      }
                     />
                   </div>
                   <div>
@@ -101,7 +158,11 @@ const General = () => {
                       type="url"
                       id="website"
                       className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="flowbite.com"
+                      placeholder="https://www.crazyshopy.com"
+                      value={appInfo.website}
+                      onChange={(e) =>
+                        setAppInfo({ ...appInfo, website: e.target.value })
+                      }
                       required
                     />
                   </div>
@@ -119,7 +180,9 @@ const General = () => {
                     type="file"
                   />
                 </div>
-
+                {appError ? (
+                  <small class="block text-xs text-red-600">{appError}</small>
+                ) : null}
                 <button
                   type="submit"
                   className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-sm sm:text-base lg:text-sm xl:text-base font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3 mt-4"

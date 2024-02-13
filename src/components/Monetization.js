@@ -1,6 +1,61 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { setItemLocalStorage, getItemLocalStorage } from "@/helpers/utils";
 
 const Monetization = () => {
+  const [appAds, setAppAds] = useState({
+    admobAppId: "",
+    admobBannerId: "",
+    admobInterstitialId: "",
+    unityGameId: "",
+    unityBannerId: "",
+    unityInterstitialId: "",
+  });
+  const [admobError, setAdmobError] = useState("");
+  const [unityError, setUnityError] = useState("");
+
+  const saveAdmobAds = (e) => {
+    e.preventDefault();
+    if (!appAds.admobAppId) {
+      setAdmobError("Admob App Id is missing");
+    } else if (!appAds.admobBannerId) {
+      setAdmobError("Admob Banner Id is missing");
+    } else if (!appAds.admobInterstitialId) {
+      setAdmobError("Admob Interstitial Id is missing");
+    } else {
+      setItemLocalStorage("appAds", {
+        ...appAds,
+        admobAppId: appAds.admobAppId,
+        admobBannerId: appAds.admobBannerId,
+        admobInterstitialId: appAds.admobInterstitialId,
+      });
+    }
+  };
+
+  const saveUnityAds = (e) => {
+    e.preventDefault();
+    if (!appAds.unityGameId) {
+      setAdmobError("Unity Game Id is missing");
+    } else if (!appAds.unityBannerId) {
+      setAdmobError("Unity Banner Id is missing");
+    } else if (!appAds.unityInterstitialId) {
+      setAdmobError("Unity Interstitial Id is missing");
+    } else {
+      setItemLocalStorage("appAds", {
+        ...appAds,
+        unityGameId: appAds.unityBannerId,
+        unityBannerId: appAds.unityBannerId,
+        unityInterstitialId: appAds.unityInterstitialId,
+      });
+    }
+  };
+
+  useEffect(() => {
+    const appMonetization = getItemLocalStorage("appAds");
+    if (appMonetization) {
+      setAppAds({ ...appMonetization });
+    }
+  }, []);
   return (
     <main>
       <div className="p-4 sm:p-8 bg-[#F9F9F9] lg:rounded-2xl">
@@ -23,7 +78,10 @@ const Monetization = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-[#E3FFBF] grid grid-cols-1 gap-4 rounded-b-[24px] rounded-tr-[24px] sm:rounded-b-[32px] sm:rounded-tr-[32px] p-3 sm:p-10 lg:p-5 xl:p-10 mb-8">
+            <form
+              onSubmit={(e) => saveAdmobAds(e)}
+              className="bg-[#E3FFBF] grid grid-cols-1 gap-4 rounded-b-[24px] rounded-tr-[24px] sm:rounded-b-[32px] sm:rounded-tr-[32px] p-3 sm:p-10 lg:p-5 xl:p-10 mb-8"
+            >
               <div>
                 <Image
                   src="/svg/admob.svg"
@@ -44,6 +102,10 @@ const Monetization = () => {
                   id="admob_appid"
                   className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="your admob app id"
+                  value={appAds.admobAppId}
+                  onChange={(e) =>
+                    setAppAds({ ...appAds, admobAppId: e.target.value })
+                  }
                   required
                 />
               </div>
@@ -59,6 +121,10 @@ const Monetization = () => {
                   id="admob_banner"
                   className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="your admob banner id"
+                  value={appAds.admobBannerId}
+                  onChange={(e) =>
+                    setAppAds({ ...appAds, admobBannerId: e.target.value })
+                  }
                   required
                 />
               </div>
@@ -74,16 +140,26 @@ const Monetization = () => {
                   id="admob_interstitial"
                   className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="your admob interstitial id"
+                  value={appAds.admobInterstitialId}
+                  onChange={(e) =>
+                    setAppAds({
+                      ...appAds,
+                      admobInterstitialId: e.target.value,
+                    })
+                  }
                   required
                 />
               </div>
+              {admobError ? (
+                <small class="block text-xs text-red-600">{admobError}</small>
+              ) : null}
               <button
                 type="submit"
                 className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-sm sm:text-base lg:text-sm xl:text-base font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3 mt-4"
               >
                 Save
               </button>
-            </div>
+            </form>
           </div>
           <div className="basis-1/2">
             <div className="flex">
@@ -94,7 +170,10 @@ const Monetization = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-[#F7FF9D] grid grid-cols-1 gap-4 rounded-b-[24px] rounded-tr-[24px] sm:rounded-b-[32px] sm:rounded-tr-[32px] p-3 sm:p-10 lg:p-5 xl:p-10 mb-8">
+            <form
+              onSubmit={(e) => saveUnityAds(e)}
+              className="bg-[#F7FF9D] grid grid-cols-1 gap-4 rounded-b-[24px] rounded-tr-[24px] sm:rounded-b-[32px] sm:rounded-tr-[32px] p-3 sm:p-10 lg:p-5 xl:p-10 mb-8"
+            >
               <div className="mb-6">
                 <Image
                   src="/images/unity.png"
@@ -114,7 +193,11 @@ const Monetization = () => {
                   type="text"
                   id="unity_gameid"
                   className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="com.crazy.shopy"
+                  placeholder="your unity game id"
+                  value={appAds.unityGameId}
+                  onChange={(e) =>
+                    setAppAds({ ...appAds, unityGameId: e.target.value })
+                  }
                   required
                 />
               </div>
@@ -129,7 +212,11 @@ const Monetization = () => {
                   type="text"
                   id="unity_banner"
                   className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Crazy Shoppy"
+                  placeholder="your unity banner id"
+                  value={appAds.unityBannerId}
+                  onChange={(e) =>
+                    setAppAds({ ...appAds, unityBannerId: e.target.value })
+                  }
                   required
                 />
               </div>
@@ -144,17 +231,27 @@ const Monetization = () => {
                   type="text"
                   id="unity_interstitial"
                   className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="com.crazy.shopy"
+                  placeholder="your unity interstitial id"
+                  value={appAds.unityInterstitialId}
+                  onChange={(e) =>
+                    setAppAds({
+                      ...appAds,
+                      unityInterstitialId: e.target.value,
+                    })
+                  }
                   required
                 />
               </div>
+              {unityError ? (
+                <small class="block text-xs text-red-600">{unityError}</small>
+              ) : null}
               <button
                 type="submit"
                 className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-sm sm:text-base lg:text-sm xl:text-base font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3 mt-4"
               >
                 Save
               </button>
-            </div>
+            </form>
           </div>
         </section>
       </div>

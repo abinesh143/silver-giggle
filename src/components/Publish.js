@@ -3,6 +3,10 @@ import { useState } from "react";
 
 const Publish = () => {
   const [tab, setTab] = useState("andriod");
+  const [step, setStep] = useState(1);
+  const [iosStep, setIosStep] = useState(1);
+  const [isPremiumAndriod, setIsPremiumAndriod] = useState(false);
+  const [isPremiumIos, setIsPremiumIos] = useState(false);
   return (
     <main>
       <div className="p-4 sm:p-8 bg-[#F9F9F9] lg:rounded-2xl">
@@ -40,9 +44,257 @@ const Publish = () => {
             </div>
             <div className="bg-[#FCE594] rounded-tl-[24px]  sm:rounded-tl-[32px] rounded-b-[24px]  sm:rounded-b-[32px]  p-4 sm:p-10">
               <div className="flex flex-col lg:flex-row lg:space-x-6 max-lg:space-y-6">
-                <div className="basis-1/2">{/* to do */}</div>
+                <section className="basis-[60%] relative">
+                  {isPremiumAndriod ? (
+                    <>
+                      <div className="bg-[#F9F9F9] absolute left-0 top-0 opacity-80 z-30 w-full h-full rounded-3xl"></div>
+                      <div className="absolute lg:w-[calc(100vw-360px)] max-lg:top-0 h-[calc(100vh-240px)] overflow-hidden top-28 left-20 xl:left-12 2xl:left-20 z-40 text-black">
+                        <div className="max-lg:fixed max-lg:bottom-0 max-lg:left-0 max-lg:rounded-t-[24px] flex flex-col items-center sm:rounded-[32px] bg-white w-full lg:w-[50%] xl:w-[40%] p-8">
+                          <Image
+                            src="/images/premium.png"
+                            alt="pause-plan"
+                            width={80}
+                            height={80}
+                            className="w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32 mb-4"
+                          />
+                          <h2 className="sm:text-xl lg:text-2xl 2xl:text-3xl font-semibold mb-2">
+                            Unlock the Feature
+                          </h2>
+                          <p className="text-xs sm:text-base text-center font-normal mb-4">
+                            Please note! you can pulish to PlayStore only If
+                            Premium Plan is Purchased. AAB File is Build in this
+                            section.
+                          </p>
+                          <button className="bg-black text-sm sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-8 xl:py-3">
+                            Upgrade to Premium
+                          </button>
+                        </div>
+                      </div>
+                    </>
+                  ) : null}
+                  {step === 1 ? (
+                    <div className=" flex items-center justify-center">
+                      <div className="flex flex-col justify-between bg-white rounded-3xl p-4 sm:p-8 sm:mb-10  w-full h-[540px] sm:h-[640px] lg:h-[560px]">
+                        <div>
+                          <div className="flex justify-between gap-1 sm:gap-4 lg:gap-1 xl:gap-4">
+                            <div className="text-lg sm:text-xl lg:text-3xl  font-semibold mb-4 sm:mb-6 lg:mb-2 xl:mb-6">
+                              Building the Application for PlayStore:
+                              <span className="block text-sm font-light mt-2">
+                                Press Start to Build the app.
+                              </span>
+                            </div>
+                            <div className="relative mb-4">
+                              <svg className="w-[72px] h-[72px] relative -rotate-90">
+                                <circle
+                                  className="text-[#E0DFE2]"
+                                  stroke-width="5"
+                                  stroke="currentColor"
+                                  fill="transparent"
+                                  r="30"
+                                  cx="35"
+                                  cy="35"
+                                />
+                                <circle
+                                  className="text-[#FE5000]"
+                                  stroke-width="5"
+                                  stroke-dasharray={2 * 3.14 * 30}
+                                  stroke-dashoffset={
+                                    2 * 3.14 * 30 * (66.67 / 100)
+                                  }
+                                  stroke-linecap="round"
+                                  stroke="currentColor"
+                                  fill="transparent"
+                                  r="30"
+                                  cx="35"
+                                  cy="35"
+                                />
+                              </svg>
+                              <div className="absolute text-xl top-6 left-5">
+                                1/3
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex justify-center items-center py-4">
+                            <Image
+                              src="/images/start.png"
+                              width={256}
+                              height={256}
+                              alt="download-start"
+                              className="max-sm:w-44 max-sm:h-44"
+                              onClick={() => setStep(2)}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : step === 2 ? (
+                    <div className=" flex items-center justify-center">
+                      <div className="flex flex-col justify-between bg-white rounded-3xl p-4 sm:p-8 sm:mb-10 w-full h-[540px] sm:h-[640px] lg:h-[560px]">
+                        <div>
+                          <div className="flex justify-between gap-1 sm:gap-4 lg:gap-1 xl:gap-4">
+                            <div className="text-lg sm:text-xl lg:text-3xl  font-semibold mb-4 sm:mb-6 lg:mb-2 xl:mb-6">
+                              Building your Application:
+                              <span className="block text-sm font-light mt-2">
+                                Please wait ... Its takes less than 24 Hours
+                              </span>
+                            </div>
+                            <div className="relative mb-4">
+                              <svg className="w-[72px] h-[72px] relative -rotate-90">
+                                <circle
+                                  className="text-[#E0DFE2]"
+                                  stroke-width="5"
+                                  stroke="currentColor"
+                                  fill="transparent"
+                                  r="30"
+                                  cx="35"
+                                  cy="35"
+                                />
+                                <circle
+                                  className="text-[#FE5000]"
+                                  stroke-width="5"
+                                  stroke-dasharray={2 * 3.14 * 30}
+                                  stroke-dashoffset={
+                                    2 * 3.14 * 30 * (33.3 / 100)
+                                  }
+                                  stroke-linecap="round"
+                                  stroke="currentColor"
+                                  fill="transparent"
+                                  r="30"
+                                  cx="35"
+                                  cy="35"
+                                />
+                              </svg>
+                              <div className="absolute text-xl top-6 left-5">
+                                2/3
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex justify-center items-center py-4">
+                            <div className="relative">
+                              <Image
+                                src="/gif/phone.gif"
+                                width={256}
+                                height={256}
+                                alt="download-build"
+                                className="max-sm:w-48 max-sm:h-48"
+                              />
+                              <Image
+                                src="/gif/setting.gif"
+                                width={128}
+                                height={128}
+                                alt="download-setting"
+                                className="absolute -bottom-10 right-0 max-sm:w-24 max-sm:h-24"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        {/* <p className="text-center mt-6">
+                        Please wait ... Its takes less than 1 Minute
+                      </p> */}
+                        <div className="w-full flex justify-end">
+                          <button
+                            className="bg-black hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none disabled:bg-gray-600 disabled:border-gray-600 text-sm sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-6 xl:py-3"
+                            onClick={() => setStep(3)}
+                          >
+                            Next
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-center">
+                      <div className="flex flex-col justify-between bg-white rounded-3xl p-4 sm:p-8 sm:mb-10 w-full h-[540px] sm:h-[640px] lg:h-[560px]">
+                        <div>
+                          <div className="flex justify-between gap-1 sm:gap-4 lg:gap-1 xl:gap-4">
+                            <div className="text-lg sm:text-xl lg:text-3xl font-semibold mb-4 sm:mb-6 lg:mb-2 xl:mb-6">
+                              Download the Application:
+                              <span className="block text-xs sm:text-sm font-light ms-2 mt-2">
+                                Use APK File for Testing.
+                              </span>
+                              <span className="block text-xs sm:text-sm font-light ms-2 mt-1">
+                                Submit AAB File in PlayStore.
+                              </span>
+                            </div>
+                            <div className="relative mb-4">
+                              <svg className="w-[72px] h-[72px] relative -rotate-90">
+                                <circle
+                                  className="text-[#E0DFE2]"
+                                  stroke-width="5"
+                                  stroke="currentColor"
+                                  fill="transparent"
+                                  r="30"
+                                  cx="35"
+                                  cy="35"
+                                />
+                                <circle
+                                  className="text-[#FE5000]"
+                                  stroke-width="5"
+                                  stroke-dasharray={2 * 3.14 * 30}
+                                  stroke-dashoffset={2 * 3.14 * 30 * (1 / 100)}
+                                  stroke-linecap="round"
+                                  stroke="currentColor"
+                                  fill="transparent"
+                                  r="30"
+                                  cx="35"
+                                  cy="35"
+                                />
+                              </svg>
+                              <div className="absolute text-xl top-6 left-5">
+                                3/3
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex  justify-center items-center sm:mt-4 ">
+                            <div className="rounded-full p-2 sm:p-4 bg-green-500">
+                              <div className="rounded-full p-3 bg-white">
+                                <Image
+                                  src="/gif/download.gif"
+                                  width={140}
+                                  height={140}
+                                  alt="download-gif"
+                                  className="rounded-full max-sm:w-20 max-sm:h-20"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <section className="mt-8">
+                            <div className="flex flex-col lg:flex-row justify-center gap-5">
+                              <button
+                                type="button"
+                                className="focus:outline-none text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                              >
+                                Download Apk
+                              </button>
+                              <button
+                                type="button"
+                                className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                              >
+                                Download AAB
+                              </button>
+                              <button
+                                type="button"
+                                className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                              >
+                                Tutorial
+                              </button>
+                            </div>
+                          </section>
+                        </div>
 
-                <div className="basis-1/2 flex justify-center items-center">
+                        <div className="w-full flex justify-end mt-4">
+                          <button
+                            className="bg-black hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none disabled:bg-gray-600 disabled:border-gray-600 text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-6 xl:py-3"
+                            onClick={() => setStep(1)}
+                          >
+                            FInish
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </section>
+
+                <div className="basis-[40%] flex justify-center items-center">
                   <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px]">
                     <div className="h-[32px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[72px] rounded-s-lg"></div>
                     <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg"></div>
@@ -84,7 +336,249 @@ const Publish = () => {
             </div>
             <div className="bg-[#E0F2FF] rounded-b-[24px]  sm:rounded-b-[32px]  p-4 sm:p-10">
               <div className="flex flex-col lg:flex-row lg:space-x-6 max-lg:space-y-6">
-                <div className="basis-1/2">{/* <div>To do</div> */}</div>
+                <section className="basis-1/2 relative">
+                  {isPremiumIos ? (
+                    <>
+                      <div className="bg-[#F9F9F9] absolute left-0 top-0 opacity-80 z-30 w-full h-full rounded-3xl"></div>
+                      <div className="absolute lg:w-[calc(100vw-360px)] max-lg:top-0 h-[calc(100vh-240px)] overflow-hidden top-28 lg:left-8 xl:left-4 2xl:left-10 z-40 text-black">
+                        <div className="max-lg:fixed max-lg:bottom-0 max-lg:left-0 max-lg:rounded-t-[24px] flex flex-col items-center sm:rounded-[32px] bg-white w-full lg:w-[50%] xl:w-[40%] p-8">
+                          <Image
+                            src="/images/premium.png"
+                            alt="pause-plan"
+                            width={80}
+                            height={80}
+                            className="w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32 mb-4"
+                          />
+                          <h2 className="sm:text-xl lg:text-2xl 2xl:text-3xl font-semibold mb-2">
+                            Unlock the Feature
+                          </h2>
+                          <p className="text-xs sm:text-base text-center font-normal mb-4">
+                            Please note! you can pulish to PlayStore only If
+                            Premium Plan is Purchased. AAB File is Build in this
+                            section.
+                          </p>
+                          <button className="bg-black text-sm sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-8 xl:py-3">
+                            Upgrade to Premium
+                          </button>
+                        </div>
+                      </div>
+                    </>
+                  ) : null}
+                  {iosStep === 1 ? (
+                    <div className=" flex items-center justify-center">
+                      <div className="flex flex-col justify-between bg-white rounded-3xl p-4 sm:p-8 sm:mb-10 w-full h-[472px] sm:h-[600px] lg:h-[540px]">
+                        <div>
+                          <div className="flex justify-between gap-1 sm:gap-4 lg:gap-1 xl:gap-4">
+                            <div className="text-lg sm:text-xl lg:text-3xl  font-semibold mb-4 sm:mb-6 lg:mb-2 xl:mb-6">
+                              Building the Application for AppStore:
+                              <span className="block text-sm font-light mt-2">
+                                Press Start to Build the app.
+                              </span>
+                            </div>
+                            <div className="relative mb-4">
+                              <svg className="w-[72px] h-[72px] relative -rotate-90">
+                                <circle
+                                  className="text-[#E0DFE2]"
+                                  stroke-width="5"
+                                  stroke="currentColor"
+                                  fill="transparent"
+                                  r="30"
+                                  cx="35"
+                                  cy="35"
+                                />
+                                <circle
+                                  className="text-[#FE5000]"
+                                  stroke-width="5"
+                                  stroke-dasharray={2 * 3.14 * 30}
+                                  stroke-dashoffset={
+                                    2 * 3.14 * 30 * (66.67 / 100)
+                                  }
+                                  stroke-linecap="round"
+                                  stroke="currentColor"
+                                  fill="transparent"
+                                  r="30"
+                                  cx="35"
+                                  cy="35"
+                                />
+                              </svg>
+                              <div className="absolute text-xl top-6 left-5">
+                                1/3
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex justify-center items-center py-4">
+                            <Image
+                              src="/images/start.png"
+                              width={256}
+                              height={256}
+                              alt="download-start"
+                              className="max-sm:w-44 max-sm:h-44"
+                              onClick={() => setIosStep(2)}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : iosStep === 2 ? (
+                    <div className="lg:basis-[45%] flex items-center justify-center">
+                      <div className="flex flex-col justify-between bg-white rounded-3xl p-4 sm:p-8 sm:mb-10 w-full h-[472px] sm:h-[600px] lg:h-[540px]">
+                        <div>
+                          <div className="flex justify-between gap-1 sm:gap-4 lg:gap-1 xl:gap-4">
+                            <div className="text-lg sm:text-xl lg:text-3xl  font-semibold mb-4 sm:mb-6 lg:mb-2 xl:mb-6">
+                              Building your Application:
+                              <span className="block text-sm font-light mt-2">
+                                Please wait ... Its takes less than 2 Days
+                              </span>
+                            </div>
+                            <div className="relative mb-4">
+                              <svg className="w-[72px] h-[72px] relative -rotate-90">
+                                <circle
+                                  className="text-[#E0DFE2]"
+                                  stroke-width="5"
+                                  stroke="currentColor"
+                                  fill="transparent"
+                                  r="30"
+                                  cx="35"
+                                  cy="35"
+                                />
+                                <circle
+                                  className="text-[#FE5000]"
+                                  stroke-width="5"
+                                  stroke-dasharray={2 * 3.14 * 30}
+                                  stroke-dashoffset={
+                                    2 * 3.14 * 30 * (33.3 / 100)
+                                  }
+                                  stroke-linecap="round"
+                                  stroke="currentColor"
+                                  fill="transparent"
+                                  r="30"
+                                  cx="35"
+                                  cy="35"
+                                />
+                              </svg>
+                              <div className="absolute text-xl top-6 left-5">
+                                2/3
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex justify-center items-center py-4">
+                            <div className="relative">
+                              <Image
+                                src="/gif/phone.gif"
+                                width={256}
+                                height={256}
+                                alt="download-build"
+                                className="max-sm:w-48 max-sm:h-48"
+                              />
+                              <Image
+                                src="/gif/setting.gif"
+                                width={128}
+                                height={128}
+                                alt="download-setting"
+                                className="absolute -bottom-10 right-0 max-sm:w-24 max-sm:h-24"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        {/* <p className="text-center mt-6">
+                        Please wait ... Its takes less than 1 Minute
+                      </p> */}
+                        <div className="w-full flex justify-end">
+                          <button
+                            className="bg-black hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none disabled:bg-gray-600 disabled:border-gray-600 text-sm sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-6 xl:py-3"
+                            onClick={() => setIosStep(3)}
+                          >
+                            Next
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="lg:basis-[45%] flex items-center justify-center">
+                      <div className="flex flex-col justify-between bg-white rounded-3xl p-4 sm:p-8 sm:mb-10 w-full h-[472px] sm:h-[600px] lg:h-[540px]">
+                        <div>
+                          <div className="flex justify-between gap-1 sm:gap-4 lg:gap-1 xl:gap-4">
+                            <div className="text-lg sm:text-xl lg:text-3xl font-semibold mb-4 sm:mb-6 lg:mb-2 xl:mb-6">
+                              Download the Application:
+                              <span className="block text-xs sm:text-sm font-light ms-2 mt-2">
+                                Use APP File for Testing.
+                              </span>
+                              <span className="block text-xs sm:text-sm font-light ms-2 mt-1">
+                                Submit IPA File in AppStore.
+                              </span>
+                            </div>
+                            <div className="relative mb-4">
+                              <svg className="w-[72px] h-[72px] relative -rotate-90">
+                                <circle
+                                  className="text-[#E0DFE2]"
+                                  stroke-width="5"
+                                  stroke="currentColor"
+                                  fill="transparent"
+                                  r="30"
+                                  cx="35"
+                                  cy="35"
+                                />
+                                <circle
+                                  className="text-[#FE5000]"
+                                  stroke-width="5"
+                                  stroke-dasharray={2 * 3.14 * 30}
+                                  stroke-dashoffset={2 * 3.14 * 30 * (1 / 100)}
+                                  stroke-linecap="round"
+                                  stroke="currentColor"
+                                  fill="transparent"
+                                  r="30"
+                                  cx="35"
+                                  cy="35"
+                                />
+                              </svg>
+                              <div className="absolute text-xl top-6 left-5">
+                                3/3
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex  justify-center items-center sm:mt-4 ">
+                            <div className="rounded-full p-2 sm:p-4 bg-green-500">
+                              <div className="rounded-full p-3 bg-white">
+                                <Image
+                                  src="/gif/download.gif"
+                                  width={140}
+                                  height={140}
+                                  alt="download-gif"
+                                  className="rounded-full max-sm:w-20 max-sm:h-20"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <section className="mt-8">
+                            <div className="flex flex-col lg:flex-row justify-center gap-6">
+                              <button
+                                type="button"
+                                className="focus:outline-none text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-6 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                              >
+                                Download .APP
+                              </button>
+                              <button
+                                type="button"
+                                className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-6 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                              >
+                                Download .IPA
+                              </button>
+                            </div>
+                          </section>
+                        </div>
+
+                        <div className="w-full flex justify-end mt-4">
+                          <button
+                            className="bg-black hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none disabled:bg-gray-600 disabled:border-gray-600 text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-6 xl:py-3"
+                            onClick={() => setIosStep(1)}
+                          >
+                            FInish
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </section>
 
                 <div className="basis-1/2 flex justify-center items-center">
                   <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px]">

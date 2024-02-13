@@ -1,8 +1,45 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import { useState } from "react";
+import { getItemLocalStorage } from "@/helpers/utils";
 
 const Download = () => {
   const [step, setStep] = useState(1);
+  const [disableButton, setDisableButton] = useState(true);
+  const [message, setMessage] = useState("Build Failed Try Again");
+
+  const setProgressDownload = async () => {
+    setStep(2);
+    const appDetails = getItemLocalStorage();
+    const loginDetails = localStorage.getItem("appMaker");
+    if (appDetails && loginDetails) {
+      const userData = JSON.parse(loginDetails);
+      try {
+        let res = await fetch("/api/metaData", {
+          method: "POST",
+          body: JSON.stringify({
+            ...appDetails,
+            userEmail: userData.userEmail,
+          }),
+        });
+
+        let data = await res.json();
+        if (res.status === 201) {
+          setTimeout(() => {
+            setDisableButton(false);
+          }, 5000);
+        } else {
+          setMessage("Build Failed Try Again");
+        }
+      } catch (error) {
+        console.log(error);
+        setStep(1);
+        setMessage("Build Failed Try Again");
+      }
+    } else {
+      // toast soething went wrong
+    }
+  };
   return (
     <main>
       <div className="p-4 sm:p-8 bg-[#F9F9F9] lg:rounded-2xl">
@@ -39,6 +76,9 @@ const Download = () => {
                             Start Building the Application:
                             <span className="block text-sm font-light">
                               Press Start to Build the app.
+                            </span>
+                            <span className="text-red-500 text-base">
+                              {message ? message : ""}
                             </span>
                           </div>
                           <div className="relative mb-4">
@@ -79,7 +119,7 @@ const Download = () => {
                             height={256}
                             alt="download-start"
                             className="max-sm:w-44 max-sm:h-44"
-                            onClick={() => setStep(2)}
+                            onClick={() => setProgressDownload()}
                           />
                         </div>
                       </div>
@@ -93,7 +133,9 @@ const Download = () => {
                           <div className="text-lg sm:text-xl lg:text-3xl  font-semibold mb-4 sm:mb-6 lg:mb-2 xl:mb-6">
                             Building your Application:
                             <span className="block text-sm font-light">
-                              Please wait ... Its takes less than 1 Minute
+                              {disableButton
+                                ? "Please wait ... Its takes less than 1 Minute"
+                                : "Build Finished Press Next"}
                             </span>
                           </div>
                           <div className="relative mb-4">
@@ -144,13 +186,16 @@ const Download = () => {
                           </div>
                         </div>
                       </div>
-                      {/* <p className="text-center mt-6">
-                        Please wait ... Its takes less than 1 Minute
-                      </p> */}
+                      {!disableButton ? (
+                        <p className="text-center font-semibold mt-6">
+                          We Successfully Build and Tested Your Application
+                        </p>
+                      ) : null}
                       <div className="w-full flex justify-end">
                         <button
                           className="bg-black hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none disabled:bg-gray-600 disabled:border-gray-600 text-sm sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-6 xl:py-3"
                           onClick={() => setStep(3)}
+                          disabled={disableButton}
                         >
                           Next
                         </button>
@@ -257,12 +302,12 @@ const Download = () => {
                     <img
                       src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/mockup-1-light.png"
                       className="dark:hidden w-[272px] h-[572px]"
-                      alt=""
+                      alt="reback1"
                     />
                     <img
                       src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/mockup-1-dark.png"
                       className="hidden dark:block w-[272px] h-[572px]"
-                      alt=""
+                      alt="reback2"
                     />
                   </div>
                 </div>

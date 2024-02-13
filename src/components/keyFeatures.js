@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const KeyFeatures = () => {
+const KeyFeatures = (props) => {
   const features = [
     {
       title: "Free Forever",
@@ -60,20 +60,26 @@ const KeyFeatures = () => {
                   <Image src={f.image} alt={f.title} width="100" height="100" />
                 </div>
                 <div className="mt-2 sm:text-lg font-semibold">{f.title}</div>
-                <p className="text-center text-sm sm:text-base">{f.description}</p>
+                <p className="text-center text-sm sm:text-base">
+                  {f.description}
+                </p>
               </div>
             );
           })}
         </div>
         <div className="flex justify-center mt-8">
-          <button className="bg-[#FE5000] text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 2xl:px-16 2xl:py-4">
+          <button
+            className="bg-[#FE5000] text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 2xl:px-16 2xl:py-4"
+            onClick={() => props.checkUserExists()}
+          >
             Convert your Website to App for Free
           </button>
         </div>
       </div>
       <div className="mt-10 sm:mt-24 max-sm:px-4">
         <h2 className="text-xl sm:text-3xl lg:text-5xl font-semibold text-center mb-4 ">
-          No Developer Account to Publish Apps<span className="sm:hidden">! Don&apos;t Worry!</span>
+          No Developer Account to Publish Apps
+          <span className="sm:hidden">! Don&apos;t Worry!</span>
         </h2>
         <h2 className="text-xl sm:text-3xl lg:text-5xl font-semibold text-center mb-8 max-sm:hidden">
           Don&apos;t Worry!
@@ -91,7 +97,10 @@ const KeyFeatures = () => {
               Our Support team will help you from start building apps,
               Publishing in playstore and for future updates.
             </p>
-            <button className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4">
+            <button
+              className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4"
+              onClick={() => props.checkUserExists()}
+            >
               Start Now for Free
             </button>
           </div>
@@ -115,7 +124,10 @@ const KeyFeatures = () => {
               You will get More Customers by Play Store Search if you get more 5
               Star Reviews
             </p>
-            <button className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3  2xl:px-16 2xl:py-4">
+            <button
+              className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3  2xl:px-16 2xl:py-4"
+              onClick={() => props.checkUserExists()}
+            >
               Start Now for Free
             </button>
           </div>

@@ -1,6 +1,56 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { setItemLocalStorage, getItemLocalStorage } from "@/helpers/utils";
 
 const FreeRating = () => {
+  const [appReview, setAppReview] = useState({
+    appLink: "",
+    appRating: "",
+    appKeywords: "",
+  });
+  const [reviewError, setReviewError] = useState("");
+
+  const saveAppReview = async (e) => {
+    e.preventDefault();
+    const loginDetails = localStorage.getItem("appMaker");
+    const userData = JSON.parse(loginDetails);
+    if (!appReview.appLink) {
+      setReviewError("App Link is missing");
+    } else if (!appReview.appRating) {
+      setReviewError("App Rating is missing");
+    } else if (!appReview.appKeywords) {
+      setReviewError("App Keywords is missing");
+    } else {
+      setReviewError("");
+      try {
+        let res = await fetch("/api/review", {
+          method: "POST",
+          body: JSON.stringify({
+            ...appReview,
+            userEmail: userData.userEmail,
+          }),
+        });
+
+        // let data = await res.json();
+        if (res.status === 200) {
+          setItemLocalStorage("appReview", {
+            ...appReview,
+          });
+        } else if (res.status === 401) {
+          setReviewError("Review Request Already Submitted");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    const reviews = getItemLocalStorage("appReview");
+    if (reviews) {
+      setAppReview({ ...reviews });
+    }
+  }, []);
   return (
     <main>
       <div className="p-4 sm:p-8 bg-[#F9F9F9] lg:rounded-2xl">
@@ -27,7 +77,7 @@ const FreeRating = () => {
           </div>
           <div className="bg-[#FFF1E7] rounded-b-[24px] rounded-tr-[24px] sm:rounded-b-[32px] sm:rounded-tr-[32px] p-4 sm:p-10">
             <div className="flex flex-col lg:flex-row lg:space-x-6 max-lg:space-y-6">
-              <form className="basis-1/2">
+              <form onSubmit={(e) => saveAppReview(e)} className="basis-1/2">
                 <div className="text-sm sm:text-xl xl:text-2xl font-semibold mb-6">
                   My Balance -{" "}
                   <span className="text-[#FE5000]">10 Free Reviews</span>
@@ -35,7 +85,7 @@ const FreeRating = () => {
                 <div className="grid gap-6 mb-6 md:grid-cols-1 bg-white p-8 rounded-[24px]">
                   <div>
                     <label
-                      for="first_name"
+                      for="app-link"
                       className="block mb-2 text-sm sm:text-base font-medium text-gray-900 dark:text-white"
                     >
                       App Link:
@@ -45,6 +95,10 @@ const FreeRating = () => {
                       id="app-link"
                       className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Your App Link"
+                      value={appReview.appLink}
+                      onChange={(e) =>
+                        setAppReview({ ...appReview, appLink: e.target.value })
+                      }
                       required
                     />
                   </div>
@@ -58,7 +112,15 @@ const FreeRating = () => {
                     <select
                       id="need-rating"
                       className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      value={appReview.appRating}
+                      onChange={(e) =>
+                        setAppReview({
+                          ...appReview,
+                          appRating: e.target.value,
+                        })
+                      }
                     >
+                      <option value="">Choose a Rating</option>
                       <option value="5">5 Stars</option>
                       <option value="4">4 Stars</option>
                       <option value="3">3 Stars</option>
@@ -75,9 +137,21 @@ const FreeRating = () => {
                       id="keywords"
                       rows="4"
                       className="block p-2.5 w-full text-sm sm:text-base text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      value={appReview.appKeywords}
+                      onChange={(e) =>
+                        setAppReview({
+                          ...appReview,
+                          appKeywords: e.target.value,
+                        })
+                      }
                       placeholder="Enter Keywords"
                     ></textarea>
                   </div>
+                  {reviewError ? (
+                    <small class="block text-xs text-red-600">
+                      {reviewError}
+                    </small>
+                  ) : null}
                   <button
                     type="submit"
                     className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-sm sm:text-base lg:text-sm xl:text-base font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3"

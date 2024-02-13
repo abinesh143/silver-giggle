@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Banner = () => {
+const Banner = (props) => {
   return (
     <main>
       <div className="h-[calc(100vh-88px)] min-h-[580px] xl:min-h-[550px] max-h-[812px] bg-[#FFF1E7] bg-no-repeat bg-cover bg-right-bottom sm:bg-[0_center] lg:bg-right rounded-3xl lg:rounded-[40px] px-4 sm:px-8 sm:py-4 max-lg:my-4 mx-4">
@@ -29,7 +29,10 @@ const Banner = () => {
                   />
                 </div>
                 <div className="flex flex-col sm:flex-row gap-8 mt-8">
-                  <button className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4">
+                  <button
+                    className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4"
+                    onClick={() => props.checkUserExists()}
+                  >
                     Convert Now
                   </button>
                   <div className="flex items-center">

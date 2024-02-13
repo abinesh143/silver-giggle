@@ -35,6 +35,51 @@ const Help = () => {
       answer: "You just need your website URL, App Name and Logo.",
     },
   ];
+  const [feedback, setFeedback] = useState({
+    fullName: "",
+    email: "",
+    subject: "",
+    description: "",
+  });
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const saveFeedback = async (e) => {
+    e.preventDefault();
+    if (!feedback.fullName) {
+      setErrorMsg("Fulname is missing");
+    } else if (!feedback.email) {
+      setErrorMsg("Email is missing");
+    } else if (!feedback.description) {
+      setErrorMsg("Description is missing");
+    } else {
+      setErrorMsg("");
+      const loginDetails = localStorage.getItem("appMaker");
+      const userData = JSON.parse(loginDetails);
+      try {
+        let res = await fetch("/api/feedback", {
+          method: "POST",
+          body: JSON.stringify({
+            ...feedback,
+            userEmail: userData.userEmail,
+          }),
+        });
+
+        // let data = await res.json();
+        if (res.status === 200) {
+          setFeedback({
+            fullName: "",
+            email: "",
+            subject: "",
+            description: "",
+          });
+          // show toast message
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   useEffect(() => {
     initAccordions();
   }, []);
@@ -59,7 +104,10 @@ const Help = () => {
                   </div>
                 </div>
               </div>
-              <form class="bg-[#ECECEC] rounded-b-[24px] rounded-tr-[24px] sm:rounded-b-[32px] sm:rounded-tr-[32px] p-4 sm:p-10">
+              <form
+                onSubmit={(e) => saveFeedback(e)}
+                class="bg-[#ECECEC] rounded-b-[24px] rounded-tr-[24px] sm:rounded-b-[32px] sm:rounded-tr-[32px] p-4 sm:p-10"
+              >
                 <div class="mb-4 sm:mb-5">
                   <div class="relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
@@ -76,9 +124,13 @@ const Help = () => {
                     <input
                       type="text"
                       class="px-4 pt-5 pl-12 sm:pl-12 w-full text-[#585858] border border-[#CECECE] focus:ring-black focus:border-black rounded-lg lg:rounded-xl text-sm sm:text-base"
+                      value={feedback.fullName}
+                      onChange={(e) =>
+                        setFeedback({ ...feedback, fullName: e.target.value })
+                      }
+                      required
                     />
                   </div>
-                  {/* <small name="name" class="mt-1 text-xs text-red-600"></small> */}
                 </div>
                 <div class="mb-4 sm:mb-5">
                   <div class="relative">
@@ -94,11 +146,15 @@ const Help = () => {
                       Email Address
                     </div>
                     <input
-                      type="text"
+                      type="email"
                       class="px-4 pt-5 pl-12 sm:pl-12 w-full text-[#585858] border border-[#CECECE] focus:ring-black focus:border-black rounded-lg sm:rounded-xl text-sm sm:text-base"
+                      value={feedback.email}
+                      onChange={(e) =>
+                        setFeedback({ ...feedback, email: e.target.value })
+                      }
+                      required
                     />
                   </div>
-                  {/* <small name="email" class="mt-1 text-xs text-red-600"></small> */}
                 </div>
                 <div name="subject" class="mb-4 sm:mb-5">
                   <div class="relative">
@@ -116,12 +172,12 @@ const Help = () => {
                     <input
                       type="text"
                       class="px-4 pt-5 pl-12 sm:pl-12 w-full text-[#585858] border border-[#CECECE] focus:ring-black focus:border-black rounded-lg sm:rounded-xl text-sm sm:text-base"
+                      value={feedback.subject}
+                      onChange={(e) =>
+                        setFeedback({ ...feedback, subject: e.target.value })
+                      }
                     />
                   </div>
-                  {/* <small
-                    name="subject"
-                    class="mt-1 text-xs text-red-600"
-                  ></small> */}
                 </div>
                 <div class="mb-4 sm:mb-5">
                   <div class="relative">
@@ -139,6 +195,14 @@ const Help = () => {
                     <textarea
                       rows="3"
                       class="resize-none pt-5 pl-12 pr-6 pb-4 w-full rounded-lg sm:rounded-xl border border-[#DBDBDB] focus:ring-black focus:border-black text-sm sm:text-base"
+                      value={feedback.description}
+                      onChange={(e) =>
+                        setFeedback({
+                          ...feedback,
+                          description: e.target.value,
+                        })
+                      }
+                      required
                     ></textarea>
                   </div>
                   <small
@@ -146,6 +210,9 @@ const Help = () => {
                     class="mt-1 text-xs text-red-600"
                   ></small>
                 </div>
+                {errorMsg ? (
+                  <small class="block text-xs text-red-600">{errorMsg}</small>
+                ) : null}
 
                 <button
                   type="submit"

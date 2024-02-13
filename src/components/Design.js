@@ -1,6 +1,46 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { setItemLocalStorage, getItemLocalStorage } from "@/helpers/utils";
 
 const Design = () => {
+  const [appDesign, setAppDesign] = useState({
+    themeColor: "",
+    custom: "",
+    splashScreen: "http://localhost:3000/images/logo.png",
+  });
+  const [designError, setDesignError] = useState("");
+
+  const saveAppDesign = (e) => {
+    e.preventDefault();
+    const value = document.querySelector('input[name="theme"]:checked').value;
+    setAppDesign({ ...appDesign, themeColor: value });
+
+    // splashScreen upload means upload to cloudinary
+    // After Success means set Local in sucess
+    // For Error
+    setDesignError("Image Uploading Failed.. Please try again");
+    // else case od cloudinary
+    setItemLocalStorage("appDeisgn", { ...appDesign, themeColor: value });
+  };
+
+  const setInitialState = (color) => {
+    const elementGroup = document.querySelectorAll('input[name="theme"]');
+    elementGroup.forEach((ele) => {
+      if (ele.value === color) {
+        ele.checked = true;
+      }
+    });
+  };
+
+  useEffect(() => {
+    const myAppDesign = getItemLocalStorage("appDeisgn");
+    if (myAppDesign) {
+      setAppDesign({ ...myAppDesign });
+      if (myAppDesign["themeColor"]) {
+        setInitialState(myAppDesign["themeColor"]);
+      }
+    }
+  }, []);
   return (
     <main>
       <div className="p-4 sm:p-8 bg-[#F9F9F9] lg:rounded-2xl">
@@ -22,7 +62,7 @@ const Design = () => {
           </div>
           <div className="bg-[#FFF1E7] rounded-b-[24px] rounded-tr-[24px] sm:rounded-b-[32px] sm:rounded-tr-[32px] p-4 sm:p-10">
             <div className="flex flex-col lg:flex-row lg:space-x-6 max-lg:space-y-6">
-              <form className="basis-1/2">
+              <form onSubmit={(e) => saveAppDesign(e)} className="basis-1/2">
                 <div className="grid gap-6 mb-6 md:grid-cols-1 bg-white p-8 rounded-[24px]">
                   <div className="text-lg sm:text-xl lg:text-lg xl:text-xl 2xl:text-2xl font-semibold">
                     1) Choose a Theme Color for your App?
@@ -33,7 +73,7 @@ const Design = () => {
                         id="red-radio"
                         name="theme"
                         type="radio"
-                        value=""
+                        value="red"
                         className="w-4 h-4 bg-transparent text-black border border-black checked:border-black focus:ring-0"
                       />
 
@@ -50,7 +90,7 @@ const Design = () => {
                         id="teal-radio"
                         name="theme"
                         type="radio"
-                        value=""
+                        value="teal"
                         className="w-4 h-4 bg-transparent text-black border border-black checked:border-black focus:ring-0"
                       />
 
@@ -67,7 +107,7 @@ const Design = () => {
                         id="green-radio"
                         name="theme"
                         type="radio"
-                        value=""
+                        value="green"
                         className="w-4 h-4 bg-transparent text-black border border-black checked:border-black focus:ring-0"
                       />
                       <label
@@ -83,7 +123,7 @@ const Design = () => {
                         id="purple-radio"
                         name="theme"
                         type="radio"
-                        value=""
+                        value="purple"
                         className="w-4 h-4 bg-transparent text-black border border-black checked:border-black focus:ring-0"
                       />
 
@@ -101,7 +141,7 @@ const Design = () => {
                         id="yellow-radio"
                         name="theme"
                         type="radio"
-                        value=""
+                        value="yellow"
                         className="w-4 h-4 bg-transparent text-black border border-black checked:border-black focus:ring-0"
                       />
                       <label
@@ -117,7 +157,7 @@ const Design = () => {
                         id="orange-radio"
                         name="theme"
                         type="radio"
-                        value=""
+                        value="orange"
                         className="w-4 h-4 bg-transparent text-black border border-black checked:border-black focus:ring-0"
                       />
                       <label
@@ -132,7 +172,7 @@ const Design = () => {
                       <input
                         id="custom-radio"
                         type="radio"
-                        value=""
+                        value="custom"
                         name="theme"
                         className="w-4 h-4 bg-transparent text-black border border-black checked:border-black focus:ring-0"
                       />
@@ -147,8 +187,14 @@ const Design = () => {
                           type="color"
                           id="favcolor"
                           name="favcolor"
-                          value="#ff0000"
+                          value={appDesign.custom}
                           className="cursor-pointer"
+                          onChange={(e) =>
+                            setAppDesign({
+                              ...appDesign,
+                              custom: e.target.value,
+                            })
+                          }
                         />
                       </div>
                     </div>
@@ -163,7 +209,11 @@ const Design = () => {
                       type="file"
                     />
                   </div>
-
+                  {designError ? (
+                    <small class="block text-xs text-red-600">
+                      {designError}
+                    </small>
+                  ) : null}
                   <button
                     type="submit"
                     className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-sm sm:text-lg lg:text-lg xl:text-lg font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3"

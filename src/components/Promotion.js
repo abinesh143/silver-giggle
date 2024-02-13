@@ -1,6 +1,37 @@
 import Image from "next/image";
+import { useState } from "react";
 
 const Promotion = () => {
+  const [mail, setMail] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const savePromotion = async (e) => {
+    e.preventDefault();
+    if (!mail) {
+      setErrorMsg("Email is missing");
+    } else {
+      setErrorMsg("");
+      const loginDetails = localStorage.getItem("appMaker");
+      const userData = JSON.parse(loginDetails);
+      try {
+        let res = await fetch("/api/promotion", {
+          method: "POST",
+          body: JSON.stringify({
+            email: mail,
+            userEmail: userData.userEmail,
+          }),
+        });
+        // let data = await res.json();
+        if (res.status === 200) {
+          setMail("")
+          // send toast
+        }
+      } catch (error) {
+        setErrorMsg("Oops !! Something went wrong");
+        console.log(error);
+      }
+    }
+  };
   return (
     <main>
       <div className="p-4 sm:p-8 bg-[#F9F9F9] lg:rounded-2xl">
@@ -27,19 +58,28 @@ const Promotion = () => {
           <div className="text-xs sm:text-base lg:text-lg text-center sm:mb-6 px-5 sm:px-20 md:px-28 xl:px-24">
             Get 10$ and 10 Free 5 Star Reviews with each successful referral.
           </div>
-          <div className="flex rounded-md pt-4 pb-2 sm:py-4 w-4/5 md:w-3/5 xl:w-2/5">
+          <form
+            onSubmit={(e) => savePromotion(e)}
+            className="flex rounded-md pt-4 pb-2 sm:py-4 w-4/5 md:w-3/5 xl:w-2/5"
+          >
             <input
-              type="text"
+              type="email"
               className="py-2 sm:py-4 pl-4 sm:pl-6 w-full rounded-l-lg sm:rounded-l-xl text-xs sm:text-base lg:text-sm xl:text-base border-r-0 border-black focus:border-r-2"
               placeholder="Email Address"
+              value={mail}
+              onChange={(e) => setMail(e.target.value)}
+              required
             />
             <button
-              type="button"
+              type="submit"
               className="py-2 sm:py-4 px-4 sm:px-10 inline-flex justify-center items-center rounded-r-lg sm:rounded-r-xl font-semibold bg-white text-black text-xs sm:text-base lg:text-sm xl:text-base focus:outline-none hover:bg-gray-300 border-y border-r border-black"
             >
               Submit
             </button>
-          </div>
+          </form>
+          {errorMsg ? (
+            <small class="block text-xs text-red-600">{errorMsg}</small>
+          ) : null}
           <div className="text-[#3B3A43] text-[8px] sm:text-xs lg:text-[10px] xl:text-xs">
             Enter your friend&apos;s email address (automatic email will be
             sent)
