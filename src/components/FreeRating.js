@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { setItemLocalStorage, getItemLocalStorage } from "@/helpers/utils";
+import { setItemLocalStorage, getItemLocalStorage, toastProvider } from "@/helpers/utils";
 
 const FreeRating = () => {
   const [appReview, setAppReview] = useState({
@@ -36,7 +36,9 @@ const FreeRating = () => {
           setItemLocalStorage("appReview", {
             ...appReview,
           });
+          toastProvider('success', 'App Review Submiited')
         } else if (res.status === 401) {
+          toastProvider('error', 'Review Request Already Submitted')
           setReviewError("Review Request Already Submitted");
         }
       } catch (error) {

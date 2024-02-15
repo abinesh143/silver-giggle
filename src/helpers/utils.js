@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2'
+
 export const appMakerLogout = async () => {
   localStorage.removeItem("appMaker");
   window.location.href = "/";
@@ -19,7 +21,7 @@ export const setItemLocalStorage = (key, value) => {
   if (
     [
       "appInfo",
-      "appDeisgn",
+      "appDesign",
       "appSetting",
       "appNotification",
       "appAds",
@@ -30,4 +32,22 @@ export const setItemLocalStorage = (key, value) => {
   }
 
   localStorage.setItem("appMakerPro", JSON.stringify(setting));
+};
+
+export const toastProvider = (icon, title) => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  });
+  Toast.fire({
+    icon: icon ? icon : "success",
+    title: title ? title : "Saved Successfully",
+  });
 };

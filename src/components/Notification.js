@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { setItemLocalStorage, getItemLocalStorage } from "@/helpers/utils";
+import { setItemLocalStorage, getItemLocalStorage, toastProvider } from "@/helpers/utils";
 
 const Notification = () => {
   const [isPaused, setIsPaused] = useState(true);
@@ -13,6 +13,7 @@ const Notification = () => {
     setItemLocalStorage("appNotification", {
       ...appNotify,
     });
+    toastProvider('success', 'App Notification Saved')
   };
 
   useEffect(() => {

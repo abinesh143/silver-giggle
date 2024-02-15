@@ -1,26 +1,52 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { setItemLocalStorage, getItemLocalStorage } from "@/helpers/utils";
+import { setItemLocalStorage, getItemLocalStorage, toastProvider } from "@/helpers/utils";
+import axios from "axios";
 
 const Design = () => {
   const [appDesign, setAppDesign] = useState({
     themeColor: "",
     custom: "",
-    splashScreen: "http://localhost:3000/images/logo.png",
+    splashScreen: "",
   });
+  const [splashScreen, setSplashScreen] = useState(null);
   const [designError, setDesignError] = useState("");
 
   const saveAppDesign = (e) => {
     e.preventDefault();
-    const value = document.querySelector('input[name="theme"]:checked').value;
-    setAppDesign({ ...appDesign, themeColor: value });
+    const element = document.querySelector('input[name="theme"]:checked');
+    if (element) {
+      setAppDesign({ ...appDesign, themeColor: element.value });
+    }
 
-    // splashScreen upload means upload to cloudinary
-    // After Success means set Local in sucess
-    // For Error
-    setDesignError("Image Uploading Failed.. Please try again");
-    // else case od cloudinary
-    setItemLocalStorage("appDeisgn", { ...appDesign, themeColor: value });
+    if (splashScreen) {
+      const formData = new FormData();
+      formData.append("file", splashScreen);
+      formData.append("upload_preset", "ltvsms6q");
+
+      axios
+        .post(
+          "https://api.cloudinary.com/v1_1/dd4iqjurs/image/upload",
+          formData
+        )
+        .then((response) => {
+          if (response.status === 200) {
+            setItemLocalStorage("appDesign", {
+              ...appDesign,
+              splashScreen: response.data.secure_url,
+            });
+            setAppDesign({
+              ...appDesign,
+              splashScreen: response.data.secure_url,
+            });
+            toastProvider('success', 'App Design Saved')
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          setDesignError("Image Uploading Failed.. Please try again");
+        });
+    }
   };
 
   const setInitialState = (color) => {
@@ -32,8 +58,28 @@ const Design = () => {
     });
   };
 
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    console.log(file);
+    if (file) {
+      if (file.size > 5000000) {
+        setDesignError("Image File should be less than 5 Mb");
+      } else if (file.type !== "image/jpeg" && file.type !== "image/png") {
+        setDesignError("Image Format sholud be .jpeg or .jpg or .png");
+      } else {
+        setSplashScreen(file);
+        setAppDesign({
+          ...appDesign,
+          splashScreen: URL.createObjectURL(file),
+        });
+      }
+    } else {
+      setDesignError("Image Upload Failed. Please try again..");
+    }
+  };
+
   useEffect(() => {
-    const myAppDesign = getItemLocalStorage("appDeisgn");
+    const myAppDesign = getItemLocalStorage("appDesign");
     if (myAppDesign) {
       setAppDesign({ ...myAppDesign });
       if (myAppDesign["themeColor"]) {
@@ -207,6 +253,7 @@ const Design = () => {
                       className="block w-full  text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                       id="file_input"
                       type="file"
+                      onChange={handleFileUpload}
                     />
                   </div>
                   {designError ? (
@@ -225,7 +272,11 @@ const Design = () => {
 
               <div className="basis-1/2 flex justify-center items-center rounded-[24px] sm:rounded-[32px] p-4 sm:p-8">
                 <Image
-                  src="/images/design.png"
+                  src={
+                    appDesign.splashScreen
+                      ? appDesign.splashScreen
+                      : "/images/design.png"
+                  }
                   width={472}
                   height={472}
                   alt="design"

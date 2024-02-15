@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { initAccordions } from "flowbite";
 import { useEffect, useState } from "react";
+import { toastProvider } from "@/helpers/utils";
 
 const Help = () => {
   const [showAllFaq, setShowAllFaq] = useState(false);
@@ -72,7 +73,7 @@ const Help = () => {
             subject: "",
             description: "",
           });
-          // show toast message
+          toastProvider('success', 'Help Ticket Submitted')
         }
       } catch (error) {
         console.log(error);

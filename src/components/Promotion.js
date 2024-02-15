@@ -1,3 +1,4 @@
+import { toastProvider } from "@/helpers/utils";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -24,9 +25,10 @@ const Promotion = () => {
         // let data = await res.json();
         if (res.status === 200) {
           setMail("")
-          // send toast
+          toastProvider('success', 'Referal is Success')
         }
       } catch (error) {
+        toastProvider('error', 'Something went wrong')
         setErrorMsg("Oops !! Something went wrong");
         console.log(error);
       }

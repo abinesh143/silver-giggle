@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { setItemLocalStorage, getItemLocalStorage } from "@/helpers/utils";
+import { setItemLocalStorage, getItemLocalStorage, toastProvider } from "@/helpers/utils";
 
 const Setting = () => {
   const [appSetting, setAppSetting] = useState({
@@ -15,6 +15,7 @@ const Setting = () => {
     setItemLocalStorage("appSetting", {
       ...appSetting,
     });
+    toastProvider('success', 'App Setting Saved')
   };
 
   useEffect(() => {

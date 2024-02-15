@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { setItemLocalStorage, getItemLocalStorage } from "@/helpers/utils";
+import { setItemLocalStorage, getItemLocalStorage, toastProvider } from "@/helpers/utils";
 
 const Monetization = () => {
   const [appAds, setAppAds] = useState({
@@ -29,6 +29,7 @@ const Monetization = () => {
         admobBannerId: appAds.admobBannerId,
         admobInterstitialId: appAds.admobInterstitialId,
       });
+      toastProvider('success', 'Admob Ads Saved')
     }
   };
 
@@ -47,6 +48,7 @@ const Monetization = () => {
         unityBannerId: appAds.unityBannerId,
         unityInterstitialId: appAds.unityInterstitialId,
       });
+      toastProvider('success', 'Unity Ads Saved')
     }
   };
 

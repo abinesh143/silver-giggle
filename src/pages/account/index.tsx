@@ -12,6 +12,7 @@ import FreeRating from "@/components/FreeRating";
 import Promotion from "@/components/Promotion";
 import Help from "@/components/Help";
 import LogoutModal from "@/components/LogoutModal";
+import PageLoader from "@/components/PageLoader";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { initFlowbite } from "flowbite";
@@ -23,6 +24,20 @@ const Account = () => {
   const [user, setUser] = useState(null);
   const router = useRouter();
 
+  const getDashboardData = async (userEmail: string) => {
+    try {
+      const response = await fetch(`/api/metadata?email=${userEmail}`, {
+        method: "GET",
+      });
+      const appDetails = await response.json();
+      localStorage.setItem("appMakerPro", JSON.stringify(appDetails));
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
     initFlowbite();
   }, [isLoading]);
@@ -30,8 +45,9 @@ const Account = () => {
   useEffect(() => {
     const userData = localStorage.getItem("appMaker");
     if (userData) {
-      setIsLoading(false);
-      userData ? setUser(JSON.parse(userData)) : null;
+      const parsedData = JSON.parse(userData);
+      userData ? setUser(parsedData) : null;
+      getDashboardData(parsedData["userEmail"]);
     } else {
       router.push("/");
     }
@@ -40,7 +56,9 @@ const Account = () => {
   return (
     <main>
       {isLoading ? (
-        <div>Loading</div>
+        <div className="flex justify-center items-center h-screen">
+          <PageLoader />
+        </div>
       ) : (
         <>
           <button

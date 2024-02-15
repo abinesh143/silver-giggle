@@ -27,5 +27,16 @@ export default async function handler(req, res) {
       res.status(201).json({ message: "Success" });
     }
     await mongo.close();
+  } else if (req.method === "GET") {
+    const client = await mongo.connect();
+    const db = client.db("app-maker-pro");
+    const data = await db
+      .collection("metadata")
+      .findOne({ userEmail: req.query.email });
+    if (data) {
+      res.status(200).json(data);
+    } else {
+      res.status(404).json({ message: "not found" });
+    }
   }
 }

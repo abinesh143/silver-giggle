@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import { useState } from "react";
-import { getItemLocalStorage } from "@/helpers/utils";
+import { getItemLocalStorage, toastProvider } from "@/helpers/utils";
 
 const Download = () => {
   const [step, setStep] = useState(1);
   const [disableButton, setDisableButton] = useState(true);
-  const [message, setMessage] = useState("Build Failed Try Again");
+  const [message, setMessage] = useState("");
 
   const setProgressDownload = async () => {
     setStep(2);
@@ -15,7 +15,7 @@ const Download = () => {
     if (appDetails && loginDetails) {
       const userData = JSON.parse(loginDetails);
       try {
-        let res = await fetch("/api/metaData", {
+        let res = await fetch("/api/metadata", {
           method: "POST",
           body: JSON.stringify({
             ...appDetails,
@@ -27,6 +27,7 @@ const Download = () => {
         if (res.status === 201) {
           setTimeout(() => {
             setDisableButton(false);
+            toastProvider('success', 'App Successfully Build')
           }, 5000);
         } else {
           setMessage("Build Failed Try Again");
@@ -37,7 +38,7 @@ const Download = () => {
         setMessage("Build Failed Try Again");
       }
     } else {
-      // toast soething went wrong
+      toastProvider('error', 'Failed! Try Again!')
     }
   };
   return (

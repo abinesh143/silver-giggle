@@ -1,3 +1,4 @@
+import { toastProvider } from "@/helpers/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -41,6 +42,7 @@ const AuthModal = (props) => {
         if (res.status === 200) {
           localStorage.setItem("appMaker", JSON.stringify(userData));
           props.closeModal();
+          toastProvider('success', 'Signed in successfully')
           router.push("/account");
         } else {
           setLoginError(userData.message);
@@ -75,6 +77,7 @@ const AuthModal = (props) => {
           localStorage.setItem("appMaker", JSON.stringify(userData));
           props.closeModal();
           router.push("/account");
+          toastProvider('success', 'Registration is Success')
         } else {
           setRegisterError(userData.message);
         }

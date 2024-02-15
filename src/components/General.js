@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { setItemLocalStorage, getItemLocalStorage } from "@/helpers/utils";
+import { setItemLocalStorage, getItemLocalStorage, toastProvider } from "@/helpers/utils";
+import axios from "axios";
 
 const General = () => {
   const [appInfo, setAppInfo] = useState({
@@ -12,9 +13,8 @@ const General = () => {
     website: "",
   });
   const [appError, setAppError] = useState("");
-  const [appIcon, setAppIcon] = useState(
-    "http://localhost:3000/images/logo.png"
-  );
+  const [appIcon, setAppIcon] = useState(null);
+  const [appPreview, setAppPreview] = useState("");
 
   const saveAppInfo = (e) => {
     e.preventDefault();
@@ -27,15 +27,45 @@ const General = () => {
     } else if (!appIcon) {
       setAppError("App Icon is missing");
     } else {
-      // first upload to cloudinary
-      // After Success make api call to localstorage
-      setItemLocalStorage("appInfo", {
-        ...appInfo,
-        appIcon: "http://localhost:3000/images/logo.png",
-      });
+      const formData = new FormData();
+      formData.append("file", appIcon);
+      formData.append("upload_preset", "ml_default");
+      axios
+        .post(
+          "https://api.cloudinary.com/v1_1/dd4iqjurs/image/upload",
+          formData
+        )
+        .then((response) => {
+          if (response.status === 200) {
+            setItemLocalStorage("appInfo", {
+              ...appInfo,
+              appIcon: response.data.secure_url,
+            });
+            setAppPreview(response.data.secure_url);
+            toastProvider('success', 'App Info Saved ')
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          setDesignError("Image Uploading Failed.. Please try again");
+        });
+    }
+  };
 
-      // Failed Case
-      setAppError("Image Failed to Upload. Please Retry");
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    console.log(file);
+    if (file) {
+      if (file.size > 5000000) {
+        setAppError("Image File should be less than 5 Mb");
+      } else if (file.type !== "image/jpeg" && file.type !== "image/png") {
+        setAppError("Image Format sholud be .jpeg or .jpg or .png");
+      } else {
+        setAppIcon(file);
+        setAppPreview(URL.createObjectURL(file));
+      }
+    } else {
+      setDesignError("Image Upload Failed. Please try again..");
     }
   };
 
@@ -43,6 +73,9 @@ const General = () => {
     const appDetails = getItemLocalStorage("appInfo");
     if (appDetails) {
       setAppInfo({ ...appDetails });
+      if (appDetails["appIcon"]) {
+        setAppPreview(appDetails["appIcon"]);
+      }
     }
   }, []);
   return (
@@ -71,7 +104,10 @@ const General = () => {
           </div>
           <div className="bg-[#FFF1E7] rounded-b-[24px] rounded-tr-[24px] sm:rounded-b-[32px] sm:rounded-tr-[32px] p-4 sm:p-10">
             <div className="flex flex-col lg:flex-row lg:space-x-6 max-lg:space-y-16">
-              <form onSubmit={(e) => saveAppInfo(e)} className="basis-1/2">
+              <form
+                onSubmit={(e) => saveAppInfo(e)}
+                className="basis-1/2 relative"
+              >
                 <div className="grid gap-6 mb-6 md:grid-cols-1">
                   <div>
                     <label
@@ -178,7 +214,19 @@ const General = () => {
                     className="block w-full text-sm sm:text-base text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                     id="app_launcher"
                     type="file"
+                    onChange={handleFileUpload}
                   />
+                </div>
+                <div className="absolute -bottom-2 right-5 bg-gray-400 rounded-lg">
+                  {appPreview ? (
+                    <Image
+                      src={appPreview}
+                      width={100}
+                      height={100}
+                      alt="app-icon"
+                      className="rounded-lg"
+                    />
+                  ) : null}
                 </div>
                 {appError ? (
                   <small class="block text-xs text-red-600">{appError}</small>
@@ -198,16 +246,14 @@ const General = () => {
                   <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg"></div>
                   <div className="h-[64px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
                   <div className="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-white dark:bg-gray-800">
-                    <img
+                    <Image
                       src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/mockup-1-light.png"
                       className="dark:hidden w-[272px] h-[572px]"
                       alt="mockup1"
+                      width={272}
+                      height={572}
                     />
-                    <img
-                      src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/mockup-1-dark.png"
-                      className="hidden dark:block w-[272px] h-[572px]"
-                      alt="mockup2"
-                    />
+
                   </div>
                 </div>
               </div>
