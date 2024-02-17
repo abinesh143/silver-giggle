@@ -450,7 +450,10 @@ const Account = () => {
               </div>
             ) : activeTab === "publish" ? (
               <div>
-                <Publish />
+                <Publish
+                  user={user}
+                  setTab={(value: string) => setActiveTab(value)}
+                />
               </div>
             ) : activeTab === "pro" ? (
               <div>

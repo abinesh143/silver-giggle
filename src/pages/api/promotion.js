@@ -15,7 +15,8 @@ export default async function handler(req, res) {
     const client = await mongo.connect();
     const db = client.db("app-maker-pro");
     await db.collection("promotion").insertOne(bodyObject);
-    await mongo.close();
+
+    await mongo.close(); // Closing Mongo
     res.status(200).json({ message: "Success" });
   }
 }

@@ -53,10 +53,6 @@ export default function Home() {
             property="og:description"
             content="Turn your website to app, quickly with no coding required."
           />
-          <meta
-            property="og:image"
-            content="https://example.com/images/cool-page.jpg"
-          />
           <meta property="og:site_name" content="Free App Maker Pro" />
           <meta name="google-site-verification" content="-41E5If5IV2N-CtmI2hI5MAR5HQ9S-i8BEksUDDvG58" />
         </Head>

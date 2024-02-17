@@ -1,12 +1,105 @@
+import Swal from "sweetalert2";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import PageLoader from "./PageLoader";
 
-const Publish = () => {
+const Publish = (props) => {
   const [tab, setTab] = useState("andriod");
-  const [step, setStep] = useState(1);
-  const [iosStep, setIosStep] = useState(1);
-  const [isPremiumAndriod, setIsPremiumAndriod] = useState(false);
-  const [isPremiumIos, setIsPremiumIos] = useState(false);
+  const [publishData, setPublishData] = useState({
+    andriodReq: false,
+    andriodStatus: "start",
+    iosReq: false,
+    iosStatus: "start",
+  });
+  const [isLoading, setIsLoading] = useState(true);
+
+  const getPublishData = async (userEmail) => {
+    try {
+      const response = await fetch(`/api/publishapp?email=${userEmail}`, {
+        method: "GET",
+      });
+      const data = await response.json();
+      if (response.status === 200) {
+        setPublishData(data);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const postPublishData = async (platform) => {
+    try {
+      setIsLoading(true);
+      let res = await fetch("/api/publishapp", {
+        method: "POST",
+        body: JSON.stringify({
+          ...publishData,
+          ...(platform === "android"
+            ? { androidReq: true, andriodStatus: "build" }
+            : { iosReq: true, iosStatus: "build" }),
+        }),
+      });
+
+      if (res.status === 200) {
+        setPublishData({
+          ...publishData,
+          ...(platform === "android"
+            ? { androidReq: true, andriodStatus: "build" }
+            : { iosReq: true, iosStatus: "build" }),
+        });
+        toastProvider("success", `${platform} build requested`);
+      }
+    } catch (error) {
+      console.log(error);
+      toastProvider("error", `Failed! Try Again`);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const confirmationModal = (platform) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: `Start Building a Store ${platform} Build`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Start Now!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        postPublishData(platform);
+      }
+    });
+  };
+
+  const resetModal = (platform) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: `Start a new ${platform} Build`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Build Now!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setPublishData({
+          ...publishData,
+          ...(platform === "android"
+            ? { androidReq: false, andriodStatus: "start" }
+            : { iosReq: false, iosStatus: "start" }),
+        });
+      }
+    });
+  };
+
+  useEffect(() => {
+    getPublishData(props.user.userEmail);
+  }, []);
+
   return (
     <main>
       <div className="p-4 sm:p-8 bg-[#F9F9F9] lg:rounded-2xl">
@@ -45,7 +138,10 @@ const Publish = () => {
             <div className="bg-[#FCE594] rounded-tl-[24px]  sm:rounded-tl-[32px] rounded-b-[24px]  sm:rounded-b-[32px]  p-4 sm:p-10">
               <div className="flex flex-col lg:flex-row lg:space-x-6 max-lg:space-y-6">
                 <section className="basis-[60%] relative">
-                  {isPremiumAndriod ? (
+                  {props.user &&
+                  props.user["isPremium"] &&
+                  (props.user["amount"] === 99 ||
+                    props.user["amount"] === 25) ? null : (
                     <>
                       <div className="bg-[#F9F9F9] absolute left-0 top-0 opacity-80 z-30 w-full h-full rounded-3xl"></div>
                       <div className="absolute lg:w-[calc(100vw-360px)] max-lg:top-0 h-[calc(100vh-240px)] overflow-hidden top-28 left-20 xl:left-12 2xl:left-20 z-40 text-black">
@@ -65,14 +161,27 @@ const Publish = () => {
                             Premium Plan is Purchased. AAB File is Build in this
                             section.
                           </p>
-                          <button className="bg-black text-sm sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-8 xl:py-3">
+                          <button
+                            className="bg-black text-sm sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-8 xl:py-3"
+                            onClick={() => props.setTab("pro")}
+                          >
                             Upgrade to Premium
                           </button>
                         </div>
                       </div>
                     </>
+                  )}
+                  {isLoading ? (
+                    <>
+                      <div className="bg-[#F9F9F9] absolute left-0 top-0 opacity-80 z-30 w-full h-full rounded-3xl"></div>
+                      <div className="absolute lg:w-[calc(100vw-360px)] max-lg:top-0 h-[calc(100vh-240px)] overflow-hidden top-28 left-20 xl:left-12 2xl:left-20 z-40 text-black">
+                        <div className="max-lg:fixed max-lg:bottom-0 max-lg:left-0 max-lg:rounded-t-[24px] h-64 flex flex-col items-center justify-center sm:rounded-[32px]  w-full lg:w-[50%] xl:w-[40%] p-8">
+                          <PageLoader />
+                        </div>
+                      </div>
+                    </>
                   ) : null}
-                  {step === 1 ? (
+                  {publishData["andriodStatus"] === "start" ? (
                     <div className=" flex items-center justify-center">
                       <div className="flex flex-col justify-between bg-white rounded-3xl p-4 sm:p-8 sm:mb-10  w-full h-[540px] sm:h-[640px] lg:h-[560px]">
                         <div>
@@ -121,13 +230,13 @@ const Publish = () => {
                               height={256}
                               alt="download-start"
                               className="max-sm:w-44 max-sm:h-44"
-                              onClick={() => setStep(2)}
+                              onClick={() => confirmationModal("andriod")}
                             />
                           </div>
                         </div>
                       </div>
                     </div>
-                  ) : step === 2 ? (
+                  ) : publishData["andriodStatus"] === "build" ? (
                     <div className=" flex items-center justify-center">
                       <div className="flex flex-col justify-between bg-white rounded-3xl p-4 sm:p-8 sm:mb-10 w-full h-[540px] sm:h-[640px] lg:h-[560px]">
                         <div>
@@ -187,17 +296,6 @@ const Publish = () => {
                               />
                             </div>
                           </div>
-                        </div>
-                        {/* <p className="text-center mt-6">
-                        Please wait ... Its takes less than 1 Minute
-                      </p> */}
-                        <div className="w-full flex justify-end">
-                          <button
-                            className="bg-black hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none disabled:bg-gray-600 disabled:border-gray-600 text-sm sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-6 xl:py-3"
-                            onClick={() => setStep(3)}
-                          >
-                            Next
-                          </button>
                         </div>
                       </div>
                     </div>
@@ -284,9 +382,9 @@ const Publish = () => {
                         <div className="w-full flex justify-end mt-4">
                           <button
                             className="bg-black hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none disabled:bg-gray-600 disabled:border-gray-600 text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-6 xl:py-3"
-                            onClick={() => setStep(1)}
+                            onClick={() => resetModal("andriod")}
                           >
-                            FInish
+                            Rebuild Andriod
                           </button>
                         </div>
                       </div>
@@ -337,7 +435,10 @@ const Publish = () => {
             <div className="bg-[#E0F2FF] rounded-b-[24px]  sm:rounded-b-[32px]  p-4 sm:p-10">
               <div className="flex flex-col lg:flex-row lg:space-x-6 max-lg:space-y-6">
                 <section className="basis-1/2 relative">
-                  {isPremiumIos ? (
+                  {props.user &&
+                  props.user["isPremium"] &&
+                  (props.user["amount"] === 99 ||
+                    props.user["amount"] === 79) ? null : (
                     <>
                       <div className="bg-[#F9F9F9] absolute left-0 top-0 opacity-80 z-30 w-full h-full rounded-3xl"></div>
                       <div className="absolute lg:w-[calc(100vw-360px)] max-lg:top-0 h-[calc(100vh-240px)] overflow-hidden top-28 lg:left-8 xl:left-4 2xl:left-10 z-40 text-black">
@@ -357,14 +458,17 @@ const Publish = () => {
                             Premium Plan is Purchased. AAB File is Build in this
                             section.
                           </p>
-                          <button className="bg-black text-sm sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-8 xl:py-3">
+                          <button
+                            className="bg-black text-sm sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-8 xl:py-3"
+                            onClick={() => props.setTab("pro")}
+                          >
                             Upgrade to Premium
                           </button>
                         </div>
                       </div>
                     </>
-                  ) : null}
-                  {iosStep === 1 ? (
+                  )}
+                  {publishData["iosStatus"] === "start" ? (
                     <div className=" flex items-center justify-center">
                       <div className="flex flex-col justify-between bg-white rounded-3xl p-4 sm:p-8 sm:mb-10 w-full h-[472px] sm:h-[600px] lg:h-[540px]">
                         <div>
@@ -413,13 +517,13 @@ const Publish = () => {
                               height={256}
                               alt="download-start"
                               className="max-sm:w-44 max-sm:h-44"
-                              onClick={() => setIosStep(2)}
+                              onClick={() => confirmationModal("ios")}
                             />
                           </div>
                         </div>
                       </div>
                     </div>
-                  ) : iosStep === 2 ? (
+                  ) : publishData["iosStatus"] === "build" ? (
                     <div className="lg:basis-[45%] flex items-center justify-center">
                       <div className="flex flex-col justify-between bg-white rounded-3xl p-4 sm:p-8 sm:mb-10 w-full h-[472px] sm:h-[600px] lg:h-[540px]">
                         <div>
@@ -479,17 +583,6 @@ const Publish = () => {
                               />
                             </div>
                           </div>
-                        </div>
-                        {/* <p className="text-center mt-6">
-                        Please wait ... Its takes less than 1 Minute
-                      </p> */}
-                        <div className="w-full flex justify-end">
-                          <button
-                            className="bg-black hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none disabled:bg-gray-600 disabled:border-gray-600 text-sm sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-6 xl:py-3"
-                            onClick={() => setIosStep(3)}
-                          >
-                            Next
-                          </button>
                         </div>
                       </div>
                     </div>
@@ -570,9 +663,9 @@ const Publish = () => {
                         <div className="w-full flex justify-end mt-4">
                           <button
                             className="bg-black hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none disabled:bg-gray-600 disabled:border-gray-600 text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl text-white py-2 px-6 xl:py-3"
-                            onClick={() => setIosStep(1)}
+                            onClick={() => resetModal("ios")}
                           >
-                            FInish
+                            Rebuild Ios
                           </button>
                         </div>
                       </div>

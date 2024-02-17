@@ -18,14 +18,16 @@ export default async function handler(req, res) {
       .collection("users")
       .findOne({ userEmail: bodyObject.userEmail });
     if (!findingData) {
+      await mongo.close(); // Closing Mongo
       res.status(401).json({ message: "User Not Exists" });
     } else {
       if (findingData.password === bodyObject.password) {
+        await mongo.close(); // Closing Mongo
         res.status(200).json({ ...findingData, password: "" });
       } else {
+        await mongo.close(); // Closing Mongo
         res.status(401).json({ message: "Email or Password is wrong" });
       }
     }
-    await mongo.close();
   }
 }

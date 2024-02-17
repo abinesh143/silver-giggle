@@ -16,8 +16,8 @@ const AuthModal = (props) => {
     phoneNumber: "",
     password: "",
     userCountry: "",
-    website: "",
-    isPremium: false
+    isPremium: false,
+    amount: 0,
   });
   const [loginError, setLoginError] = useState("");
   const [registerError, setRegisterError] = useState("");
@@ -42,7 +42,7 @@ const AuthModal = (props) => {
         if (res.status === 200) {
           localStorage.setItem("appMaker", JSON.stringify(userData));
           props.closeModal();
-          toastProvider('success', 'Signed in successfully')
+          toastProvider("success", "Signed in successfully");
           router.push("/account");
         } else {
           setLoginError(userData.message);
@@ -77,7 +77,7 @@ const AuthModal = (props) => {
           localStorage.setItem("appMaker", JSON.stringify(userData));
           props.closeModal();
           router.push("/account");
-          toastProvider('success', 'Registration is Success')
+          toastProvider("success", "Registration is Success");
         } else {
           setRegisterError(userData.message);
         }

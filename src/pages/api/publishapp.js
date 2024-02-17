@@ -14,27 +14,44 @@ export default async function handler(req, res) {
     let bodyObject = JSON.parse(req.body);
     const client = await mongo.connect();
     const db = client.db("app-maker-pro");
-    const findingData = await db
-      .collection("metadata")
+    const existingData = await db
+      .collection("publishapp")
       .findOne({ userEmail: bodyObject.userEmail });
-    if (!findingData) {
-      await db.collection("metadata").insertOne(bodyObject);
+    if (!existingData) {
+      await db.collection("publishapp").insertOne(bodyObject);
 
       await mongo.close(); // Closing Mongo
-      res.status(201).json({ message: "Success" });
+      res.status(200).json({ message: "Publish Request Submitted" });
     } else {
-      await db
-        .collection("metadata")
-        .replaceOne({ userEmail: bodyObject.userEmail }, { ...bodyObject });
+      if (bodyObject.andriodReq) {
+        await db.collection("publishapp").updateOne(
+          { userEmail: bodyObject.userEmail },
+          {
+            $set: {
+              andriodReq: bodyObject.andriodReq,
+            },
+          }
+        );
+      }
+      if (bodyObject.iosReq) {
+        await db.collection("publishapp").updateOne(
+          { userEmail: bodyObject.userEmail },
+          {
+            $set: {
+              iosReq: bodyObject.iosReq,
+            },
+          }
+        );
+      }
 
       await mongo.close(); // Closing Mongo
-      res.status(201).json({ message: "Success" });
+      res.status(200).json({ message: "Publish Request Updated" });
     }
   } else if (req.method === "GET") {
     const client = await mongo.connect();
     const db = client.db("app-maker-pro");
     const data = await db
-      .collection("metadata")
+      .collection("publishapp")
       .findOne({ userEmail: req.query.email });
 
     await mongo.close(); // Closing Mongo

@@ -19,10 +19,25 @@ export default async function handler(req, res) {
       .findOne({ userEmail: bodyObject.userEmail });
     if (!findingData) {
       await db.collection("users").insertOne(bodyObject);
-      res.status(200).json({ ...findingData, password: "" });
+
+      await mongo.close(); // Closing Mongo
+      res.status(200).json({ ...bodyObject, password: "" });
     } else {
+      await mongo.close(); // Closing Mongo
       res.status(401).json({ message: "Already User Exists" });
     }
-    await mongo.close();
+  } else if (req.method === "PATCH") {
+    const bodyObject = JSON.parse(req.body);
+    const client = await mongo.connect();
+    const db = client.db("app-maker-pro");
+    await db
+      .collection("users")
+      .updateOne(
+        { userEmail: bodyObject.userEmail },
+        { $set: { isPremium: bodyObject.isPremium, amount: bodyObject.amount } }
+      );
+
+    await mongo.close(); // Closing Mongo
+    res.status(200).json({ message: "success" });
   }
 }

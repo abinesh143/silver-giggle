@@ -19,10 +19,12 @@ export default async function handler(req, res) {
       .findOne({ userEmail: bodyObject.userEmail });
     if (!findingData) {
       await db.collection("review").insertOne(bodyObject);
+
+      await mongo.close(); // Closing Mongo
       res.status(200).json({ message: "Success" });
     } else {
+      await mongo.close(); // Closing Mongo
       res.status(401).json({ message: "Review Request Already Submitted" });
     }
-    await mongo.close();
   }
 }

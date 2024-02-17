@@ -1,5 +1,12 @@
+import Script from "next/script";
+import { useEffect, useState } from "react";
+import { loadScript } from "@paypal/paypal-js";
+import PayPal from "@/components/Paypal";
+
 /* eslint-disable @next/next/no-img-element */
 const Premium = () => {
+  const [paypalActive, setPayPalActive] = useState(false);
+
   const andriodPremium = [
     {
       normal: "Publish in",
@@ -72,6 +79,38 @@ const Premium = () => {
       bold: "Support",
     },
   ];
+
+  const addPayPalScript = async () => {
+    try {
+      const paypal = await loadScript({
+        clientId:
+          "AfsLgMyn0DsgW0saDSqdoSQkkWRzUWyW4EE3nHtjmOEHkrAfzvqQNXD59_JhZ-g2TWF3_k0XASWIrZLz",
+      });
+      if (paypal) {
+        setPayPalActive(true);
+      }
+    } catch (error) {
+      console.error("failed to load the PayPal JS SDK script", error);
+    }
+  };
+
+  useEffect(() => {
+    addPayPalScript();
+  }, []);
+
+  // AfsLgMyn0DsgW0saDSqdoSQkkWRzUWyW4EE3nHtjmOEHkrAfzvqQNXD59_JhZ-g2TWF3_k0XASWIrZLz
+
+  // sb-ur2wt29595782@personal.example.com
+
+  // XiQU:$8,
+
+  // 4032031739639648
+
+  // 03/2029
+
+  // Live Client Id
+
+  // AaCgl6fEyzLZ1zuQyyh-guTWf2z5gCkZ6k7nDEvMXq7XjcHkCCEZUjtypAoJSYeP0VvJiERd0vSUUTvx
   return (
     <main>
       <div className="2xl:p-8 bg-[#F9F9F9] lg:rounded-2xl">
@@ -94,12 +133,16 @@ const Premium = () => {
                   className="rounded-3xl w-20 h-20"
                 />
                 <div className="ml-5">
-                  <span className="block text-xl sm:text-2xl lg:text-xl 2xl:text-2xl font-semibold">Andriod</span>
+                  <span className="block text-xl sm:text-2xl lg:text-xl 2xl:text-2xl font-semibold">
+                    Andriod
+                  </span>
                   <span>
                     <span className="font-medium text-gray-500 text-lg sm:text-xl align-top">
                       $&thinsp;
                     </span>
-                    <span className="text-xl sm:text-3xl lg:text-xl 2xl:text-3xl font-bold">25 </span>
+                    <span className="text-xl sm:text-3xl lg:text-xl 2xl:text-3xl font-bold">
+                      25{" "}
+                    </span>
                   </span>
                   <span className="text-gray-500 font-medium">/ one time</span>
                 </div>
@@ -107,7 +150,10 @@ const Premium = () => {
               <ul className="mb-7 font-medium text-gray-500">
                 {andriodPremium.map((feature, index) => {
                   return (
-                    <li key={`andriod-${index}`} className="flex sm:text-xl lg:text-base 2xl:text-xl mb-2">
+                    <li
+                      key={`andriod-${index}`}
+                      className="flex sm:text-xl lg:text-base 2xl:text-xl mb-2"
+                    >
                       <img
                         src="https://res.cloudinary.com/williamsondesign/check-grey.svg"
                         alt="unknown2"
@@ -120,14 +166,18 @@ const Premium = () => {
                   );
                 })}
               </ul>
-              <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-6 text-center text-white  sm:text-xl">
-                Choose Plan
-                <img
-                  src="https://res.cloudinary.com/williamsondesign/arrow-right.svg"
-                  className="ml-2"
-                  alt="unknown3"
-                />
-              </button>
+              {paypalActive ? (
+                <PayPal amount={25} />
+              ) : (
+                <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-6 text-center text-white  sm:text-xl">
+                  Choose Plan
+                  <img
+                    src="https://res.cloudinary.com/williamsondesign/arrow-right.svg"
+                    className="ml-2"
+                    alt="unknown3"
+                  />
+                </button>
+              )}
             </div>
 
             <div className="w-full flex-1 p-8 order-1 shadow-xl rounded-3xl bg-gray-900 text-gray-400 sm:w-96 lg:w-full lg:order-2 lg:mt-0">
@@ -145,7 +195,9 @@ const Premium = () => {
                     <span className="font-medium text-lg sm:text-xl align-top">
                       $&thinsp;
                     </span>
-                    <span className="text-xl sm:text-3xl lg:text-xl 2xl:text-3xl font-bold text-white">99 </span>
+                    <span className="text-xl sm:text-3xl lg:text-xl 2xl:text-3xl font-bold text-white">
+                      99{" "}
+                    </span>
                   </span>
                   <span className="font-medium">/ one time</span>
                 </div>
@@ -166,14 +218,18 @@ const Premium = () => {
                   );
                 })}
               </ul>
-              <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-6 text-center text-white sm:text-2xl">
-                Choose Plan
-                <img
-                  src="https://res.cloudinary.com/williamsondesign/arrow-right.svg"
-                  className="ml-2"
-                  alt="unknown6"
-                />
-              </button>
+              {paypalActive ? (
+                <PayPal amount={99} />
+              ) : (
+                <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-6 text-center text-white sm:text-2xl">
+                  Choose Plan
+                  <img
+                    src="https://res.cloudinary.com/williamsondesign/arrow-right.svg"
+                    className="ml-2"
+                    alt="unknown6"
+                  />
+                </button>
+              )}
             </div>
 
             <div className="w-full flex-1 mt-8 p-8 order-3 bg-white shadow-xl rounded-3xl sm:w-96 lg:w-full lg:order-3">
@@ -184,12 +240,16 @@ const Premium = () => {
                   className="rounded-3xl w-20 h-20"
                 />
                 <div className="ml-5">
-                  <span className="block text-xl sm:text-2xl lg:text-xl 2xl:text-2xl font-semibold">Ios</span>
+                  <span className="block text-xl sm:text-2xl lg:text-xl 2xl:text-2xl font-semibold">
+                    Ios
+                  </span>
                   <span>
                     <span className="font-medium text-gray-500 text-xl align-top">
                       $&thinsp;
                     </span>
-                    <span className="text-xl sm:text-3xl lg:text-xl 2xl:text-3xl font-bold">79 </span>
+                    <span className="text-xl sm:text-3xl lg:text-xl 2xl:text-3xl font-bold">
+                      79{" "}
+                    </span>
                   </span>
                   <span className="text-gray-500 font-medium">/ one time</span>
                 </div>
@@ -197,7 +257,10 @@ const Premium = () => {
               <ul className="mb-7 font-medium text-gray-500">
                 {iosPremium.map((ios, index) => {
                   return (
-                    <li key={`ios-${index}`} className="flex sm:text-xl lg:text-base 2xl:text-xl mb-2">
+                    <li
+                      key={`ios-${index}`}
+                      className="flex sm:text-xl lg:text-base 2xl:text-xl mb-2"
+                    >
                       <img
                         src="https://res.cloudinary.com/williamsondesign/check-grey.svg"
                         alt="unknown8"
@@ -210,15 +273,26 @@ const Premium = () => {
                   );
                 })}
               </ul>
-              <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-6 text-center text-white sm:text-xl">
-                Choose Plan
-                <img
-                  src="https://res.cloudinary.com/williamsondesign/arrow-right.svg"
-                  className="ml-2"
-                  alt="unknown9"
-                />
-              </button>
+              {paypalActive ? (
+                <PayPal amount={79} />
+              ) : (
+                <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-6 text-center text-white sm:text-xl">
+                  Choose Plan
+                  <img
+                    src="https://res.cloudinary.com/williamsondesign/arrow-right.svg"
+                    className="ml-2"
+                    alt="unknown9"
+                  />
+                </button>
+              )}
             </div>
+          </div>
+
+          <div className="mt-4 text-center">
+            For Payment Issues or For Direct Payment Request.{" "}
+            <span className="font-semibold text-[#FE5000] cursor-pointer">
+              Contact Support
+            </span>
           </div>
         </section>
       </div>
