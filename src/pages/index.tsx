@@ -58,6 +58,7 @@ export default function Home() {
             content="https://example.com/images/cool-page.jpg"
           />
           <meta property="og:site_name" content="Free App Maker Pro" />
+          <meta name="google-site-verification" content="-41E5If5IV2N-CtmI2hI5MAR5HQ9S-i8BEksUDDvG58" />
         </Head>
         <Navbar user={user} />
         <Banner checkUserExists={() => checkUserExists()} />
