@@ -10,6 +10,7 @@ import KeyFeatures from "@/components/keyFeatures";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Modal } from "flowbite";
+import Head from "next/head";
 
 export default function Home() {
   const [user, setUser] = useState(null);
@@ -40,6 +41,24 @@ export default function Home() {
   return (
     <main>
       <div className="container sm:mx-auto py-4">
+        <Head>
+          <title>Web to App Converter</title>
+          <meta
+            name="description"
+            content="Turn your website to app, quickly with no coding required."
+            key="desc"
+          />
+          <meta property="og:title" content="Web to App Converter" />
+          <meta
+            property="og:description"
+            content="Turn your website to app, quickly with no coding required."
+          />
+          <meta
+            property="og:image"
+            content="https://example.com/images/cool-page.jpg"
+          />
+          <meta property="og:site_name" content="Free App Maker Pro" />
+        </Head>
         <Navbar user={user} />
         <Banner checkUserExists={() => checkUserExists()} />
         <KeyFeatures checkUserExists={() => checkUserExists()} />
