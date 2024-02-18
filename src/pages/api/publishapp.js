@@ -20,7 +20,6 @@ export default async function handler(req, res) {
     if (!existingData) {
       await db.collection("publishapp").insertOne(bodyObject);
 
-      await mongo.close(); // Closing Mongo
       res.status(200).json({ message: "Publish Request Submitted" });
     } else {
       if (bodyObject.andriodReq) {
@@ -29,6 +28,7 @@ export default async function handler(req, res) {
           {
             $set: {
               andriodReq: bodyObject.andriodReq,
+              andriodStatus: bodyObject.andriodStatus,
             },
           }
         );
@@ -39,6 +39,7 @@ export default async function handler(req, res) {
           {
             $set: {
               iosReq: bodyObject.iosReq,
+              iosStatus: bodyObject.iosStatus,
             },
           }
         );

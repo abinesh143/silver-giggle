@@ -5,6 +5,7 @@ import { useState } from "react";
 const Promotion = () => {
   const [mail, setMail] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [btnLoading, setBtnLoading] = useState(false);
 
   const savePromotion = async (e) => {
     e.preventDefault();
@@ -15,6 +16,7 @@ const Promotion = () => {
       const loginDetails = localStorage.getItem("appMaker");
       const userData = JSON.parse(loginDetails);
       try {
+        setBtnLoading(true);
         let res = await fetch("/api/promotion", {
           method: "POST",
           body: JSON.stringify({
@@ -24,13 +26,15 @@ const Promotion = () => {
         });
         // let data = await res.json();
         if (res.status === 200) {
-          setMail("")
-          toastProvider('success', 'Referal is Success')
+          setMail("");
+          toastProvider("success", "Referal is Success");
         }
       } catch (error) {
-        toastProvider('error', 'Something went wrong')
+        toastProvider("error", "Something went wrong");
         setErrorMsg("Oops !! Something went wrong");
         console.log(error);
+      } finally {
+        setBtnLoading(false);
       }
     }
   };
@@ -75,7 +79,17 @@ const Promotion = () => {
             <button
               type="submit"
               className="py-2 sm:py-4 px-4 sm:px-10 inline-flex justify-center items-center rounded-r-lg sm:rounded-r-xl font-semibold bg-white text-black text-xs sm:text-base lg:text-sm xl:text-base focus:outline-none hover:bg-gray-300 border-y border-r border-black"
+              disabled={btnLoading}
             >
+              {btnLoading ? (
+                <Image
+                  src="/svg/spin.svg"
+                  width={24}
+                  height={24}
+                  alt="spin"
+                  className="inline w-4 h-4 me-3 text-white animate-spin"
+                />
+              ) : null}{" "}
               Submit
             </button>
           </form>

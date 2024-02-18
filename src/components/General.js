@@ -1,10 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { setItemLocalStorage, getItemLocalStorage, toastProvider } from "@/helpers/utils";
+import {
+  setItemLocalStorage,
+  getItemLocalStorage,
+  toastProvider,
+} from "@/helpers/utils";
 import axios from "axios";
 
-const General = () => {
+const General = (props) => {
   const [appInfo, setAppInfo] = useState({
     appName: "",
     packageName: "",
@@ -15,6 +19,27 @@ const General = () => {
   const [appError, setAppError] = useState("");
   const [appIcon, setAppIcon] = useState(null);
   const [appPreview, setAppPreview] = useState("");
+  const [btnLoading, setBtnLoading] = useState(false);
+
+  const mappingApplist = async () => {
+    const body = {
+      website: appInfo.website,
+      userEmail: props.user.userEmail,
+    };
+
+    try {
+      let res = await fetch("/api/applist", {
+        method: "POST",
+        body: JSON.stringify(body),
+      });
+
+      if (res.status === 200) {
+        toastProvider("success", "App Info Saved ");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const saveAppInfo = (e) => {
     e.preventDefault();
@@ -30,24 +55,28 @@ const General = () => {
       const formData = new FormData();
       formData.append("file", appIcon);
       formData.append("upload_preset", "ml_default");
+      setBtnLoading(true);
       axios
         .post(
           "https://api.cloudinary.com/v1_1/dd4iqjurs/image/upload",
           formData
         )
-        .then((response) => {
+        .then(async (response) => {
           if (response.status === 200) {
             setItemLocalStorage("appInfo", {
               ...appInfo,
               appIcon: response.data.secure_url,
             });
             setAppPreview(response.data.secure_url);
-            toastProvider('success', 'App Info Saved ')
+            await mappingApplist();
           }
         })
         .catch((error) => {
           console.error(error);
           setDesignError("Image Uploading Failed.. Please try again");
+        })
+        .finally(() => {
+          setBtnLoading(false);
         });
     }
   };
@@ -234,28 +263,55 @@ const General = () => {
                 <button
                   type="submit"
                   className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-sm sm:text-base lg:text-sm xl:text-base font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3 mt-4"
+                  disabled={btnLoading}
                 >
+                  {btnLoading ? (
+                    <Image
+                      src="/svg/spin.svg"
+                      width={24}
+                      height={24}
+                      alt="spin"
+                      className="inline w-4 h-4 me-3 text-white animate-spin"
+                    />
+                  ) : null}{" "}
                   Save
                 </button>
               </form>
 
               <div className="basis-1/2 flex justify-center items-center">
-                <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px]">
-                  <div className="h-[32px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[72px] rounded-s-lg"></div>
-                  <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg"></div>
-                  <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg"></div>
-                  <div className="h-[64px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
-                  <div className="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-white dark:bg-gray-800">
-                    <Image
-                      src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/mockup-1-light.png"
-                      className="dark:hidden w-[272px] h-[572px]"
-                      alt="mockup1"
-                      width={272}
-                      height={572}
-                    />
-
+                {appInfo.website ? (
+                  <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[690px] w-[390px]">
+                    <div className="h-[32px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[72px] rounded-s-lg"></div>
+                    <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg"></div>
+                    <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg"></div>
+                    <div className="h-[64px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
+                    <div className="rounded-[2rem] overflow-hidden w-[362px] h-[662px] bg-white dark:bg-gray-800">
+                      <embed
+                        src={appInfo.website}
+                        className="w-[362px] h-[662px]"
+                      />
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px]">
+                    <div className="h-[32px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[72px] rounded-s-lg"></div>
+                    <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg"></div>
+                    <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg"></div>
+                    <div className="h-[64px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
+                    <div className="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-white dark:bg-gray-800">
+                      <img
+                        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/mockup-1-light.png"
+                        className="dark:hidden w-[272px] h-[572px]"
+                        alt="reback1"
+                      />
+                      <img
+                        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/mockup-1-dark.png"
+                        className="hidden dark:block w-[272px] h-[572px]"
+                        alt="reback2"
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

@@ -30,7 +30,9 @@ const Account = () => {
         method: "GET",
       });
       const appDetails = await response.json();
-      localStorage.setItem("appMakerPro", JSON.stringify(appDetails));
+      if (response.status === 200) {
+        localStorage.setItem("appMakerPro", JSON.stringify(appDetails));
+      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -426,7 +428,7 @@ const Account = () => {
           <div className="sm:p-8 xl:ml-64">
             {activeTab === "info" ? (
               <div>
-                <General />
+                <General user={user} />
               </div>
             ) : activeTab === "design" ? (
               <div>
@@ -446,7 +448,7 @@ const Account = () => {
               </div>
             ) : activeTab === "download" ? (
               <div>
-                <Download />
+                <Download user={user} />
               </div>
             ) : activeTab === "publish" ? (
               <div>

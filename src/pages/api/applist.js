@@ -14,35 +14,39 @@ export default async function handler(req, res) {
     let bodyObject = JSON.parse(req.body);
     const client = await mongo.connect();
     const db = client.db("app-maker-pro");
-    const findingData = await db
-      .collection("metadata")
+    let findingData = await db
+      .collection("applist")
       .findOne({ userEmail: bodyObject.userEmail });
     if (!findingData) {
-      await db.collection("metadata").insertOne(bodyObject);
-
-      await mongo.close(); // Closing Mongo
-      res.status(201).json({ message: "Success" });
-    } else {
-      delete bodyObject._id;
-      await db
-        .collection("metadata")
-        .replaceOne({ userEmail: bodyObject.userEmail }, { ...bodyObject });
-
-      await mongo.close(); // Closing Mongo
-      res.status(201).json({ message: "Success" });
+      findingData = await db.collection("applist").findOne({ website: "" });
     }
+
+    if (findingData) {
+      await db.collection("applist").updateOne(
+        { secretCode: findingData["secretCode"] },
+        {
+          $set: {
+            website: bodyObject.website,
+            userEmail: bodyObject.userEmail,
+          },
+        }
+      );
+      res.status(200).json({ message: "Success" });
+    } else {
+      res.status(404).json({ message: "Not Found" });
+    }
+    await mongo.close(); // Closing Mongo
   } else if (req.method === "GET") {
     const client = await mongo.connect();
     const db = client.db("app-maker-pro");
     const data = await db
-      .collection("metadata")
+      .collection("applist")
       .findOne({ userEmail: req.query.email });
-
-    await mongo.close(); // Closing Mongo
     if (data) {
       res.status(200).json(data);
     } else {
       res.status(404).json({ message: "not found" });
     }
+    await mongo.close(); // Closing Mongo
   }
 }

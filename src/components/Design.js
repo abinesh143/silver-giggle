@@ -1,6 +1,10 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { setItemLocalStorage, getItemLocalStorage, toastProvider } from "@/helpers/utils";
+import {
+  setItemLocalStorage,
+  getItemLocalStorage,
+  toastProvider,
+} from "@/helpers/utils";
 import axios from "axios";
 
 const Design = () => {
@@ -11,12 +15,17 @@ const Design = () => {
   });
   const [splashScreen, setSplashScreen] = useState(null);
   const [designError, setDesignError] = useState("");
+  const [btnLoading, setBtnLoading] = useState(false);
 
   const saveAppDesign = (e) => {
     e.preventDefault();
     const element = document.querySelector('input[name="theme"]:checked');
     if (element) {
       setAppDesign({ ...appDesign, themeColor: element.value });
+      setItemLocalStorage("appDesign", {
+        ...appDesign,
+        themeColor: element.value,
+      });
     }
 
     if (splashScreen) {
@@ -24,6 +33,7 @@ const Design = () => {
       formData.append("file", splashScreen);
       formData.append("upload_preset", "ltvsms6q");
 
+      setBtnLoading(true);
       axios
         .post(
           "https://api.cloudinary.com/v1_1/dd4iqjurs/image/upload",
@@ -31,20 +41,22 @@ const Design = () => {
         )
         .then((response) => {
           if (response.status === 200) {
-            setItemLocalStorage("appDesign", {
-              ...appDesign,
-              splashScreen: response.data.secure_url,
+            setAppDesign((design) => {
+              setItemLocalStorage("appDesign", {
+                ...design,
+                splashScreen: response.data.secure_url,
+              });
+              return { ...design, splashScreen: response.data.secure_url };
             });
-            setAppDesign({
-              ...appDesign,
-              splashScreen: response.data.secure_url,
-            });
-            toastProvider('success', 'App Design Saved')
+            toastProvider("success", "App Design Saved");
           }
         })
         .catch((error) => {
           console.error(error);
           setDesignError("Image Uploading Failed.. Please try again");
+        })
+        .finally(() => {
+          setBtnLoading(false);
         });
     }
   };
@@ -264,7 +276,17 @@ const Design = () => {
                   <button
                     type="submit"
                     className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-sm sm:text-lg lg:text-lg xl:text-lg font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3"
+                    disabled={btnLoading}
                   >
+                    {btnLoading ? (
+                      <Image
+                        src="/svg/spin.svg"
+                        width={24}
+                        height={24}
+                        alt="spin"
+                        className="inline w-4 h-4 me-3 text-white animate-spin"
+                      />
+                    ) : null}{" "}
                     Save
                   </button>
                 </div>

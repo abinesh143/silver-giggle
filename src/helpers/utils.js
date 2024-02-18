@@ -2,6 +2,7 @@ import Swal from 'sweetalert2'
 
 export const appMakerLogout = async () => {
   localStorage.removeItem("appMaker");
+  localStorage.removeItem("appMakerPro");
   window.location.href = "/";
 };
 

@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import PageLoader from "./PageLoader";
+import { toastProvider } from "@/helpers/utils";
 
 const Publish = (props) => {
   const [tab, setTab] = useState("andriod");
@@ -10,6 +11,11 @@ const Publish = (props) => {
     andriodStatus: "start",
     iosReq: false,
     iosStatus: "start",
+    andriodApk: "",
+    andriodAab: "",
+    iosApk: "",
+    iosAbb: "",
+    userEmail: props.user.userEmail,
   });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -36,8 +42,8 @@ const Publish = (props) => {
         method: "POST",
         body: JSON.stringify({
           ...publishData,
-          ...(platform === "android"
-            ? { androidReq: true, andriodStatus: "build" }
+          ...(platform === "andriod"
+            ? { andriodReq: true, andriodStatus: "build" }
             : { iosReq: true, iosStatus: "build" }),
         }),
       });
@@ -45,8 +51,8 @@ const Publish = (props) => {
       if (res.status === 200) {
         setPublishData({
           ...publishData,
-          ...(platform === "android"
-            ? { androidReq: true, andriodStatus: "build" }
+          ...(platform === "andriod"
+            ? { andriodReq: true, andriodStatus: "build" }
             : { iosReq: true, iosStatus: "build" }),
         });
         toastProvider("success", `${platform} build requested`);
@@ -88,8 +94,8 @@ const Publish = (props) => {
       if (result.isConfirmed) {
         setPublishData({
           ...publishData,
-          ...(platform === "android"
-            ? { androidReq: false, andriodStatus: "start" }
+          ...(platform === "andriod"
+            ? { andriodReq: false, andriodStatus: "start" }
             : { iosReq: false, iosStatus: "start" }),
         });
       }
@@ -357,18 +363,23 @@ const Publish = (props) => {
                           </div>
                           <section className="mt-8">
                             <div className="flex flex-col lg:flex-row justify-center gap-5">
-                              <button
-                                type="button"
-                                className="focus:outline-none text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                              >
-                                Download Apk
-                              </button>
-                              <button
-                                type="button"
-                                className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                              >
-                                Download AAB
-                              </button>
+                              {publishData.andriodApk ? (
+                                <a
+                                  href={`https://www.googleapis.com/drive/v3/files/${publishData.andriodApk}?alt=media&key=AIzaSyAA9ERw-9LZVEohRYtCWka_TQc6oXmvcVU&supportsAllDrives=True`}
+                                  className="focus:outline-none text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                                >
+                                  Download Apk
+                                </a>
+                              ) : null}
+                              {publishData.andriodAab ? (
+                                <a
+                                  href={`https://www.googleapis.com/drive/v3/files/${publishData.andriodAab}?alt=media&key=AIzaSyAA9ERw-9LZVEohRYtCWka_TQc6oXmvcVU&supportsAllDrives=True`}
+                                  className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                                >
+                                  Download AAB
+                                </a>
+                              ) : null}
+
                               <button
                                 type="button"
                                 className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
@@ -644,18 +655,22 @@ const Publish = (props) => {
                           </div>
                           <section className="mt-8">
                             <div className="flex flex-col lg:flex-row justify-center gap-6">
-                              <button
-                                type="button"
-                                className="focus:outline-none text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-6 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                              >
-                                Download .APP
-                              </button>
-                              <button
-                                type="button"
-                                className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-6 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                              >
-                                Download .IPA
-                              </button>
+                              {publishData.iosApk ? (
+                                <a
+                                  href={`https://www.googleapis.com/drive/v3/files/${publishData.iosApk}?alt=media&key=AIzaSyAA9ERw-9LZVEohRYtCWka_TQc6oXmvcVU&supportsAllDrives=True`}
+                                  className="focus:outline-none text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-6 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                                >
+                                  Download .APP
+                                </a>
+                              ) : null}
+                              {publishData.iosAbb ? (
+                                <a
+                                  href={`https://www.googleapis.com/drive/v3/files/${publishData.iosAbb}?alt=media&key=AIzaSyAA9ERw-9LZVEohRYtCWka_TQc6oXmvcVU&supportsAllDrives=True`}
+                                  className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-6 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                                >
+                                  Download .IPA
+                                </a>
+                              ) : null}
                             </div>
                           </section>
                         </div>

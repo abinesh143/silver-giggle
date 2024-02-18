@@ -1,6 +1,10 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { setItemLocalStorage, getItemLocalStorage, toastProvider } from "@/helpers/utils";
+import {
+  setItemLocalStorage,
+  getItemLocalStorage,
+  toastProvider,
+} from "@/helpers/utils";
 
 const FreeRating = () => {
   const [appReview, setAppReview] = useState({
@@ -9,6 +13,7 @@ const FreeRating = () => {
     appKeywords: "",
   });
   const [reviewError, setReviewError] = useState("");
+  const [btnLoading, setBtnLoading] = useState(false);
 
   const saveAppReview = async (e) => {
     e.preventDefault();
@@ -23,6 +28,7 @@ const FreeRating = () => {
     } else {
       setReviewError("");
       try {
+        setBtnLoading(true);
         let res = await fetch("/api/review", {
           method: "POST",
           body: JSON.stringify({
@@ -36,13 +42,15 @@ const FreeRating = () => {
           setItemLocalStorage("appReview", {
             ...appReview,
           });
-          toastProvider('success', 'App Review Submiited')
+          toastProvider("success", "App Review Submiited");
         } else if (res.status === 401) {
-          toastProvider('error', 'Review Request Already Submitted')
+          toastProvider("error", "Review Request Already Submitted");
           setReviewError("Review Request Already Submitted");
         }
       } catch (error) {
         console.log(error);
+      } finally {
+        setBtnLoading(false);
       }
     }
   };
@@ -157,7 +165,17 @@ const FreeRating = () => {
                   <button
                     type="submit"
                     className="bg-black text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-sm sm:text-base lg:text-sm xl:text-base font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3"
+                    disabled={btnLoading}
                   >
+                    {btnLoading ? (
+                      <Image
+                        src="/svg/spin.svg"
+                        width={24}
+                        height={24}
+                        alt="spin"
+                        className="inline w-4 h-4 me-3 text-white animate-spin"
+                      />
+                    ) : null}
                     Save
                   </button>
                 </div>

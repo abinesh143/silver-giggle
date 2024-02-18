@@ -43,6 +43,7 @@ const Help = () => {
     description: "",
   });
   const [errorMsg, setErrorMsg] = useState("");
+  const [btnLoading, setBtnLoading] = useState(false);
 
   const saveFeedback = async (e) => {
     e.preventDefault();
@@ -57,6 +58,7 @@ const Help = () => {
       const loginDetails = localStorage.getItem("appMaker");
       const userData = JSON.parse(loginDetails);
       try {
+        setBtnLoading(true);
         let res = await fetch("/api/feedback", {
           method: "POST",
           body: JSON.stringify({
@@ -65,7 +67,6 @@ const Help = () => {
           }),
         });
 
-        // let data = await res.json();
         if (res.status === 200) {
           setFeedback({
             fullName: "",
@@ -73,10 +74,12 @@ const Help = () => {
             subject: "",
             description: "",
           });
-          toastProvider('success', 'Help Ticket Submitted')
+          toastProvider("success", "Help Ticket Submitted");
         }
       } catch (error) {
         console.log(error);
+      } finally {
+        setBtnLoading(false);
       }
     }
   };
@@ -217,8 +220,18 @@ const Help = () => {
 
                 <button
                   type="submit"
-                  class="w-full text-xs sm:text-base lg:text-sm xl:text-base text-white bg-black hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none font-medium rounded-lg p-2 sm:p-3 max-sm:mb-4 text-center"
+                  class="w-full text-xs sm:text-base lg:text-sm xl:text-base disabled:bg-gray-600 disabled:border-gray-600 text-white bg-black hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none font-medium rounded-lg p-2 sm:p-3 max-sm:mb-4 text-center"
+                  disabled={btnLoading}
                 >
+                  {btnLoading ? (
+                    <Image
+                      src="/svg/spin.svg"
+                      width={24}
+                      height={24}
+                      alt="spin"
+                      className="inline w-4 h-4 me-3 text-white animate-spin"
+                    />
+                  ) : null}
                   Submit
                 </button>
               </form>

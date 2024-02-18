@@ -21,9 +21,14 @@ const AuthModal = (props) => {
   });
   const [loginError, setLoginError] = useState("");
   const [registerError, setRegisterError] = useState("");
+  const [btnLoading, setBtnLoading] = useState(false);
   const router = useRouter();
 
-  const togglePassword = (value) => {
+  const togglePassword = (value, id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      value ? (element.type = "password") : (element.type = "text") ;
+    }
     setIsVisible(!value);
   };
 
@@ -33,6 +38,7 @@ const AuthModal = (props) => {
       setLoginError("Email or Password is not valid");
     } else {
       try {
+        setBtnLoading(true);
         let res = await fetch("/api/userLogin", {
           method: "POST",
           body: JSON.stringify(loginData),
@@ -49,6 +55,8 @@ const AuthModal = (props) => {
         }
       } catch (error) {
         console.log(error);
+      } finally {
+        setBtnLoading(false);
       }
     }
   };
@@ -67,6 +75,7 @@ const AuthModal = (props) => {
       setRegisterError("phone number is missing");
     } else {
       try {
+        setBtnLoading(true);
         let res = await fetch("/api/userData", {
           method: "POST",
           body: JSON.stringify(registerData),
@@ -83,6 +92,8 @@ const AuthModal = (props) => {
         }
       } catch (error) {
         console.log(error);
+      } finally {
+        setBtnLoading(false);
       }
     }
   };
@@ -154,6 +165,7 @@ const AuthModal = (props) => {
                     alt="lock"
                   />
                   <input
+                    id="login-app"
                     type="password"
                     class="pl-12 p-3 w-full border border-[#CECECE] focus:ring-black focus:border-black rounded-xl text-sm sm:text-base"
                     placeholder="Password"
@@ -165,11 +177,11 @@ const AuthModal = (props) => {
                   />
                   <div class="absolute top-4 right-4 cursor-pointer">
                     <Image
-                      src={isVisble ? "/svg/not-eye.svg" : "/svg/eye.svg"}
+                      src={isVisble ? "/svg/eye.svg" : "/svg/not-eye.svg"}
                       width={24}
                       height={24}
                       alt="eye"
-                      onClick={() => togglePassword(isVisble)}
+                      onClick={() => togglePassword(isVisble, "login-app")}
                     />
                   </div>
                 </div>
@@ -179,17 +191,27 @@ const AuthModal = (props) => {
                 Reset password link has been sent to your email
               </span>
             </p> */}
-                <a
+                {/* <a
                   href="#"
                   class="float-right text-xs sm:text-sm text-[#949494] hover:underline"
                 >
                   Forgot Password?
-                </a>
+                </a> */}
 
                 <button
                   type="submit"
                   class="w-full text-white bg-black hover:bg-opacity-80 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-gray-400 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-3 text-center"
+                  disabled={btnLoading}
                 >
+                  {btnLoading ? (
+                    <Image
+                      src="/svg/spin.svg"
+                      width={24}
+                      height={24}
+                      alt="spin"
+                      className="inline w-4 h-4 me-3 text-white animate-spin"
+                    />
+                  ) : null}
                   Log In
                 </button>
                 {loginError ? (
@@ -201,7 +223,7 @@ const AuthModal = (props) => {
                   Don&apos;t have an account,
                   <a
                     href="#"
-                    class="text-black font-semibold hover:underline"
+                    class="text-black font-semibold hover:underline cursor-pointer"
                     onClick={() => setAuthType("register")}
                   >
                     Register
@@ -267,6 +289,7 @@ const AuthModal = (props) => {
                     class="absolute inset-y-0 top-3.5 left-3.5 pointer-events-none"
                   />
                   <input
+                    id="regis-app"
                     type="password"
                     class="pl-12 p-3 w-full border border-[#CECECE] focus:ring-black focus:border-black rounded-xl text-sm sm:text-base"
                     placeholder="Password"
@@ -281,18 +304,26 @@ const AuthModal = (props) => {
                   />
                   <div class="absolute top-4 right-4 cursor-pointer">
                     <Image
-                      src={isVisble ? "/svg/not-eye.svg" : "/svg/eye.svg"}
+                      src={isVisble ? "/svg/eye.svg" : "/svg/not-eye.svg"}
                       width={24}
                       height={24}
                       alt="eye"
-                      onClick={() => togglePassword(isVisble)}
+                      onClick={() => togglePassword(isVisble, "regis-app")}
                     />
                   </div>
                 </div>
-                <div name="country" class="relative">
-                  <select
-                    id="countries"
-                    class="border border-gray-300 text-gray-900 text-sm sm:text-base focus:ring-black focus:border-black rounded-xl block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                <div class="relative">
+                  <Image
+                    src="/svg/globe.svg"
+                    height="24"
+                    width="24"
+                    class="absolute inset-y-0 top-3.5 left-3.5 pointer-events-none"
+                    alt="country"
+                  />
+                  <input
+                    type="text"
+                    class="pl-12 p-3 w-full border border-[#CECECE] focus:ring-black focus:border-black rounded-xl text-sm sm:text-base"
+                    placeholder="Your Country"
                     value={registerData.userCountry}
                     onChange={(e) =>
                       setRegisterData({
@@ -301,15 +332,7 @@ const AuthModal = (props) => {
                       })
                     }
                     required
-                  >
-                    <option value={null} selected>
-                      Choose a country
-                    </option>
-                    <option value="US">United States</option>
-                    <option value="CA">Canada</option>
-                    <option value="FR">France</option>
-                    <option value="DE">Germany</option>
-                  </select>
+                  />
                 </div>
                 <div name="mobile" class="relative">
                   <Image
@@ -336,7 +359,17 @@ const AuthModal = (props) => {
                 <button
                   type="submit"
                   class="w-full text-white bg-black hover:bg-opacity-80 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-gray-400 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-3 text-center"
+                  disabled={btnLoading}
                 >
+                  {btnLoading ? (
+                    <Image
+                      src="/svg/spin.svg"
+                      width={24}
+                      height={24}
+                      alt="spin"
+                      className="inline w-4 h-4 me-3 text-white animate-spin"
+                    />
+                  ) : null}{" "}
                   Register
                 </button>
                 {registerError ? (
@@ -348,7 +381,7 @@ const AuthModal = (props) => {
                 <div class="text-center text-xs sm:text-sm font-medium text-[#949494]">
                   Already have an account,
                   <a
-                    class="text-black font-semibold hover:underline"
+                    class="text-black cursor-pointer font-semibold hover:underline"
                     onClick={() => setAuthType("login")}
                   >
                     Login

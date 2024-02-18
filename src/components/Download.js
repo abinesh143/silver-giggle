@@ -1,12 +1,27 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getItemLocalStorage, toastProvider } from "@/helpers/utils";
 
-const Download = () => {
+const Download = (props) => {
   const [step, setStep] = useState(1);
   const [disableButton, setDisableButton] = useState(true);
   const [message, setMessage] = useState("");
+  const [data, setData] = useState({});
+
+  const getDashboardData = async (userEmail) => {
+    try {
+      const response = await fetch(`/api/applist?email=${userEmail}`, {
+        method: "GET",
+      });
+      const appDetails = await response.json();
+      if (response.status === 200) {
+        setData(appDetails);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const setProgressDownload = async () => {
     setStep(2);
@@ -27,7 +42,7 @@ const Download = () => {
         if (res.status === 201) {
           setTimeout(() => {
             setDisableButton(false);
-            toastProvider('success', 'App Successfully Build')
+            toastProvider("success", "App Successfully Build");
           }, 5000);
         } else {
           setMessage("Build Failed Try Again");
@@ -38,9 +53,13 @@ const Download = () => {
         setMessage("Build Failed Try Again");
       }
     } else {
-      toastProvider('error', 'Failed! Try Again!')
+      toastProvider("error", "Failed! Try Again!");
     }
   };
+
+  useEffect(() => {
+    getDashboardData(props.user.userEmail);
+  }, []);
   return (
     <main>
       <div className="p-4 sm:p-8 bg-[#F9F9F9] lg:rounded-2xl">
@@ -258,13 +277,15 @@ const Download = () => {
                         </div>
                         <section className="mt-8">
                           <div className="flex flex-col lg:flex-row justify-center gap-6">
-                            <button
-                              type="button"
-                              className="focus:outline-none text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-10 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                            >
-                              Download
-                            </button>
-                            <div className="relative lg:w-3/4">
+                            {data && data.downloadLink ? (
+                              <a
+                                href={`https://www.googleapis.com/drive/v3/files/${data.downloadLink}?alt=media&key=AIzaSyAA9ERw-9LZVEohRYtCWka_TQc6oXmvcVU&supportsAllDrives=True`}
+                                className="focus:outline-none text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-10 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                              >
+                                Download
+                              </a>
+                            ) : null}
+                            {/* <div className="relative lg:w-3/4">
                               <input
                                 type="search"
                                 id="search-dropdown"
@@ -275,7 +296,7 @@ const Download = () => {
                               <button className="absolute top-0 end-0 px-5 py-2.5 text-sm font-medium h-full text-white bg-green-500 rounded-e-lg border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Copy Link
                               </button>
-                            </div>
+                            </div> */}
                           </div>
                         </section>
                       </div>
@@ -294,6 +315,39 @@ const Download = () => {
               </section>
 
               <div className="basis-1/2 flex justify-center items-center">
+                {/* {data && data["secretCode"] ? (
+                  <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[690px] w-[390px]">
+                    <div className="h-[32px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[72px] rounded-s-lg"></div>
+                    <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg"></div>
+                    <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg"></div>
+                    <div className="h-[64px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
+                    <div className="rounded-[2rem] overflow-hidden w-[362px] h-[662px] bg-white dark:bg-gray-800">
+                      <embed
+                        src={`https://app.freeappmaker.pro/?id=${data["secretCode"]}`}
+                        style={{width: '362px', height: '662px'}}
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px]">
+                    <div className="h-[32px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[72px] rounded-s-lg"></div>
+                    <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg"></div>
+                    <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg"></div>
+                    <div className="h-[64px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
+                    <div className="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-white dark:bg-gray-800">
+                      <img
+                        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/mockup-1-light.png"
+                        className="dark:hidden w-[272px] h-[572px]"
+                        alt="reback1"
+                      />
+                      <img
+                        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/mockup-1-dark.png"
+                        className="hidden dark:block w-[272px] h-[572px]"
+                        alt="reback2"
+                      />
+                    </div>
+                  </div>
+                )} */}
                 <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px]">
                   <div className="h-[32px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[72px] rounded-s-lg"></div>
                   <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg"></div>
