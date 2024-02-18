@@ -35,6 +35,7 @@ export default async function handler(req, res) {
     } else {
       res.status(404).json({ message: "Not Found" });
     }
+
     await mongo.close(); // Closing Mongo
   } else if (req.method === "GET") {
     const client = await mongo.connect();
@@ -47,6 +48,7 @@ export default async function handler(req, res) {
     } else {
       res.status(404).json({ message: "not found" });
     }
+
     await mongo.close(); // Closing Mongo
   }
 }
