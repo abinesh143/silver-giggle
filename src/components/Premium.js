@@ -4,7 +4,7 @@ import { loadScript } from "@paypal/paypal-js";
 import PayPal from "@/components/Paypal";
 
 /* eslint-disable @next/next/no-img-element */
-const Premium = () => {
+const Premium = (props) => {
   const [paypalActive, setPayPalActive] = useState(false);
 
   const andriodPremium = [
@@ -84,7 +84,7 @@ const Premium = () => {
     try {
       const paypal = await loadScript({
         clientId:
-          "AfsLgMyn0DsgW0saDSqdoSQkkWRzUWyW4EE3nHtjmOEHkrAfzvqQNXD59_JhZ-g2TWF3_k0XASWIrZLz",
+          "AaCgl6fEyzLZ1zuQyyh-guTWf2z5gCkZ6k7nDEvMXq7XjcHkCCEZUjtypAoJSYeP0VvJiERd0vSUUTvx",
       });
       if (paypal) {
         setPayPalActive(true);
@@ -288,9 +288,17 @@ const Premium = () => {
             </div>
           </div>
 
+          <div className="flex flex-col w-full justify-center items-center my-10">
+            <span className="mb-4">Test Payment - 1 Dollar</span>
+            <PayPal amount={1} />
+          </div>
+
           <div className="mt-4 text-center">
             For Payment Issues or For Direct Payment Request.{" "}
-            <span className="font-semibold text-[#FE5000] cursor-pointer">
+            <span
+              className="font-semibold text-[#FE5000] cursor-pointer"
+              onClick={() => props.setTab()}
+            >
               Contact Support
             </span>
           </div>

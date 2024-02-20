@@ -108,6 +108,7 @@ const Account = () => {
                       activeTab === "info" ? "bg-blue-500" : "hover:bg-gray-100"
                     } flex items-center p-2 text-gray-900 rounded-lg dark:text-white cursor-pointer dark:hover:bg-gray-700 group`}
                     onClick={() => setActiveTab("info")}
+                    data-drawer-hide="logo-sidebar"
                   >
                     <svg
                       className={`${
@@ -132,6 +133,7 @@ const Account = () => {
                         : "hover:bg-gray-100"
                     } flex items-center p-2 text-gray-900 rounded-lg dark:text-white cursor-pointer dark:hover:bg-gray-700 group`}
                     onClick={() => setActiveTab("design")}
+                    data-drawer-hide="logo-sidebar"
                   >
                     <svg
                       className={`${
@@ -161,6 +163,7 @@ const Account = () => {
                         ? "bg-blue-500"
                         : "hover:bg-gray-100"
                     } flex items-center p-2 text-gray-900 rounded-lg dark:text-white cursor-pointer dark:hover:bg-gray-700 group`}
+                    data-drawer-hide="logo-sidebar"
                     onClick={() => setActiveTab("setting")}
                   >
                     <svg
@@ -186,6 +189,7 @@ const Account = () => {
                     className={`${
                       activeTab === "push" ? "bg-blue-500" : "hover:bg-gray-100"
                     } flex items-center p-2 text-gray-900 rounded-lg dark:text-white cursor-pointer dark:hover:bg-gray-700 group`}
+                    data-drawer-hide="logo-sidebar"
                     onClick={() => setActiveTab("push")}
                   >
                     <svg
@@ -212,6 +216,7 @@ const Account = () => {
                     className={`${
                       activeTab === "ads" ? "bg-blue-500" : "hover:bg-gray-100"
                     } flex items-center p-2 text-gray-900 rounded-lg dark:text-white cursor-pointer dark:hover:bg-gray-700 group`}
+                    data-drawer-hide="logo-sidebar"
                     onClick={() => setActiveTab("ads")}
                   >
                     <svg
@@ -237,6 +242,7 @@ const Account = () => {
                         ? "bg-blue-500"
                         : "hover:bg-gray-100"
                     } flex items-center p-2 text-gray-900 rounded-lg dark:text-white cursor-pointer dark:hover:bg-gray-700 group`}
+                    data-drawer-hide="logo-sidebar"
                     onClick={() => setActiveTab("download")}
                   >
                     <svg
@@ -270,6 +276,7 @@ const Account = () => {
                         ? "bg-blue-500"
                         : "hover:bg-gray-100"
                     } flex items-center p-2 text-gray-900 rounded-lg dark:text-white cursor-pointer dark:hover:bg-gray-700 group`}
+                    data-drawer-hide="logo-sidebar"
                     onClick={() => setActiveTab("publish")}
                   >
                     <svg
@@ -300,6 +307,7 @@ const Account = () => {
                           ? "bg-blue-500"
                           : "hover:bg-gray-100"
                       } flex items-center p-2 text-gray-900 rounded-lg dark:text-white cursor-pointer dark:hover:bg-gray-700 group`}
+                      data-drawer-hide="logo-sidebar"
                       onClick={() => setActiveTab("pro")}
                     >
                       <svg
@@ -325,6 +333,7 @@ const Account = () => {
                           ? "bg-blue-500"
                           : "hover:bg-gray-100"
                       } flex items-center p-2 text-gray-900 rounded-lg dark:text-white cursor-pointer dark:hover:bg-gray-700 group`}
+                      data-drawer-hide="logo-sidebar"
                       onClick={() => setActiveTab("review")}
                     >
                       <svg
@@ -350,6 +359,7 @@ const Account = () => {
                           ? "bg-blue-500"
                           : "hover:bg-gray-100"
                       } flex items-center p-2 text-gray-900 rounded-lg dark:text-white cursor-pointer dark:hover:bg-gray-700 group`}
+                      data-drawer-hide="logo-sidebar"
                       onClick={() => setActiveTab("promote")}
                     >
                       <svg
@@ -376,6 +386,7 @@ const Account = () => {
                           ? "bg-blue-500"
                           : "hover:bg-gray-100"
                       } flex items-center p-2 text-gray-900 rounded-lg dark:text-white cursor-pointer dark:hover:bg-gray-700 group`}
+                      data-drawer-hide="logo-sidebar"
                       onClick={() => setActiveTab("help")}
                     >
                       <svg
@@ -403,6 +414,7 @@ const Account = () => {
                       } flex items-center p-2 text-gray-900 rounded-lg dark:text-white cursor-pointer dark:hover:bg-gray-700 group`}
                       data-modal-target="logout-modal"
                       data-modal-toggle="logout-modal"
+                      data-drawer-hide="logo-sidebar"
                     >
                       <svg
                         className={`${
@@ -459,7 +471,7 @@ const Account = () => {
               </div>
             ) : activeTab === "pro" ? (
               <div>
-                <Premium />
+                <Premium setTab={() => setActiveTab('help')} />
               </div>
             ) : activeTab === "review" ? (
               <div>

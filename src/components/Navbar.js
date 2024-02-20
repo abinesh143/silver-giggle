@@ -18,7 +18,7 @@ const Navbar = (props) => {
   }, [props.user]);
   return (
     <main>
-      <section className="sticky top-0 z-40 bg-white">
+      <section className="sticky top-0 z-50 md:z-40 bg-white">
         <nav className="sm:pb-8 lg:pt-4 px-4">
           <div className="max-w-screen flex flex-wrap items-center justify-between">
             <Link href="/" className="flex items-center justify-center">
@@ -230,13 +230,6 @@ const Navbar = (props) => {
                       data-modal-hide="main-menu-modal"
                     >
                       Reseller
-                    </Link>
-                    <Link
-                      href="/#faqs"
-                      class="text-white text-xl font-semibold border-b border-[#3A3A3A] px-4 pb-5"
-                    >
-                      {" "}
-                      Faqs
                     </Link>
                     {props.user && (
                       <Link
