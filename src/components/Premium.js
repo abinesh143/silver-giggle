@@ -290,7 +290,7 @@ const Premium = (props) => {
 
           <div className="flex flex-col w-full justify-center items-center my-10">
             <span className="mb-4">Test Payment - 1 Dollar</span>
-            <PayPal amount={1} />
+           { paypalActive ?  <PayPal amount={1} /> : null}
           </div>
 
           <div className="mt-4 text-center">
