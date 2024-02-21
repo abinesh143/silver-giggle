@@ -377,12 +377,13 @@ const Publish = (props) => {
                                 </a>
                               ) : null}
 
-                              <button
-                                type="button"
+                              <a
+                                href="https://youtu.be/SqcY0GlETPk?si=PE5_QZuwxvR0_F-D"
+                                target="_blank"
                                 className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 sm:py-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
                               >
                                 Tutorial
-                              </button>
+                              </a>
                             </div>
                           </section>
                         </div>
@@ -462,8 +463,8 @@ const Publish = (props) => {
                             Unlock the Feature
                           </h2>
                           <p className="text-xs sm:text-base text-center font-normal mb-4">
-                            Please note! you can pulish to PlayStore only If
-                            Premium Plan is Purchased. AAB File is Build in this
+                            Please note! you can pulish to App Store only If
+                            Premium Plan is Purchased. IPA File is Build in this
                             section.
                           </p>
                           <button

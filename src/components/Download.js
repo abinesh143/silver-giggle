@@ -309,7 +309,7 @@ const Download = (props) => {
                     </div>
                   </div>
                 )}
-                <div className="text-sm mt-4 pl-8 ">Note : <span className="font-semibold">App Icon & App Name with reflect in Final Build Only</span></div>
+                <div className="text-sm mt-4 pl-8 ">Note : <span className="font-semibold">App Icon & App Name with reflect in Store Build Only</span></div>
               </section>
 
               <div className="basis-1/2 flex justify-center items-center">
@@ -369,7 +369,6 @@ const Download = (props) => {
           </div>
         </div>
       </div>
-      ss
     </main>
   );
 };

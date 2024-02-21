@@ -124,8 +124,15 @@ const Premium = (props) => {
             </p>
           </div>
 
-          <div className="flex flex-col justify-between items-center gap-x-10 lg:flex-row lg:items-start">
-            <div className="w-full flex-1 mt-8 p-8 order-2 bg-white shadow-xl rounded-3xl sm:w-96 lg:w-full lg:order-1">
+          <div className="flex flex-col justify-between items-center gap-x-10 lg:flex-row lg:items-start ">
+            <div className="w-full flex-1 mt-8 p-8 order-2 bg-white shadow-xl rounded-3xl sm:w-96 lg:w-full lg:order-1 relative">
+              {props.user.amount === 25 ? (
+                <div className="absolute -top-1 left-0">
+                  <span class="bg-green-100 text-green-800 text-xs font-medium px-4 py-1 rounded dark:bg-green-900 dark:text-green-300">
+                    Active
+                  </span>
+                </div>
+              ) : null}
               <div className="mb-7 pb-7 flex items-center border-b border-gray-300">
                 <img
                   src="https://res.cloudinary.com/williamsondesign/abstract-1.jpg"
@@ -180,7 +187,14 @@ const Premium = (props) => {
               )}
             </div>
 
-            <div className="w-full flex-1 p-8 order-1 shadow-xl rounded-3xl bg-gray-900 text-gray-400 sm:w-96 lg:w-full lg:order-2 lg:mt-0">
+            <div className="w-full flex-1 p-8 order-1 shadow-xl rounded-3xl bg-gray-900 text-gray-400 sm:w-96 lg:w-full lg:order-2 lg:mt-0 relative">
+              {props.user.amount === 99 ? (
+                <div className="absolute -top-1 left-0">
+                  <span class="bg-green-100 text-green-800 text-xs font-medium px-4 py-1 rounded dark:bg-green-900 dark:text-green-300">
+                    Active
+                  </span>
+                </div>
+              ) : null}
               <div className="mb-8 pb-8 flex items-center border-b border-gray-600">
                 <img
                   src="https://res.cloudinary.com/williamsondesign/abstract-2.jpg"
@@ -232,7 +246,14 @@ const Premium = (props) => {
               )}
             </div>
 
-            <div className="w-full flex-1 mt-8 p-8 order-3 bg-white shadow-xl rounded-3xl sm:w-96 lg:w-full lg:order-3">
+            <div className="w-full flex-1 mt-8 p-8 order-3 bg-white shadow-xl rounded-3xl sm:w-96 lg:w-full lg:order-3 relative">
+              {props.user.amount === 79 ? (
+                <div className="absolute -top-1 left-0">
+                  <span class="bg-green-100 text-green-800 text-xs font-medium px-4 py-1 rounded dark:bg-green-900 dark:text-green-300">
+                    Active
+                  </span>
+                </div>
+              ) : null}
               <div className="mb-7 pb-7 flex items-center border-b border-gray-300">
                 <img
                   src="https://res.cloudinary.com/williamsondesign/abstract-3.jpg"

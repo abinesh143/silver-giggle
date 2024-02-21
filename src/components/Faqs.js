@@ -13,7 +13,7 @@ const Faqs = () => {
     {
       question: "How to publish an app in the Google Play market?",
       answer:
-        "You need to register for a Google Play Developer account in order to upload Android apps. You will be required to pay a one-time $25 registration fee. Is  We Recommed it. However we will publish it  in our developer account for some additional cost.,  App Maker AI support staff will assist you with the Google Play app publication.",
+        "You need to register for a Google Play Developer account in order to upload Android apps. You will be required to pay a one-time $25 registration fee. Is  We Recommed it. However we will publish it  in our developer account for some additional cost,  App Maker AI support staff will assist you with the Google Play app publication.",
     },
     {
       question: "What is no-code?",
@@ -40,7 +40,7 @@ const Faqs = () => {
 
   return (
     <main id="faqs">
-      <section className="mt-10 sm:mt-24 mb-8 sm:mb-16">
+      <section className="mt-10 sm:mt-24 mb-8 sm:mb-16 lg:mb-24 xl:mb-16">
         <h2 className="text-xl sm:text-3xl lg:text-5xl font-semibold text-center mb-10 sm:mb-16">
           FAQ&apos;s
         </h2>

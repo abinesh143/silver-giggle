@@ -471,7 +471,7 @@ const Account = () => {
               </div>
             ) : activeTab === "pro" ? (
               <div>
-                <Premium setTab={() => setActiveTab('help')} />
+                <Premium setTab={() => setActiveTab('help')} user={user}/>
               </div>
             ) : activeTab === "review" ? (
               <div>

@@ -9,7 +9,7 @@ const Banner = (props) => {
             <div className="lg:h-full flex flex-col">
               <div className="lg:h-1/2 flex">
                 <div>
-                  <h1 className="text-2xl sm:text-4xl lg:text-5xl 2xl:text-6xl 2xl:!leading-[72px] text-[#FE5000] text-start font-bold mb-2 2xl:mb-4">
+                  <h1 className="text-2xl sm:text-4xl xl:text-5xl 2xl:text-6xl 2xl:!leading-[72px] text-[#FE5000] text-start font-bold mb-2 2xl:mb-4">
                     Convert Website to App
                     <span className="text-black block">in 10 MINUTES</span>
                   </h1>

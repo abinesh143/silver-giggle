@@ -1,8 +1,16 @@
+import Image from "next/image";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import Image from "next/image";
+import ResellerModal from "@/components/ResellerModal";
+import { Modal } from "flowbite";
 
 const Reseller = () => {
+  const toggleModal = (type: string, id: string) => {
+    const modalElement = document.getElementById(id);
+    const modal = new Modal(modalElement, { closable: false });
+    type === "show" ? modal.show() : modal.hide();
+  };
+
   return (
     <main>
       <div className="container sm:mx-auto py-4">
@@ -28,7 +36,10 @@ const Reseller = () => {
                 Create app with app maker AI. Just Pay 25$ Per App and Resell at
                 your Own Cost.
               </p>
-              <button className="bg-[#FE5000] w-fit text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3  2xl:px-16 2xl:py-4">
+              <button
+                className="bg-[#FE5000] w-fit text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3  2xl:px-16 2xl:py-4"
+                onClick={() => toggleModal("show", "reseller-modal")}
+              >
                 Register Reseller for Free
               </button>
             </div>
@@ -46,13 +57,20 @@ const Reseller = () => {
               />
             </div>
             <div className="flex flex-col items-center gap-6 max-lg:mt-10">
-              <div className="text-2xl sm:text-3xl lg:text-5xl text-center font-bold">WhiteLabel Our Software.</div>
+              <div className="text-2xl sm:text-3xl lg:text-5xl text-center font-bold">
+                WhiteLabel Our Software.
+              </div>
               <p className="text-lg text-center">
                 We will create a clone of this software. Reskin with your Logo
                 and Domains. LifeTime Access and Support.
               </p>
-              <p className="text-xl sm:text-2xl lg:text-3xl font-semibold">Price - 1000$ / One Time</p>
-              <button className="bg-[#FE5000] w-fit text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4">
+              <p className="text-xl sm:text-2xl lg:text-3xl font-semibold">
+                Price - 1000$ / One Time
+              </p>
+              <button
+                className="bg-[#FE5000] w-fit text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4"
+                onClick={() => toggleModal("show", "reseller-modal")}
+              >
                 Register WhiteLabelling
               </button>
             </div>
@@ -86,6 +104,7 @@ const Reseller = () => {
             </div>
           </div>
         </div>
+        <ResellerModal closeModal={() => toggleModal("hide", "reseller-modal")} />
         <Footer />
       </div>
     </main>
