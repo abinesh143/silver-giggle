@@ -4,6 +4,7 @@ import {
   setItemLocalStorage,
   getItemLocalStorage,
   toastProvider,
+  currentTime,
 } from "@/helpers/utils";
 
 const FreeRating = () => {
@@ -71,10 +72,7 @@ const FreeRating = () => {
           <div className="sm:text-xl xl:text-2xl font-semibold sm:hidden">
             Free Rating
           </div>
-          <p className="text-sm sm:text-lg xl:text-xl">
-            06/02/2024,
-            <span className="font-semibold">18:26 ⏰</span>
-          </p>
+          {currentTime()}
         </div>
         <section>
           <div className="flex w-full">

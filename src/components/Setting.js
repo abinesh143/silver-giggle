@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { setItemLocalStorage, getItemLocalStorage, toastProvider } from "@/helpers/utils";
+import { setItemLocalStorage, getItemLocalStorage, toastProvider, currentTime } from "@/helpers/utils";
 
 const Setting = () => {
   const [appSetting, setAppSetting] = useState({
@@ -32,10 +32,7 @@ const Setting = () => {
           <div className="sm:text-xl xl:text-2xl font-semibold">
             App Setting
           </div>
-          <p className="text-sm sm:text-lg xl:text-xl">
-            06/02/2024,
-            <span className="font-semibold">18:26 ⏰</span>
-          </p>
+          {currentTime()}
         </div>
         <section>
           <div className="flex w-full">

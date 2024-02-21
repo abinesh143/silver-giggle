@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import PageLoader from "./PageLoader";
-import { toastProvider } from "@/helpers/utils";
+import { currentTime, toastProvider } from "@/helpers/utils";
 
 const Publish = (props) => {
   const [tab, setTab] = useState("andriod");
@@ -113,10 +113,7 @@ const Publish = (props) => {
           <div className="sm:text-xl xl:text-2xl font-semibold">
             Publish App
           </div>
-          <p className="text-sm sm:text-lg xl:text-xl">
-            06/02/2024,
-            <span className="font-semibold">18:26 ⏰</span>
-          </p>
+          {currentTime()}
         </div>
         {tab === "andriod" ? (
           <section>

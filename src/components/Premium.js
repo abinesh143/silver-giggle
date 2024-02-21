@@ -84,7 +84,7 @@ const Premium = (props) => {
     try {
       const paypal = await loadScript({
         clientId:
-          "AaCgl6fEyzLZ1zuQyyh-guTWf2z5gCkZ6k7nDEvMXq7XjcHkCCEZUjtypAoJSYeP0VvJiERd0vSUUTvx",
+          "AfsLgMyn0DsgW0saDSqdoSQkkWRzUWyW4EE3nHtjmOEHkrAfzvqQNXD59_JhZ-g2TWF3_k0XASWIrZLz",
       });
       if (paypal) {
         setPayPalActive(true);
@@ -287,12 +287,6 @@ const Premium = (props) => {
               )}
             </div>
           </div>
-
-          <div className="flex flex-col w-full justify-center items-center my-10">
-            <span className="mb-4">Test Payment - 1 Dollar</span>
-           { paypalActive ?  <PayPal amount={1} /> : null}
-          </div>
-
           <div className="mt-4 text-center">
             For Payment Issues or For Direct Payment Request.{" "}
             <span

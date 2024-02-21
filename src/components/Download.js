@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { getItemLocalStorage, toastProvider } from "@/helpers/utils";
+import { currentTime, getItemLocalStorage, toastProvider } from "@/helpers/utils";
 
 const Download = (props) => {
   const [step, setStep] = useState(1);
@@ -70,10 +70,7 @@ const Download = (props) => {
           <div className="sm:text-xl xl:text-2xl font-semibold sm:hidden">
             Download App
           </div>
-          <p className="text-sm sm:text-lg xl:text-xl">
-            06/02/2024,
-            <span className="font-semibold">18:26 ⏰</span>
-          </p>
+          {currentTime()}
         </div>
         <div>
           <div className="flex w-full">
@@ -312,6 +309,7 @@ const Download = (props) => {
                     </div>
                   </div>
                 )}
+                <div className="text-sm mt-4 pl-8 ">Note : <span className="font-semibold">App Icon & App Name with reflect in Final Build Only</span></div>
               </section>
 
               <div className="basis-1/2 flex justify-center items-center">

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { setItemLocalStorage, getItemLocalStorage, toastProvider } from "@/helpers/utils";
+import { setItemLocalStorage, getItemLocalStorage, toastProvider, currentTime } from "@/helpers/utils";
 
 const Monetization = () => {
   const [appAds, setAppAds] = useState({
@@ -65,10 +65,7 @@ const Monetization = () => {
           <div className="sm:text-xl xl:text-2xl font-semibold">
             Monetization (Ads)
           </div>
-          <p className="text-sm sm:text-lg xl:text-xl">
-            06/02/2024,
-            <span className="font-semibold">18:26 ⏰</span>
-          </p>
+          {currentTime()}
         </div>
         <section className="flex flex-col lg:flex-row gap-8">
           <div className="basis-1/2">

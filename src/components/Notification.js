@@ -1,6 +1,11 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { setItemLocalStorage, getItemLocalStorage, toastProvider } from "@/helpers/utils";
+import {
+  setItemLocalStorage,
+  getItemLocalStorage,
+  toastProvider,
+  currentTime,
+} from "@/helpers/utils";
 
 const Notification = () => {
   const [isPaused, setIsPaused] = useState(true);
@@ -13,7 +18,7 @@ const Notification = () => {
     setItemLocalStorage("appNotification", {
       ...appNotify,
     });
-    toastProvider('success', 'App Notification Saved')
+    toastProvider("success", "App Notification Saved");
   };
 
   useEffect(() => {
@@ -33,10 +38,7 @@ const Notification = () => {
           <div className="sm:text-xl xl:text-2xl font-semibold">
             Push Notification
           </div>
-          <p className="text-sm sm:text-lg xl:text-xl">
-            06/02/2024,
-            <span className="font-semibold">18:26 ⏰</span>
-          </p>
+          {currentTime()}
         </div>
         {isPaused ? (
           <>

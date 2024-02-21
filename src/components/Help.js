@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { initAccordions } from "flowbite";
 import { useEffect, useState } from "react";
-import { toastProvider } from "@/helpers/utils";
+import { currentTime, toastProvider } from "@/helpers/utils";
 
 const Help = () => {
   const [showAllFaq, setShowAllFaq] = useState(false);
@@ -92,10 +92,7 @@ const Help = () => {
       <div class="p-4 sm:p-8 bg-[#F9F9F9] lg:rounded-2xl">
         <div class="flex justify-between border-b pb-3 sm:pb-4 mb-5 sm:mb-10">
           <div class="sm:text-xl xl:text-2xl font-semibold">Need Help?</div>
-          <p class="text-sm sm:text-lg xl:text-xl">
-            06/02/2024,
-            <span class="font-semibold">18:26 ⏰</span>
-          </p>
+          {currentTime()}
         </div>
         <div class="flex flex-col xl:flex-row gap-6 mt-6">
           <div class="basis-1/2">

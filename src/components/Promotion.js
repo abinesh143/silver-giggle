@@ -1,4 +1,4 @@
-import { toastProvider } from "@/helpers/utils";
+import { currentTime, toastProvider } from "@/helpers/utils";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -45,10 +45,7 @@ const Promotion = () => {
           <div className="sm:text-xl xl:text-2xl font-semibold">
             Refer a Friend
           </div>
-          <p className="text-sm sm:text-lg xl:text-xl">
-            06/02/2024,
-            <span className="font-semibold">18:26 ⏰</span>
-          </p>
+          {currentTime()}
         </div>
         <div className="flex flex-col justify-center items-center h-[calc(100vh-158px)] sm:h-[calc(100vh-224px)] bg-[#FFEDE5] rounded-[24px] sm:rounded-[40px]">
           <Image

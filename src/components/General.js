@@ -5,6 +5,7 @@ import {
   setItemLocalStorage,
   getItemLocalStorage,
   toastProvider,
+  currentTime,
 } from "@/helpers/utils";
 import axios from "axios";
 
@@ -117,10 +118,7 @@ const General = (props) => {
           <div className="sm:text-xl xl:text-2xl font-semibold capitalize sm:hidden">
             App Info
           </div>
-          <p className="text-sm sm:text-lg xl:text-xl">
-            06/02/2024,
-            <span className="font-semibold">18:26 ⏰</span>
-          </p>
+          {currentTime()}
         </div>
         <div>
           <div className="flex w-full">
