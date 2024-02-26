@@ -84,7 +84,7 @@ const Premium = (props) => {
     try {
       const paypal = await loadScript({
         clientId:
-          "AfsLgMyn0DsgW0saDSqdoSQkkWRzUWyW4EE3nHtjmOEHkrAfzvqQNXD59_JhZ-g2TWF3_k0XASWIrZLz",
+          "AaCgl6fEyzLZ1zuQyyh-guTWf2z5gCkZ6k7nDEvMXq7XjcHkCCEZUjtypAoJSYeP0VvJiERd0vSUUTvx",
       });
       if (paypal) {
         setPayPalActive(true);
