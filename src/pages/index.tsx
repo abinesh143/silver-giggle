@@ -11,6 +11,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Modal } from "flowbite";
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const [user, setUser] = useState(null);
@@ -54,7 +56,10 @@ export default function Home() {
             content="Turn your website to app, quickly with no coding required."
           />
           <meta property="og:site_name" content="Free App Maker Pro" />
-          <meta name="google-site-verification" content="-41E5If5IV2N-CtmI2hI5MAR5HQ9S-i8BEksUDDvG58" />
+          <meta
+            name="google-site-verification"
+            content="-41E5If5IV2N-CtmI2hI5MAR5HQ9S-i8BEksUDDvG58"
+          />
         </Head>
         <Navbar user={user} />
         <Banner checkUserExists={() => checkUserExists()} />
@@ -67,6 +72,18 @@ export default function Home() {
           <Faqs />
           <Footer />
         </div>
+        <Link
+          href={"https://wa.me/919385849750?text=App%20Maker%20AI%20Custom"}
+          className="fixed right-5 bottom-5"
+        >
+          <Image
+            src="/images/whats.png"
+            width={50}
+            height={50}
+            alt="whats"
+            className="animate-bounce"
+          />
+        </Link>
       </div>
     </main>
   );

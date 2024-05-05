@@ -17,6 +17,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { initFlowbite } from "flowbite";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Account = () => {
   const [activeTab, setActiveTab] = useState("info");
@@ -471,7 +472,7 @@ const Account = () => {
               </div>
             ) : activeTab === "pro" ? (
               <div>
-                <Premium setTab={() => setActiveTab('help')} user={user}/>
+                <Premium setTab={() => setActiveTab("help")} user={user} />
               </div>
             ) : activeTab === "review" ? (
               <div>
@@ -488,6 +489,18 @@ const Account = () => {
             ) : null}
           </div>
           <LogoutModal />
+          <Link
+            href={"https://wa.me/919385849750?text=App%20Maker%20AI%20Custom"}
+            className="fixed right-5 bottom-5"
+          >
+            <Image
+              src="/images/whats.png"
+              width={50}
+              height={50}
+              alt="whats"
+              className="animate-bounce"
+            />
+          </Link>
         </>
       )}
     </main>
