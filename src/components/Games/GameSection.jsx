@@ -44,7 +44,7 @@ const GameSection = (props) => {
                 <div className="font-bold text-lg">Most Played</div>
             </div>
             <div className="container">
-                <div className="grid grid-cols-2 mb-2 px-1">
+                <div className="grid grid-cols-2 lg:grid-cols-4 mb-2 px-1">
                     {mainGame.length ? (
                         mainGame.map((g, i) => {
                             return (
@@ -91,7 +91,7 @@ const GameSection = (props) => {
                             );
                         })
                     ) : (
-                        <div style={{ height: "calc(100vh - 408px)" }}>
+                        <div style={{ height: "calc(100vh - 408px)" }} className="flex justify-center items-center w-full col-span-4">
                             <PageLoader />
                         </div>
                     )}

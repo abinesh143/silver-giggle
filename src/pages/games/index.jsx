@@ -43,7 +43,7 @@ export default function SmileyGames() {
 
 
   return (
-    <main className="bg-light">
+    <main className="bg-light container sm:mx-auto">
         <GameNavbar />
       <GameSlider />
       <GameSection data={gameConfig[1]} />
