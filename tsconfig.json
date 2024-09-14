@@ -17,6 +17,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/games/game/[slug]/index.jsx", "src/pages/games/[slug]/index.jsx"],
   "exclude": ["node_modules"]
 }
