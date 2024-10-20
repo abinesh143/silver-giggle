@@ -16,7 +16,7 @@ const Banner = (props) => {
                   <h2 className="lg:text-lg 2xl:text-xl mb-6 2xl:mb-8">
                     Are you looking to convert Shopify, WooCommerce,
                     BigCommerce, Squarespace, Dukaan, Wix, or ANY other website
-                    into native Android and iOS apps?
+                    into native Android and IOS apps?
                   </h2>
                 </div>
               </div>
@@ -60,7 +60,7 @@ const Banner = (props) => {
                       />
                     </div>
                     <div className="ml-4">
-                      <p className="font-semibold text-lg">+ 20.000</p>
+                      <p className="font-semibold text-lg">+ 20,000</p>
                       <p className="text-sm">Happy Customers</p>
                     </div>
                   </div>
@@ -79,7 +79,7 @@ const Banner = (props) => {
               />
               <p className="text-4xl font-semibold text-center leading-snug">
                 Make your dream App for
-                <span className="block text-[#FE5000]">Andriod & Ios</span>
+                <span className="block text-[#FE5000]">Andriod & IOS</span>
               </p>
             </div>
             <div className="absolute bottom-6 left-6 right-6 lg:bottom-10 lg:left-16 lg:right-16 flex justify-center gap-2 sm:gap-4 lg:gap-6">

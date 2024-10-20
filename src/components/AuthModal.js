@@ -72,8 +72,6 @@ const AuthModal = (props) => {
       setRegisterError("Password is missing");
     } else if (!registerData.userCountry) {
       setRegisterError("user country is missing");
-    } else if (!registerData.phoneNumber) {
-      setRegisterError("phone number is missing");
     } else {
       try {
         setBtnLoading(true);
@@ -360,7 +358,6 @@ const AuthModal = (props) => {
                         phoneNumber: e.target.value,
                       })
                     }
-                    required
                   />
                 </div>
                 <button

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Navbar from "@/components/Navbar";
 import Banner from "@/components/Banner";
@@ -36,6 +36,24 @@ export default function Home() {
     }
   };
 
+  //   function extractEmail(emails) {
+  //     const emailArray = emails.split(',').map(email => email.trim());
+  //     const contactEmail = emailArray.find(email => !email.includes('legal'));
+
+  //     return contactEmail || emailArray[0];
+  // }
+
+  //   useEffect(() => {
+  //     const response = sampleJson.map((s) => ({
+  //       NAME : s.NAME,
+  //       WEBSITE: s.WEBSITE,
+  //       EMAIL: extractEmail(s.EMAIL),
+  //     }))
+
+  //     const filterResponse = response.filter((s) => s.EMAIL !== '*** waiting for processing ***' && s.EMAIL !== '')
+
+  //     console.log(filterResponse)
+  //   },[])
 
   useEffect(() => {
     const userData = localStorage.getItem("appMaker");

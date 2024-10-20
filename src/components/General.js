@@ -108,6 +108,7 @@ const General = (props) => {
       setDownloadVisible(true);
       if (appDetails["appIcon"]) {
         setAppPreview(appDetails["appIcon"]);
+        setAppIcon(appDetails["appIcon"])
       }
     }
   }, []);

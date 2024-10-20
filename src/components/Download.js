@@ -47,6 +47,7 @@ const Download = (props) => {
           setTimeout(() => {
             setDisableButton(false);
             toastProvider("success", "App Successfully Build");
+            setStep(3);
           }, 5000);
         } else {
           setMessage("Build Failed Try Again");
@@ -139,7 +140,7 @@ const Download = (props) => {
                             width={256}
                             height={256}
                             alt="download-start"
-                            className="max-sm:w-44 max-sm:h-44"
+                            className="max-sm:w-44 max-sm:h-44  hover:opacity-50 cursor-pointer"
                             onClick={() => setProgressDownload()}
                           />
                         </div>
@@ -155,7 +156,7 @@ const Download = (props) => {
                             Building your Application:
                             <span className="block text-xs mt-2 font-semibold text-blue-500">
                               {disableButton
-                                ? "Please wait ... Its takes less than 1 Minute"
+                                ? "App is Building..."
                                 : "Build Finished Press Next"}
                             </span>
                           </div>
@@ -234,9 +235,8 @@ const Download = (props) => {
                         <div className="flex justify-between gap-1 sm:gap-4 lg:gap-1 xl:gap-4">
                           <div className="text-lg sm:text-xl lg:text-3xl font-semibold mb-4 sm:mb-6 lg:mb-2 xl:mb-6">
                             Download the Application:
-                            <span className="block text-xs font-semibold ms-2 mt-2 text-blue-500">
-                              After Testing the app in your Mobile. Click
-                              Publish
+                            <span className="block text-sm font-semibold ms-2 mt-2 text-blue-500">
+                              Your application is ready.
                             </span>
                           </div>
                           <div className="relative mb-4">
@@ -329,12 +329,14 @@ const Download = (props) => {
                     </div>
                   </div>
                 )}
-                <div className="text-sm mt-4 pl-8 text-red-500 font-semibold">
-                  Note :{" "}
-                  <span className="text-blue-500">
-                    App Icon & App Name with reflect in Publish Build Only
-                  </span>
-                </div>
+                {step === 3 ? (
+                  <div className="text-sm mt-4 pl-8 text-red-500 font-semibold">
+                    Note :{" "}
+                    <span className="text-blue-500">
+                      App Icon & App Name with reflect in Publish Build Only
+                    </span>
+                  </div>
+                ) : null}
               </section>
 
               <div className="basis-1/2 flex justify-center items-center">
