@@ -128,7 +128,7 @@ const Premium = (props) => {
             <div className="w-full flex-1 mt-8 p-8 order-2 bg-white shadow-xl rounded-3xl sm:w-96 lg:w-full lg:order-1 relative">
               {props.user.amount === 25 ? (
                 <div className="absolute -top-1 left-0">
-                  <span class="bg-green-100 text-green-800 text-xs font-medium px-4 py-1 rounded dark:bg-green-900 dark:text-green-300">
+                  <span className="bg-green-100 text-green-800 text-xs font-medium px-4 py-1 rounded dark:bg-green-900 dark:text-green-300">
                     Active
                   </span>
                 </div>
@@ -190,7 +190,7 @@ const Premium = (props) => {
             <div className="w-full flex-1 p-8 order-1 shadow-xl rounded-3xl bg-gray-900 text-gray-400 sm:w-96 lg:w-full lg:order-2 lg:mt-0 relative">
               {props.user.amount === 99 ? (
                 <div className="absolute -top-1 left-0">
-                  <span class="bg-green-100 text-green-800 text-xs font-medium px-4 py-1 rounded dark:bg-green-900 dark:text-green-300">
+                  <span className="bg-green-100 text-green-800 text-xs font-medium px-4 py-1 rounded dark:bg-green-900 dark:text-green-300">
                     Active
                   </span>
                 </div>
@@ -249,7 +249,7 @@ const Premium = (props) => {
             <div className="w-full flex-1 mt-8 p-8 order-3 bg-white shadow-xl rounded-3xl sm:w-96 lg:w-full lg:order-3 relative">
               {props.user.amount === 79 ? (
                 <div className="absolute -top-1 left-0">
-                  <span class="bg-green-100 text-green-800 text-xs font-medium px-4 py-1 rounded dark:bg-green-900 dark:text-green-300">
+                  <span className="bg-green-100 text-green-800 text-xs font-medium px-4 py-1 rounded dark:bg-green-900 dark:text-green-300">
                     Active
                   </span>
                 </div>

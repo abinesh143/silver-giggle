@@ -1,3 +1,5 @@
+'use client'
+
 import Navbar from "@/components/Navbar";
 import Banner from "@/components/Banner";
 import Faqs from "@/components/Faqs";
@@ -33,6 +35,7 @@ export default function Home() {
       toggleModal("show");
     }
   };
+
 
   useEffect(() => {
     const userData = localStorage.getItem("appMaker");
@@ -72,18 +75,6 @@ export default function Home() {
           <Faqs />
           <Footer />
         </div>
-        <Link
-          href={"https://wa.me/919385849750?text=App%20Maker%20AI%20Custom"}
-          className="fixed right-5 bottom-5"
-        >
-          <Image
-            src="/images/whats.png"
-            width={50}
-            height={50}
-            alt="whats"
-            className="animate-bounce"
-          />
-        </Link>
       </div>
     </main>
   );

@@ -1,6 +1,11 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { setItemLocalStorage, getItemLocalStorage, toastProvider, currentTime } from "@/helpers/utils";
+import {
+  setItemLocalStorage,
+  getItemLocalStorage,
+  toastProvider,
+  currentTime,
+} from "@/helpers/utils";
 
 const Monetization = () => {
   const [appAds, setAppAds] = useState({
@@ -29,7 +34,7 @@ const Monetization = () => {
         admobBannerId: appAds.admobBannerId,
         admobInterstitialId: appAds.admobInterstitialId,
       });
-      toastProvider('success', 'Admob Ads Saved')
+      toastProvider("success", "Admob Ads Saved");
     }
   };
 
@@ -48,7 +53,7 @@ const Monetization = () => {
         unityBannerId: appAds.unityBannerId,
         unityInterstitialId: appAds.unityInterstitialId,
       });
-      toastProvider('success', 'Unity Ads Saved')
+      toastProvider("success", "Unity Ads Saved");
     }
   };
 
@@ -150,7 +155,9 @@ const Monetization = () => {
                 />
               </div>
               {admobError ? (
-                <small class="block text-xs text-red-600">{admobError}</small>
+                <small className="block text-xs text-red-600">
+                  {admobError}
+                </small>
               ) : null}
               <button
                 type="submit"
@@ -242,7 +249,9 @@ const Monetization = () => {
                 />
               </div>
               {unityError ? (
-                <small class="block text-xs text-red-600">{unityError}</small>
+                <small className="block text-xs text-red-600">
+                  {unityError}
+                </small>
               ) : null}
               <button
                 type="submit"

@@ -267,7 +267,7 @@ const Design = () => {
                     />
                   </div>
                   {designError ? (
-                    <small class="block text-xs text-red-600">
+                    <small className="block text-xs text-red-600">
                       {designError}
                     </small>
                   ) : null}

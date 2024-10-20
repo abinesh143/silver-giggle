@@ -85,16 +85,18 @@ const Features = () => {
                     <p>We have more features for your Application.</p>
                     <p>which include:</p>
                     <ul className="list-disc pl-4 pt-4">
-                      <li>In App Purchase - For More Revenue</li>
-                      <li>In App Games - For User Retension</li>
-                      <li>In App Notification - For Offers & Discount</li>
-                      <li>In App Rating - Get More 5 Stars</li>
-                      <li>In App Chats - Group Chat inside app</li>
-                      <li>Banner Ads - For More Revenue</li>
+                      <li>ADMOB ADS - For More Revenue</li>
+                      <li>IN APP GAMES - For User Retension</li>
+                      <li>IN APP NOTIFICATION - For Offers & Discount</li>
+                      <li>IN APP RATING - Get More 5 Stars</li>
+                      <li>IN APP CHATS - Group Chat inside app</li>
                       <li>Custom Features also applicable</li>
                     </ul>
                     <div className="mt-8">
-                      <a href="https://wa.me/919385849750?text=App%20Maker%20AI%20Custom" className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 2xl:px-16 2xl:py-4">
+                      <a
+                        href="https://wa.me/916382441797?text=App%20Maker%20AI%20Custom"
+                        className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 2xl:px-16 2xl:py-4"
+                      >
                         Contact Sales
                       </a>
                     </div>
@@ -178,15 +180,18 @@ const Features = () => {
                     <p>We have more Designs for your Application.</p>
                     <p>which include:</p>
                     <ul className="list-disc pl-4 pt-4">
-                      <li>Splash Screen - Unique UI</li>
-                      <li>Custom Screenshots - Attract More Users</li>
-                      <li>ASO handled by Us- Rank First in PlayStore</li>
-                      <li>Full Reskin - Looks Premium</li>
-                      <li>Premium Design - Loved by Customers</li>
+                      <li>LAUNCH SCREEN - Unique UI</li>
+                      <li>CUSTOM SSCREENSHOTS - Attract More Users</li>
+                      <li>ASO HANDLED BY US- Rank First in PlayStore</li>
+                      <li>FULL RESKIN - Looks Premium</li>
+                      <li>PREMIUM DESIGN - Loved by Customers</li>
                       <li>Custom Design also applicable</li>
                     </ul>
                     <div className="mt-8">
-                      <a href="https://wa.me/919385849750?text=App%20Maker%20AI%20Custom" className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 2xl:px-16 2xl:py-4">
+                      <a
+                        href="https://wa.me/916382441797?text=App%20Maker%20AI%20Custom"
+                        className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 2xl:px-16 2xl:py-4"
+                      >
                         Contact Sales
                       </a>
                     </div>
@@ -278,7 +283,10 @@ const Features = () => {
                       <li>Custom Apps also available.</li>
                     </ul>
                     <div className="mt-8">
-                      <a href="https://wa.me/919385849750?text=App%20Maker%20AI%20Custom" className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 2xl:px-16 2xl:py-4">
+                      <a
+                        href="https://wa.me/916382441797?text=App%20Maker%20AI%20Custom"
+                        className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 2xl:px-16 2xl:py-4"
+                      >
                         Contact Sales
                       </a>
                     </div>

@@ -12,7 +12,6 @@ const Navbar = (props) => {
     type === "show" ? modal.show() : modal.hide();
   };
 
-
   useEffect(() => {
     initFlowbite();
   }, [props.user]);
@@ -28,7 +27,7 @@ const Navbar = (props) => {
                 className="h-8 lg:h-10"
                 alt="App Maker Pro"
               />
-              <span className="ms-2 font-semibold text-[#FE5000] md:hidden xl:flex text-xl sm:text-3xl">
+              <span className="ms-2 font-semibold text-[#FE5000] md:hidden xl:flex text-xl sm:text-3xl uppercase">
                 Free App Maker Pro AI
               </span>
             </Link>
@@ -150,27 +149,27 @@ const Navbar = (props) => {
             {/* Mobile Navbar */}
             <div
               id="main-menu-modal"
-              tabindex="-1"
+              tabIndex="-1"
               aria-hidden="true"
-              class="fixed top-0 left-0 right-0 z-50 hidden w-full h-screen overflow-x-hidden overflow-y-auto"
+              className="fixed top-0 left-0 right-0 z-50 hidden w-full h-screen overflow-x-hidden overflow-y-auto"
             >
-              <div class="relative bg-black text-white w-full h-full flex flex-col justify-between">
+              <div className="relative bg-black text-white w-full h-full flex flex-col justify-between">
                 <div>
-                  <div class="flex items-start justify-between px-4 py-5 border-b border-[#3A3A3A] rounded-t">
-                    <div class="flex gap-x-2 text-white">
+                  <div className="flex items-start justify-between px-4 py-5 border-b border-[#3A3A3A] rounded-t">
+                    <div className="flex gap-x-2 text-white">
                       <Image
                         src="/svg/profile-circle.svg"
-                        class="w-8"
+                        className="w-8"
                         width={32}
                         height={32}
                         alt="profile"
                       />
                       {props.user ? (
-                        <div class="px-2">
-                          <span class="block text-sm">
+                        <div className="px-2">
+                          <span className="block text-sm">
                             {props.user.fullName}
                           </span>
-                          <span class="block text-sm truncate">
+                          <span className="block text-sm truncate">
                             {props.user.userEmail}
                           </span>
                         </div>
@@ -179,7 +178,7 @@ const Navbar = (props) => {
                           <button
                             id="login"
                             type="button"
-                            class="text-white font-medium capitalize px-2 pt-1.5"
+                            className="text-white font-medium capitalize px-2 pt-1.5"
                             data-modal-hide="main-menu-modal"
                             onClick={() => toggleModal("show", "auth-modal")}
                           >
@@ -190,7 +189,7 @@ const Navbar = (props) => {
                     </div>
                     <button
                       type="button"
-                      class="text-gray-400 bg-transparent rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
+                      className="text-gray-400 bg-transparent rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
                       data-modal-hide="main-menu-modal"
                     >
                       <Image
@@ -199,34 +198,34 @@ const Navbar = (props) => {
                         width="24"
                         alt="close-circle"
                       />
-                      <span class="sr-only">Close modal</span>
+                      <span className="sr-only">Close modal</span>
                     </button>
                   </div>
-                  <div class="pt-5 flex flex-col gap-y-5">
+                  <div className="pt-5 flex flex-col gap-y-5">
                     <Link
                       href="/"
-                      class="text-white text-xl font-semibold border-b border-[#3A3A3A] px-4 pb-5"
+                      className="text-white text-xl font-semibold border-b border-[#3A3A3A] px-4 pb-5"
                       data-modal-hide="main-menu-modal"
                     >
                       Home
                     </Link>
                     <Link
                       href="/showcase"
-                      class="text-white text-xl font-semibold border-b border-[#3A3A3A] px-4 pb-5"
+                      className="text-white text-xl font-semibold border-b border-[#3A3A3A] px-4 pb-5"
                       data-modal-hide="main-menu-modal"
                     >
                       Showcase
                     </Link>
                     <Link
                       href="/#discover"
-                      class="text-white text-xl font-semibold border-b border-[#3A3A3A] px-4 pb-5"
+                      className="text-white text-xl font-semibold border-b border-[#3A3A3A] px-4 pb-5"
                       data-modal-hide="main-menu-modal"
                     >
                       Features
                     </Link>
                     <Link
                       href="/reseller"
-                      class="text-white text-xl font-semibold border-b border-[#3A3A3A] px-4 pb-5"
+                      className="text-white text-xl font-semibold border-b border-[#3A3A3A] px-4 pb-5"
                       data-modal-hide="main-menu-modal"
                     >
                       Reseller
@@ -235,7 +234,7 @@ const Navbar = (props) => {
                       <Link
                         href="/account"
                         data-modal-hide="main-menu-modal"
-                        class="text-white text-xl font-semibold border-b border-[#3A3A3A] px-4 pb-5"
+                        className="text-white text-xl font-semibold border-b border-[#3A3A3A] px-4 pb-5"
                       >
                         Dashboard
                       </Link>
@@ -244,7 +243,7 @@ const Navbar = (props) => {
                       <div
                         v-if="userStore.user"
                         data-modal-hide="main-menu-modal"
-                        class="text-white text-xl font-semibold border-b border-[#3A3A3A] px-4 pb-5"
+                        className="text-white text-xl font-semibold border-b border-[#3A3A3A] px-4 pb-5"
                       >
                         <div
                           data-modal-target="logout-modal"

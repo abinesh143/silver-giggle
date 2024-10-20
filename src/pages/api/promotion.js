@@ -2,12 +2,8 @@ import { MongoClient } from "mongodb";
 
 const uri =
   "mongodb+srv://admin:admin123@cluster0.glemluw.mongodb.net/?retryWrites=true&w=majority";
-const options = {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-};
 
-const mongo = new MongoClient(uri, options);
+const mongo = new MongoClient(uri);
 
 export default async function handler(req, res) {
   if (req.method === "POST") {

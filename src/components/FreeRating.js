@@ -156,7 +156,7 @@ const FreeRating = () => {
                     ></textarea>
                   </div>
                   {reviewError ? (
-                    <small class="block text-xs text-red-600">
+                    <small className="block text-xs text-red-600">
                       {reviewError}
                     </small>
                   ) : null}

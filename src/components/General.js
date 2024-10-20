@@ -21,6 +21,7 @@ const General = (props) => {
   const [appIcon, setAppIcon] = useState(null);
   const [appPreview, setAppPreview] = useState("");
   const [btnLoading, setBtnLoading] = useState(false);
+  const [downloadVisible, setDownloadVisible] = useState(false);
 
   const mappingApplist = async () => {
     const body = {
@@ -70,6 +71,7 @@ const General = (props) => {
             });
             setAppPreview(response.data.secure_url);
             await mappingApplist();
+            setDownloadVisible(true);
           }
         })
         .catch((error) => {
@@ -103,6 +105,7 @@ const General = (props) => {
     const appDetails = getItemLocalStorage("appInfo");
     if (appDetails) {
       setAppInfo({ ...appDetails });
+      setDownloadVisible(true);
       if (appDetails["appIcon"]) {
         setAppPreview(appDetails["appIcon"]);
       }
@@ -176,42 +179,6 @@ const General = (props) => {
                   </div>
                   <div>
                     <label
-                      for="version_name"
-                      className="block mb-2  font-medium text-gray-900 dark:text-white"
-                    >
-                      Version name:
-                    </label>
-                    <input
-                      type="version_name"
-                      id="company"
-                      className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="1.0"
-                      value={appInfo.versionName}
-                      onChange={(e) =>
-                        setAppInfo({ ...appInfo, versionName: e.target.value })
-                      }
-                    />
-                  </div>
-                  <div>
-                    <label
-                      for="version_code"
-                      className="block mb-2  font-medium text-gray-900 dark:text-white"
-                    >
-                      Version code:
-                    </label>
-                    <input
-                      type="tel"
-                      id="version_code"
-                      className="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="11"
-                      value={appInfo.versionCode}
-                      onChange={(e) =>
-                        setAppInfo({ ...appInfo, versionCode: e.target.value })
-                      }
-                    />
-                  </div>
-                  <div>
-                    <label
                       for="website"
                       className="block mb-2  font-medium text-gray-900 dark:text-white"
                     >
@@ -256,7 +223,9 @@ const General = (props) => {
                   ) : null}
                 </div>
                 {appError ? (
-                  <small class="block text-xs text-red-600">{appError}</small>
+                  <small className="block text-xs text-red-600">
+                    {appError}
+                  </small>
                 ) : null}
                 <button
                   type="submit"
@@ -274,6 +243,15 @@ const General = (props) => {
                   ) : null}{" "}
                   Save
                 </button>
+                {downloadVisible && (
+                  <button
+                    type="button"
+                    className="bg-green-500 text-white hover:bg-opacity-80 focus:ring-gray-400 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-4 focus:outline-none text-sm sm:text-base lg:text-sm xl:text-base font-semibold rounded-xl px-8 py-2 sm:px-14 sm:py-3 mt-4 ms-4"
+                    onClick={() => props.setTab()}
+                  >
+                    Download Application
+                  </button>
+                )}
               </form>
 
               <div className="basis-1/2 flex justify-center items-center">

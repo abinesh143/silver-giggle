@@ -24,7 +24,7 @@ const Banner = (props) => {
                 <div className="relative">
                   <input
                     type="text"
-                    className="w-full text-xs sm:text-base lg:text-sm xl:text-base bg-transparent border-2 border-black focus:ring-0 focus:border-black rounded-lg sm:rounded-xl p-2 sm:p-3"
+                    className="w-full text-xs sm:text-base lg:text-sm xl:text-base bg-white border-2 border-black focus:ring-0 focus:border-black rounded-lg sm:rounded-xl p-2 sm:p-3"
                     placeholder="Enter Your Website Address"
                   />
                 </div>

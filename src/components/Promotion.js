@@ -91,7 +91,7 @@ const Promotion = () => {
             </button>
           </form>
           {errorMsg ? (
-            <small class="block text-xs text-red-600">{errorMsg}</small>
+            <small className="block text-xs text-red-600">{errorMsg}</small>
           ) : null}
           <div className="text-[#3B3A43] text-[8px] sm:text-xs lg:text-[10px] xl:text-xs">
             Enter your friend&apos;s email address (automatic email will be

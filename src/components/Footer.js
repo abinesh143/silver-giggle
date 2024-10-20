@@ -83,9 +83,6 @@ const Footer = () => {
               <li className="mb-2">
                 <Link href="/privacy-policy">Privacy Policy</Link>
               </li>
-              {/* <li className="mb-2">
-                <Link href="/refund-policy">Refund Policy</Link>
-              </li> */}
             </ul>
           </div>
           <div className="basis-3/12 max-md:mt-5">
@@ -94,15 +91,11 @@ const Footer = () => {
             </h2>
             <ul className="text-xs sm:text-base lg:text-sm xl:text-base font-medium">
               <li className="mb-2">
-                <Link href="https://wa.me/919385849750">+91 938 584 9750</Link>
+                <Link href="https://wa.me/916382441797">+91 6382 441 797</Link>
               </li>
               <li className="mb-2">
-                <Link href="mailto:smileysoftwares@gmail.com">smileysoftwares@gmail.com</Link>
-              </li>
-              <li className="leading-none mb-3">
-                <Link href="#">
-                  Tower B, Tek Meadows, Shollingallur Chennai
-                  - India
+                <Link href="mailto:smileysoftwares@gmail.com">
+                  smileysoftwares@gmail.com
                 </Link>
               </li>
               <li>

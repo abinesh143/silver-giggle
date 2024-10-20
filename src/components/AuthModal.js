@@ -2,6 +2,7 @@ import { toastProvider } from "@/helpers/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import countryList from "../json/country.json";
 
 const AuthModal = (props) => {
   const [authType, setAuthType] = useState("register");
@@ -27,7 +28,7 @@ const AuthModal = (props) => {
   const togglePassword = (value, id) => {
     const element = document.getElementById(id);
     if (element) {
-      value ? (element.type = "password") : (element.type = "text") ;
+      value ? (element.type = "password") : (element.type = "text");
     }
     setIsVisible(!value);
   };
@@ -101,20 +102,20 @@ const AuthModal = (props) => {
     <main>
       <div
         id="auth-modal"
-        tabindex="-1"
+        tabIndex="-1"
         aria-hidden="true"
-        class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-full sm:h-[calc(100%-1rem)] max-h-full"
+        className="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-full sm:h-[calc(100%-1rem)] max-h-full"
         data-modal-placement="center-center"
       >
-        <div class="absolute sm:relative w-full max-w-md max-h-full max-sm:bottom-0">
-          <div class="relative bg-white sm:rounded-[40px] shadow p-8 max-sm:rounded-t-[24px]">
-            <div class="flex items-center">
-              <h3 class="text-lg sm:text-2xl font-semibold">
+        <div className="absolute sm:relative w-full max-w-md max-h-full max-sm:bottom-0">
+          <div className="relative bg-white sm:rounded-[40px] shadow p-8 max-sm:rounded-t-[24px]">
+            <div className="flex items-center">
+              <h3 className="text-lg sm:text-2xl font-semibold">
                 Welcome{authType === "login" ? " Back" : ""},
               </h3>
               <button
                 type="button"
-                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
+                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
                 onClick={() => props.closeModal()}
               >
                 <Image
@@ -123,31 +124,31 @@ const AuthModal = (props) => {
                   width="24"
                   alt="close"
                 />
-                <span class="sr-only">Close modal</span>
+                <span className="sr-only">Close modal</span>
               </button>
             </div>
-            <h3 class="text-lg sm:text-2xl">
+            <h3 className="text-lg sm:text-2xl">
               In order to continue,
-              <span class="capitalize font-semibold text-[#FE5000]">
+              <span className="capitalize font-semibold text-[#FE5000]">
                 {authType}
               </span>
             </h3>
             {authType === "login" ? (
               <form
                 onSubmit={(e) => handleSubmitLogin(e)}
-                class="space-y-4 mt-6"
+                className="space-y-4 mt-6"
               >
-                <div class="relative">
+                <div className="relative">
                   <Image
                     src="/svg/profile.svg"
                     height="24"
                     width="24"
-                    class="absolute inset-y-0 top-3.5 left-3.5 pointer-events-none"
+                    className="absolute inset-y-0 top-3.5 left-3.5 pointer-events-none"
                     alt="profile"
                   />
                   <input
                     type="email"
-                    class="pl-12 p-3 w-full border border-[#CECECE] focus:ring-black focus:border-black rounded-xl text-sm sm:text-base"
+                    className="pl-12 p-3 w-full border border-[#CECECE] focus:ring-black focus:border-black rounded-xl text-sm sm:text-base"
                     placeholder="Your Email"
                     value={loginData.userEmail}
                     onChange={(e) =>
@@ -156,18 +157,18 @@ const AuthModal = (props) => {
                     required
                   />
                 </div>
-                <div name="password" class="relative">
+                <div name="password" className="relative">
                   <Image
                     src="/svg/lock.svg"
                     height="24"
                     width="24"
-                    class="absolute inset-y-0 top-3.5 left-3.5 pointer-events-none"
+                    className="absolute inset-y-0 top-3.5 left-3.5 pointer-events-none"
                     alt="lock"
                   />
                   <input
                     id="login-app"
                     type="password"
-                    class="pl-12 p-3 w-full border border-[#CECECE] focus:ring-black focus:border-black rounded-xl text-sm sm:text-base"
+                    className="pl-12 p-3 w-full border border-[#CECECE] focus:ring-black focus:border-black rounded-xl text-sm sm:text-base"
                     placeholder="Password"
                     value={loginData.password}
                     onChange={(e) =>
@@ -175,7 +176,7 @@ const AuthModal = (props) => {
                     }
                     required
                   />
-                  <div class="absolute top-4 right-4 cursor-pointer">
+                  <div className="absolute top-4 right-4 cursor-pointer">
                     <Image
                       src={isVisble ? "/svg/eye.svg" : "/svg/not-eye.svg"}
                       width={24}
@@ -185,22 +186,22 @@ const AuthModal = (props) => {
                     />
                   </div>
                 </div>
-                {/* <p v-if="showForgotPasswordAlert" class="flex items-center">
-              <Image src="/svg/info-orange.svg" class="w-4 h-4 mr-1" />
-              <span class="text-[#FE5000] text-xs">
+                {/* <p v-if="showForgotPasswordAlert" className="flex items-center">
+              <Image src="/svg/info-orange.svg" className="w-4 h-4 mr-1" />
+              <span className="text-[#FE5000] text-xs">
                 Reset password link has been sent to your email
               </span>
             </p> */}
                 {/* <a
                   href="#"
-                  class="float-right text-xs sm:text-sm text-[#949494] hover:underline"
+                  className="float-right text-xs sm:text-sm text-[#949494] hover:underline"
                 >
                   Forgot Password?
                 </a> */}
 
                 <button
                   type="submit"
-                  class="w-full text-white bg-black hover:bg-opacity-80 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-gray-400 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-3 text-center"
+                  className="w-full text-white bg-black hover:bg-opacity-80 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-gray-400 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-3 text-center"
                   disabled={btnLoading}
                 >
                   {btnLoading ? (
@@ -215,15 +216,15 @@ const AuthModal = (props) => {
                   Log In
                 </button>
                 {loginError ? (
-                  <small name="password" class="mt-1 text-xs text-red-600">
+                  <small name="password" className="mt-1 text-xs text-red-600">
                     {loginError}
                   </small>
                 ) : null}
-                <div class="text-center text-xs sm:text-sm font-medium text-[#949494]">
+                <div className="text-center text-xs sm:text-sm font-medium text-[#949494]">
                   Don&apos;t have an account,
                   <a
                     href="#"
-                    class="text-black font-semibold hover:underline cursor-pointer"
+                    className="text-black font-semibold hover:underline cursor-pointer"
                     onClick={() => setAuthType("register")}
                   >
                     Register
@@ -233,19 +234,19 @@ const AuthModal = (props) => {
             ) : (
               <form
                 onSubmit={(e) => handleSubmitRegister(e)}
-                class="space-y-4 mt-6"
+                className="space-y-4 mt-6"
               >
-                <div class="relative">
+                <div className="relative">
                   <Image
                     src="/svg/profile.svg"
                     height="24"
                     width="24"
-                    class="absolute inset-y-0 top-3.5 left-3.5 pointer-events-none"
+                    className="absolute inset-y-0 top-3.5 left-3.5 pointer-events-none"
                     alt="profile"
                   />
                   <input
                     type="text"
-                    class="pl-12 p-3 w-full border border-[#CECECE] focus:ring-black focus:border-black rounded-xl text-sm sm:text-base"
+                    className="pl-12 p-3 w-full border border-[#CECECE] focus:ring-black focus:border-black rounded-xl text-sm sm:text-base"
                     placeholder="Full Name"
                     value={registerData.fullName}
                     onChange={(e) =>
@@ -257,17 +258,17 @@ const AuthModal = (props) => {
                     required
                   />
                 </div>
-                <div class="relative">
+                <div className="relative">
                   <Image
                     src="/svg/sms.svg"
                     height="24"
                     width="24"
-                    class="absolute inset-y-0 top-3.5 left-3.5 pointer-events-none"
+                    className="absolute inset-y-0 top-3.5 left-3.5 pointer-events-none"
                     alt="sms"
                   />
                   <input
                     type="email"
-                    class="pl-12 p-3 w-full border border-[#CECECE] focus:ring-black focus:border-black rounded-xl text-sm sm:text-base"
+                    className="pl-12 p-3 w-full border border-[#CECECE] focus:ring-black focus:border-black rounded-xl text-sm sm:text-base"
                     placeholder="Email Address"
                     value={registerData.userEmail}
                     onChange={(e) =>
@@ -280,18 +281,18 @@ const AuthModal = (props) => {
                   />
                 </div>
 
-                <div name="password" class="relative">
+                <div name="password" className="relative">
                   <Image
                     src="/svg/lock.svg"
                     height="24"
                     width="24"
                     alt="lock"
-                    class="absolute inset-y-0 top-3.5 left-3.5 pointer-events-none"
+                    className="absolute inset-y-0 top-3.5 left-3.5 pointer-events-none"
                   />
                   <input
                     id="regis-app"
                     type="password"
-                    class="pl-12 p-3 w-full border border-[#CECECE] focus:ring-black focus:border-black rounded-xl text-sm sm:text-base"
+                    className="pl-12 p-3 w-full border border-[#CECECE] focus:ring-black focus:border-black rounded-xl text-sm sm:text-base"
                     placeholder="Password"
                     value={registerData.password}
                     onChange={(e) =>
@@ -302,7 +303,7 @@ const AuthModal = (props) => {
                     }
                     required
                   />
-                  <div class="absolute top-4 right-4 cursor-pointer">
+                  <div className="absolute top-4 right-4 cursor-pointer">
                     <Image
                       src={isVisble ? "/svg/eye.svg" : "/svg/not-eye.svg"}
                       width={24}
@@ -312,18 +313,17 @@ const AuthModal = (props) => {
                     />
                   </div>
                 </div>
-                <div class="relative">
+                <div className="relative">
                   <Image
                     src="/svg/globe.svg"
                     height="24"
                     width="24"
-                    class="absolute inset-y-0 top-3.5 left-3.5 pointer-events-none"
+                    className="absolute inset-y-0 top-3.5 left-3.5 pointer-events-none"
                     alt="country"
                   />
-                  <input
-                    type="text"
-                    class="pl-12 p-3 w-full border border-[#CECECE] focus:ring-black focus:border-black rounded-xl text-sm sm:text-base"
-                    placeholder="Your Country"
+                  <select
+                    id="countries"
+                    className="pl-12 p-3 w-full border border-[#CECECE] focus:ring-black focus:border-black rounded-xl text-sm sm:text-base"
                     value={registerData.userCountry}
                     onChange={(e) =>
                       setRegisterData({
@@ -332,19 +332,26 @@ const AuthModal = (props) => {
                       })
                     }
                     required
-                  />
+                  >
+                    <option value="">Choose a country</option>
+                    {countryList.map((option) => (
+                      <option key={option.code} value={option.code}>
+                        {option.name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
-                <div name="mobile" class="relative">
+                <div name="mobile" className="relative">
                   <Image
                     src="/svg/call.svg"
                     height="24"
                     width="24"
                     alt="call"
-                    class="absolute inset-y-0 top-3.5 left-3.5 pointer-events-none"
+                    className="absolute inset-y-0 top-3.5 left-3.5 pointer-events-none"
                   />
                   <input
                     type="number"
-                    class="pl-12 p-3 w-full border border-[#CECECE] focus:ring-black focus:border-black rounded-xl [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none text-sm sm:text-base"
+                    className="pl-12 p-3 w-full border border-[#CECECE] focus:ring-black focus:border-black rounded-xl [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none text-sm sm:text-base"
                     placeholder="Phone Number"
                     value={registerData.phoneNumber}
                     onChange={(e) =>
@@ -358,7 +365,7 @@ const AuthModal = (props) => {
                 </div>
                 <button
                   type="submit"
-                  class="w-full text-white bg-black hover:bg-opacity-80 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-gray-400 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-3 text-center"
+                  className="w-full text-white bg-black hover:bg-opacity-80 disabled:bg-gray-600 disabled:border-gray-600 focus:ring-gray-400 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-3 text-center"
                   disabled={btnLoading}
                 >
                   {btnLoading ? (
@@ -373,15 +380,15 @@ const AuthModal = (props) => {
                   Register
                 </button>
                 {registerError ? (
-                  <small name="email" class="mt-1 text-xs text-red-600">
+                  <small name="email" className="mt-1 text-xs text-red-600">
                     {registerError}
                   </small>
                 ) : null}
 
-                <div class="text-center text-xs sm:text-sm font-medium text-[#949494]">
+                <div className="text-center text-xs sm:text-sm font-medium text-[#949494]">
                   Already have an account,
                   <a
-                    class="text-black cursor-pointer font-semibold hover:underline"
+                    className="text-black cursor-pointer font-semibold hover:underline"
                     onClick={() => setAuthType("login")}
                   >
                     Login

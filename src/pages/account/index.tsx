@@ -31,6 +31,7 @@ const Account = () => {
         method: "GET",
       });
       const appDetails = await response.json();
+      console.log(appDetails)
       if (response.status === 200) {
         localStorage.setItem("appMakerPro", JSON.stringify(appDetails));
       }
@@ -126,7 +127,7 @@ const Account = () => {
                     <span className="ms-3">App Info</span>
                   </div>
                 </li>
-                <li>
+                {/* <li>
                   <div
                     className={`${
                       activeTab === "design"
@@ -156,8 +157,8 @@ const Account = () => {
                       Pro
                     </span>
                   </div>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <div
                     className={`${
                       activeTab === "setting"
@@ -184,8 +185,8 @@ const Account = () => {
                       Settings
                     </span>
                   </div>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <div
                     className={`${
                       activeTab === "push" ? "bg-blue-500" : "hover:bg-gray-100"
@@ -211,8 +212,8 @@ const Account = () => {
                       3
                     </span>
                   </div>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <div
                     className={`${
                       activeTab === "ads" ? "bg-blue-500" : "hover:bg-gray-100"
@@ -235,7 +236,7 @@ const Account = () => {
                       Monetization
                     </span>
                   </div>
-                </li>
+                </li> */}
                 <li>
                   <div
                     className={`${
@@ -270,7 +271,7 @@ const Account = () => {
                     </span>
                   </div>
                 </li>
-                <li>
+                {/* <li>
                   <div
                     className={`${
                       activeTab === "publish"
@@ -299,8 +300,8 @@ const Account = () => {
                       Publish
                     </span>
                   </div>
-                </li>
-                <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
+                </li> */}
+                <ul className="pt-20  space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
                   <li>
                     <div
                       className={`${
@@ -353,7 +354,7 @@ const Account = () => {
                       <span className="ms-3">Free Reviews</span>
                     </div>
                   </li>
-                  <li>
+                  {/* <li>
                     <div
                       className={`${
                         activeTab === "promote"
@@ -379,7 +380,7 @@ const Account = () => {
                       </svg>
                       <span className="ms-3">Promotion</span>
                     </div>
-                  </li>
+                  </li> */}
                   <li>
                     <div
                       className={`${
@@ -441,7 +442,7 @@ const Account = () => {
           <div className="sm:p-8 xl:ml-64">
             {activeTab === "info" ? (
               <div>
-                <General user={user} />
+                <General user={user} setTab={() => setActiveTab("download")} />
               </div>
             ) : activeTab === "design" ? (
               <div>
@@ -461,7 +462,7 @@ const Account = () => {
               </div>
             ) : activeTab === "download" ? (
               <div>
-                <Download user={user} />
+                <Download user={user} setTab={() => setActiveTab("pro")} />
               </div>
             ) : activeTab === "publish" ? (
               <div>
@@ -490,7 +491,7 @@ const Account = () => {
           </div>
           <LogoutModal />
           <Link
-            href={"https://wa.me/919385849750?text=App%20Maker%20AI%20Custom"}
+            href={"https://wa.me/916382441797?text=App%20Maker%20AI%20Custom"}
             className="fixed right-5 bottom-5"
           >
             <Image

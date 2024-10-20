@@ -28,7 +28,7 @@ const Review = () => {
     {
       rating: "5",
       imageUrl: "/images/review5.jpeg",
-      customerName: "Sowmiya Abhy",
+      customerName: "Sowmiya",
       description:
         "OGM! I can't believe my website is looking so much amazing in android application with the help App maker Pro AI. For making android apps my search ends here.",
     },
