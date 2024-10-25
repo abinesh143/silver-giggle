@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
       if (
         origin === "http://localhost:3000" ||
-        origin === "https://freeappmaker.pro"
+        origin === "https://www.freeappmaker.pro"
       ) {
         const requestHeaders = {
           "x-rapidapi-key":
