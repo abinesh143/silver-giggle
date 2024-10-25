@@ -1,19 +1,26 @@
-[{
-    "id": 1,
-    "title": "Boys Sticker",
-    "imageUrl": "/gif/animated.webp"
-},
-{
-    "id": 2,
+[
+  {
+    "id": "06220010836921",
     "title": "Girls Sticker",
-    "imageUrl": "/gif/animated.webp"
-}, {
-    "id": 3,
-    "title": "Boys Sticker",
-    "imageUrl": "/gif/animated.webp"
-},
-{
-    "id": 4,
+    "category": "girl",
+    "imageUrl": "/sticker/template-1.gif"
+  },
+  {
+    "id": "06200010835901",
     "title": "Girls Sticker",
-    "imageUrl": "/gif/animated.webp"
-}]
+    "category": "girl",
+    "imageUrl": "/sticker/template-2.webp"
+  },
+  {
+    "id": "06200010835341",
+    "title": "Girls Sticker",
+    "category": "girl",
+    "imageUrl": "/sticker/template-3.webp"
+  },
+  {
+    "id": "06220010831501",
+    "title": "Girls Sticker",
+    "category": "girl",
+    "imageUrl": "/sticker/template-4.gif"
+  }
+]
