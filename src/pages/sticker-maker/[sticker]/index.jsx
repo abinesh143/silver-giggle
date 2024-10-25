@@ -21,13 +21,13 @@ const IndividualStickerPacks = () => {
     const [animatedSticker, setAnimatedSticker] = useState([])
     const [convertedGif, setConvertedGif] = useState(null)
 
-    const postTemplateImage = async () => {
+    const postTemplateImage = async (ava) => {
         setBtnLoading(true);
-        if (!selectedAvatar.AvatarId) {
+        if (!ava.AvatarId) {
             return setAppError("Please Upload an Photo");
         }
         const data = {
-            "AvatarID": selectedAvatar.AvatarId,
+            "AvatarID": ava.AvatarId,
             "TemplateID": params.sticker,
             "BackgroundLayer": true
         }
@@ -79,8 +79,9 @@ const IndividualStickerPacks = () => {
                 .then(async (response) => {
                     if (response.status === 200) {
                         setAvatar(prev => [...prev, response.data.Result])
+                        setSelectedAvatar(response.data.Result)
                         localStorage.setItem("smileyai", JSON.stringify({ avatar: [...avatar, response.data.Result] }));
-                        await postTemplateImage()
+                        await postTemplateImage(response.data.Result)
                     }
                 })
                 .catch((error) => {
@@ -91,7 +92,7 @@ const IndividualStickerPacks = () => {
                     setBtnLoading(false);
                 });
         } else {
-            postTemplateImage()
+            postTemplateImage(selectedAvatar)
         }
     };
 
@@ -145,39 +146,44 @@ const IndividualStickerPacks = () => {
         Arrow gif */}
         <div className="px-4 sm:px-8 sm:py-4 max-lg:my-4">
             <h4 className="text-xl font-semibold text-center mb-2.5">{sticker?.title || ""}</h4>
-            <div>
-                <Image src={convertedGif?.PreviewUrl ? convertedGif.PreviewUrl : sticker?.imageUrl || '/sticker/template-1.gif'} width={240} height={240} alt="photo-sticker" className="w-full h-full rounded-lg" />
-            </div>
-            <div>
-                <label class="block mb-2 text-sm font-medium text-gray-900" for="file_input">Upload Your Photo</label>
-                <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="file_input_help" id="file_input" type="file" onChange={handleFileUpload} />
-                <p class="mt-1 text-sm text-gray-500" id="file_input_help">PNG, JPG only.</p>
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div>
+                    <Image src={convertedGif?.PreviewUrl ? convertedGif.PreviewUrl : sticker?.imageUrl || '/sticker/template-1.gif'} width={240} height={240} alt="photo-sticker" className="w-full h-full rounded-lg" />
+                </div>
+                <div>
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900" for="file_input">Upload Your Photo</label>
+                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="file_input_help" id="file_input" type="file" onChange={handleFileUpload} />
+                        <p class="mt-1 text-sm text-gray-500" id="file_input_help">PNG, JPG only.</p>
 
+                    </div>
+                    <div className="flex overflow-x-auto gap-4 mt-4">
+                        {
+                            avatar?.map((ava, index) => <div key={`avatar-${index}`} className={`flex justify-center items-center w-20 h-20 rounded-lg shadow ${selectedAvatar.AvatarId === ava.AvatarId ? 'bg-green-500' : 'bg-gray-50'}`} onClick={() => setSelectedAvatar(ava)}>
+                                <Image src={ava.AvatarIconUrl} width={72} height={72} alt="avatar" className="rounded-lg w-[72p h-[72px]" />
+                            </div>)
+                        }
+                    </div>
+                    <div className="flex flex-col items-center justify-center gap-4 mt-4">
+                        <button
+                            disabled={btnLoading}
+                            className="bg-[#FE5000] text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80  focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4 max-lg:w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                            onClick={postAvatar}
+                        >
+                            Convert Now
+                        </button>
+                        {
+                            convertedGif ? <button
+                                className="bg-green-500 text-center text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80  focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4 max-lg:w-full"
+                                onClick={downloadGif}
+                            >
+                                Download
+                            </button> : null
+                        }
+                    </div>
+                </div>
             </div>
-            <div className="flex overflow-x-auto gap-4 mt-4">
-                {
-                    avatar.map((ava, index) => <div key={`avatar-${index}`} className={`flex justify-center items-center w-20 h-20 rounded-lg shadow ${selectedAvatar.AvatarId === ava.AvatarId ? 'bg-green-500' : 'bg-gray-50'}`} onClick={() => setSelectedAvatar(ava)}>
-                        <Image src={ava.AvatarIconUrl} width={72} height={72} alt="avatar" className="rounded-lg w-[72p h-[72px]" />
-                    </div>)
-                }
-            </div>
-            <div className="flex flex-col items-center justify-center gap-4 mt-4">
-                <button
-                    disabled={btnLoading}
-                    className="bg-[#FE5000] text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80  focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4 max-lg:w-full disabled:opacity-50 disabled:cursor-not-allowed"
-                    onClick={postAvatar}
-                >
-                    Convert Now
-                </button>
-                {
-                    convertedGif ? <button
-                        className="bg-green-500 text-center text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80  focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4 max-lg:w-full"
-                        onClick={downloadGif}
-                    >
-                        Download
-                    </button> : null
-                }
-            </div>
+
         </div>
     </main>
 }
