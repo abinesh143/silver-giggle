@@ -3,11 +3,18 @@ export default async function handler(req, res) {
     try {
       let bodyObject = req.body;
 
-      if (origin !== 'http://localhost:3000' || origin !== 'https://freeappmaker.pro') {
+      const headersList = await req.headers;
+
+      const origin = headersList.origin;
+
+      if (
+        origin !== "http://localhost:3000" &&
+        origin !== "https://freeappmaker.pro"
+      ) {
         return res.status(401).json({ error: "UnAuthorised" });
       }
 
-      const headers = {
+      const requestHeaders = {
         "x-rapidapi-key": "2cb14ccb8bmsh812b2bb327af25dp1768eejsn66326b9649eb",
         "Content-Type": "application/json",
       };
@@ -16,8 +23,8 @@ export default async function handler(req, res) {
         "https://mojipop.p.rapidapi.com/api/Render/Gif",
         {
           method: "POST",
-          body: JSON.stringify(bodyObject),
-          headers: headers,
+          body: bodyObject,
+          headers: { ...requestHeaders },
         }
       );
 

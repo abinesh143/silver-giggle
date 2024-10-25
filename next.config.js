@@ -14,6 +14,11 @@ const nextConfig = {
         hostname: "flowbite.s3.amazonaws.com",
         port: "",
         pathname: "/**",
+      },{
+        protocol: "https",
+        hostname: 'resource.mojipop.com',
+        port: "",
+        pathname: "/**",
       }
     ],
   },
