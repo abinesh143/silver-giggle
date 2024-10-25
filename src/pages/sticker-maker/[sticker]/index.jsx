@@ -43,7 +43,6 @@ const IndividualStickerPacks = () => {
 
         const headers = {
             "Content-Type": "multipart/form-data",
-            "Access-Control-Allow-Origin": "https://freeappmaker.pro"
         }
 
         setBtnLoading(true);
@@ -51,7 +50,7 @@ const IndividualStickerPacks = () => {
             .post("https://gamead.netlify.app/api/avatar", data, { headers })
             .then((response) => {
                 if (response.status === 200) {
-                    console.log(response);
+                    console.log(response.data);
                 }
             })
             .catch((error) => {
@@ -100,7 +99,7 @@ const IndividualStickerPacks = () => {
                 </button>
                 <a
                     href="https://resource.mojipop.com/web-render/result/175257-0-500-0-f-70-06220010836921.gif"
-                    download={true}
+                    download={'abi.gif'}
                     className="bg-green-500 text-center text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80  focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4 max-lg:w-full"
                 >
                     Download
