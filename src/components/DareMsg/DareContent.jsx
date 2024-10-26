@@ -1,16 +1,16 @@
 const DareContent = () => {
     const shareText = encodeURIComponent(
-        `1. Use my pic as your WhatsApp story for one day 😎 ` +
-        `2. Purpose me 😍 ` +
-        `3. Tell me your biggest secret 😱 ` +
-        `4. Tell me the name of your crush ❤️ ` +
-        `5. Write “getting married” in your WhatsApp status 👰👨‍💼 ` +
-        `6. Send me your funniest pic 🤣 ` +
-        `7. First thing you notice in me when you meet me first 🤗 ` +
-        `8. Tell me the name of your BF/GF. 💑 ` +
-        `9. What is your memorable day 😇 ` +
+        `1. Use my pic as your WhatsApp story for one day 😎\n` +
+        `2. Purpose me 😍\n` +
+        `3. Tell me your biggest secret 😱\n` +
+        `4. Tell me the name of your crush ❤️\n` +
+        `5. Write “getting married” in your WhatsApp status 👰👨‍💼\n` +
+        `6. Send me your funniest pic 🤣\n` +
+        `7. First thing you notice in me when you meet me first 🤗\n` +
+        `8. Tell me the name of your BF/GF. 💑\n` +
+        `9. What is your memorable day 😇\n` +
         `10. 50 rs. recharge on my number 🤑`
-    );
+      );
     return <main>
         <h2 className="text-2xl font-semibold capitalize text-center">Dare Messages</h2>
         <div className="rounded-lg bg-white my-4 shadow-xl border-gray-100 mx-2 p-3">
