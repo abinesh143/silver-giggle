@@ -74,12 +74,13 @@ const GameSection = (props) => {
                                                 Start Game
                                             </a>
 
-                                            <div className="flex justify-center my-2">
+                                            <div className="flex justify-center items-center my-2">
                                                 <img
                                                     src="./images/online.png"
                                                     width={15}
                                                     height={15}
                                                     alt="online"
+                                                    className="w-4 h-4 rounded-full"
                                                 ></img>
                                                 <div className="text-green-500 font-bold px-1">
                                                     {Math.floor(g.gamePlays / 10000)} Users

@@ -3,7 +3,7 @@ import Image from "next/image";
 const StickerBanner = () => {
     return (
         <main>
-            <div className="min-h-[50vh] xl:min-h-[550px] bg-[#FFF1E7] bg-no-repeat bg-cover bg-right-bottom sm:bg-[0_center] lg:bg-right rounded-3xl lg:rounded-[40px] px-4 sm:px-8 sm:py-4 max-lg:my-4 mx-4">
+            <div className="min-h-[50vh] xl:min-h-[550px] bg-[#FFF1E7] bg-no-repeat bg-cover bg-right-bottom sm:bg-[0_center] lg:bg-right rounded-3xl lg:rounded-[40px] px-4 sm:px-8 sm:py-4 max-lg:my-4 mx-4 sm:mt-4">
                 <div className="h-full flex flex-col lg:flex-row">
                     <div className="px-2 pt-4 lg:basis-[55%]">
                         <div className="lg:h-full flex flex-col">

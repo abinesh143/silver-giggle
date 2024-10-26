@@ -8,6 +8,7 @@ import axios from "axios"
 import SmileyAIBottomNav from "../../../components/Common/BottomNav"
 import SmileyAINavbar from "../../../components/Common/SmileyAINav"
 import { initFlowbite } from "flowbite"
+import { toastProvider } from "@/helpers/utils";
 
 const IndividualStickerPacks = () => {
     const params = useParams()
@@ -25,7 +26,7 @@ const IndividualStickerPacks = () => {
     const postTemplateImage = async (ava) => {
         setBtnLoading(true);
         if (!ava.AvatarId) {
-            return setAppError("Please Upload an Photo");
+            return toastProvider("error", "Please Upload an Photo");
         }
         const data = {
             "AvatarID": ava.AvatarId,
@@ -42,6 +43,7 @@ const IndividualStickerPacks = () => {
             if (myData && myData.data && myData.data.Result) {
                 setAnimatedSticker(myData.data.Result)
                 setConvertedGif(myData.data.Result)
+                toastProvider("success", "Sticker Made Successfully")
             }
         }
         setBtnLoading(false);
@@ -51,14 +53,14 @@ const IndividualStickerPacks = () => {
         const file = event.target.files[0];
         if (file) {
             if (file.size > 5000000) {
-                setAppError("Image File should be less than 5 Mb");
-            } else if (file.type !== "image/jpeg" && file.type !== "image/png") {
-                setAppError("Image Format sholud be .jpeg or .jpg or .png");
+                toastProvider("error", "Image File should be less than 5 Mb");
+            } else if (file.type !== "image/jpg" && file.type !== "image/png") {
+                toastProvider("error", "Image Format sholud be .jpeg or .jpg or .png");
             } else {
                 setAppIcon(file);
             }
         } else {
-            setAppError("Image Upload Failed. Please try again..");
+            toastProvider("error","Image Upload Failed. Please try again..");
         }
     };
 
@@ -87,7 +89,7 @@ const IndividualStickerPacks = () => {
                 })
                 .catch((error) => {
                     console.error(error);
-                    setAppError("Image Uploading Failed.. Please try again");
+                    toastProvider("error","Image Uploading Failed.. Please try again");
                 })
                 .finally(() => {
                     setBtnLoading(false);
@@ -186,7 +188,7 @@ const IndividualStickerPacks = () => {
             </div>
         </div>
         <SmileyAIBottomNav />
-        <div id="sticker-instruction-modal" tabindex="-1" aria-hidden="true" className="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div id="sticker-instruction-modal" tabIndex="-1" aria-hidden="true" className="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div className="relative p-4 w-full max-w-md max-h-full">
                 <div className="relative bg-white rounded-lg shadow border border-orange-500">
                     <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
@@ -195,7 +197,7 @@ const IndividualStickerPacks = () => {
                         </h3>
                         <button type="button" className="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="sticker-instruction-modal">
                             <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                             </svg>
                             <span className="sr-only">Close modal</span>
                         </button>

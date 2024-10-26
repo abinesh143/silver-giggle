@@ -199,7 +199,7 @@ const Publish = (props) => {
                               <svg className="w-[72px] h-[72px] relative -rotate-90">
                                 <circle
                                   className="text-[#E0DFE2]"
-                                  stroke-width="5"
+                                  strokeWidth="5"
                                   stroke="currentColor"
                                   fill="transparent"
                                   r="30"
@@ -208,12 +208,12 @@ const Publish = (props) => {
                                 />
                                 <circle
                                   className="text-[#FE5000]"
-                                  stroke-width="5"
+                                  strokeWidth="5"
                                   stroke-dasharray={2 * 3.14 * 30}
                                   stroke-dashoffset={
                                     2 * 3.14 * 30 * (66.67 / 100)
                                   }
-                                  stroke-linecap="round"
+                                  strokeLinecap="round"
                                   stroke="currentColor"
                                   fill="transparent"
                                   r="30"
@@ -254,7 +254,7 @@ const Publish = (props) => {
                               <svg className="w-[72px] h-[72px] relative -rotate-90">
                                 <circle
                                   className="text-[#E0DFE2]"
-                                  stroke-width="5"
+                                  strokeWidth="5"
                                   stroke="currentColor"
                                   fill="transparent"
                                   r="30"
@@ -263,12 +263,12 @@ const Publish = (props) => {
                                 />
                                 <circle
                                   className="text-[#FE5000]"
-                                  stroke-width="5"
+                                  strokeWidth="5"
                                   stroke-dasharray={2 * 3.14 * 30}
                                   stroke-dashoffset={
                                     2 * 3.14 * 30 * (33.3 / 100)
                                   }
-                                  stroke-linecap="round"
+                                  strokeLinecap="round"
                                   stroke="currentColor"
                                   fill="transparent"
                                   r="30"
@@ -320,7 +320,7 @@ const Publish = (props) => {
                               <svg className="w-[72px] h-[72px] relative -rotate-90">
                                 <circle
                                   className="text-[#E0DFE2]"
-                                  stroke-width="5"
+                                  strokeWidth="5"
                                   stroke="currentColor"
                                   fill="transparent"
                                   r="30"
@@ -329,10 +329,10 @@ const Publish = (props) => {
                                 />
                                 <circle
                                   className="text-[#FE5000]"
-                                  stroke-width="5"
+                                  strokeWidth="5"
                                   stroke-dasharray={2 * 3.14 * 30}
                                   stroke-dashoffset={2 * 3.14 * 30 * (1 / 100)}
-                                  stroke-linecap="round"
+                                  strokeLinecap="round"
                                   stroke="currentColor"
                                   fill="transparent"
                                   r="30"
@@ -492,7 +492,7 @@ const Publish = (props) => {
                               <svg className="w-[72px] h-[72px] relative -rotate-90">
                                 <circle
                                   className="text-[#E0DFE2]"
-                                  stroke-width="5"
+                                  strokeWidth="5"
                                   stroke="currentColor"
                                   fill="transparent"
                                   r="30"
@@ -501,12 +501,12 @@ const Publish = (props) => {
                                 />
                                 <circle
                                   className="text-[#FE5000]"
-                                  stroke-width="5"
+                                  strokeWidth="5"
                                   stroke-dasharray={2 * 3.14 * 30}
                                   stroke-dashoffset={
                                     2 * 3.14 * 30 * (66.67 / 100)
                                   }
-                                  stroke-linecap="round"
+                                  strokeLinecap="round"
                                   stroke="currentColor"
                                   fill="transparent"
                                   r="30"
@@ -547,7 +547,7 @@ const Publish = (props) => {
                               <svg className="w-[72px] h-[72px] relative -rotate-90">
                                 <circle
                                   className="text-[#E0DFE2]"
-                                  stroke-width="5"
+                                  strokeWidth="5"
                                   stroke="currentColor"
                                   fill="transparent"
                                   r="30"
@@ -556,12 +556,12 @@ const Publish = (props) => {
                                 />
                                 <circle
                                   className="text-[#FE5000]"
-                                  stroke-width="5"
+                                  strokeWidth="5"
                                   stroke-dasharray={2 * 3.14 * 30}
                                   stroke-dashoffset={
                                     2 * 3.14 * 30 * (33.3 / 100)
                                   }
-                                  stroke-linecap="round"
+                                  strokeLinecap="round"
                                   stroke="currentColor"
                                   fill="transparent"
                                   r="30"
@@ -613,7 +613,7 @@ const Publish = (props) => {
                               <svg className="w-[72px] h-[72px] relative -rotate-90">
                                 <circle
                                   className="text-[#E0DFE2]"
-                                  stroke-width="5"
+                                  strokeWidth="5"
                                   stroke="currentColor"
                                   fill="transparent"
                                   r="30"
@@ -622,10 +622,10 @@ const Publish = (props) => {
                                 />
                                 <circle
                                   className="text-[#FE5000]"
-                                  stroke-width="5"
+                                  strokeWidth="5"
                                   stroke-dasharray={2 * 3.14 * 30}
                                   stroke-dashoffset={2 * 3.14 * 30 * (1 / 100)}
-                                  stroke-linecap="round"
+                                  strokeLinecap="round"
                                   stroke="currentColor"
                                   fill="transparent"
                                   r="30"
