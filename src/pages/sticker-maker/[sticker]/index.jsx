@@ -165,7 +165,7 @@ const IndividualStickerPacks = () => {
                         }
                     </div>
                     {
-                        avatar?.length && <div className="text-xs mt-1">Select Your Face Above</div>
+                        avatar?.length ? <div className="text-xs mt-1">Select Your Face Above</div> : null
                     }
                     <div className="flex flex-col items-center justify-center gap-4 mt-4">
                         <button

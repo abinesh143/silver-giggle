@@ -18,7 +18,8 @@ const DareContent = () => {
     );
 
     const handleCopyText = (shareText) => {
-        navigator.clipboard.writeText(shareText)
+        const decodedText = decodeURIComponent(shareText);
+        navigator.clipboard.writeText(decodedText)
             .then(() => {
                 toastProvider("success", "Text copied to clipboard!");
             })
