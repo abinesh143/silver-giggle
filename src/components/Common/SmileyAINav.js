@@ -1,13 +1,15 @@
+import Link from "next/link";
+
 const SmileyAINavbar = ({title}) => {
   return (
     <nav className="bg-gray-900 border-gray-200 sticky top-0 z-50">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-2">
-        <a href="/sticker-maker" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <Link href="/sticker-maker" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="/gif/emogi1.webp" className="h-8" alt="Flowbite Logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
             Smiley AI {title}
           </span>
-        </a>
+        </Link>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <a
             href="https://play.google.com/store/apps/details?id=funny.cricket.animated.sticker"
