@@ -159,9 +159,9 @@ const IndividualStickerPacks = () => {
                     </div>
                     <div className="flex overflow-x-auto gap-4 mt-4">
                         {
-                            avatar?.map((ava, index) => <div key={`avatar-${index}`} className={`flex justify-center items-center w-20 h-20 rounded-lg shadow ${selectedAvatar.AvatarId === ava.AvatarId ? 'bg-green-500' : 'bg-gray-50'}`} onClick={() => setSelectedAvatar(ava)}>
+                            avatar?.length ? avatar?.map((ava, index) => <div key={`avatar-${index}`} className={`flex justify-center items-center w-20 h-20 rounded-lg shadow ${selectedAvatar?.AvatarId === ava?.AvatarId ? 'bg-green-500' : 'bg-gray-50'}`} onClick={() => setSelectedAvatar(ava)}>
                                 <Image src={ava.AvatarIconUrl} width={72} height={72} alt="avatar" className="rounded-lg w-[72p h-[72px]" />
-                            </div>)
+                            </div>) : null
                         }
                     </div>
                     <div className="flex flex-col items-center justify-center gap-4 mt-4">
