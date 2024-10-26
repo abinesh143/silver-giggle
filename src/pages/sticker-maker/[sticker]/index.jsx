@@ -78,10 +78,12 @@ const IndividualStickerPacks = () => {
                 .post("https://gamead.netlify.app/api/avatar", data, { headers })
                 .then(async (response) => {
                     if (response.status === 200) {
-                        setAvatar(prev => [...prev, response.data.Result])
-                        setSelectedAvatar(response.data.Result)
-                        localStorage.setItem("smileyai", JSON.stringify({ avatar: [...avatar, response.data.Result] }));
-                        await postTemplateImage(response.data.Result)
+                        if (response.data.Result) {
+                            setAvatar(prev => [...prev, response.data.Result])
+                            setSelectedAvatar(response.data.Result)
+                            localStorage.setItem("smileyai", JSON.stringify({ avatar: [...avatar, response.data.Result] }));
+                            await postTemplateImage(response.data.Result)
+                        }
                     }
                 })
                 .catch((error) => {
@@ -160,7 +162,7 @@ const IndividualStickerPacks = () => {
                     <div className="flex overflow-x-auto gap-4 mt-4">
                         {
                             avatar?.length ? avatar?.map((ava, index) => <div key={`avatar-${index}`} className={`flex justify-center items-center w-20 h-20 rounded-lg shadow ${selectedAvatar?.AvatarId === ava?.AvatarId ? 'bg-green-500' : 'bg-gray-50'}`} onClick={() => setSelectedAvatar(ava)}>
-                                <Image src={ava.AvatarIconUrl} width={72} height={72} alt="avatar" className="rounded-lg w-[72p h-[72px]" />
+                                <Image src={ava?.AvatarIconUrl} width={72} height={72} alt="avatar" className="rounded-lg w-[72p h-[72px]" />
                             </div>) : null
                         }
                     </div>
