@@ -2,10 +2,12 @@
 
 import Image from "next/image"
 import StickerJson from "../../../json/stickerList.json"
-import StickerNavbar from "../../../components/StickerMaker/StickerNav"
 import { useParams } from "next/navigation"
 import { useEffect, useLayoutEffect, useState } from "react"
 import axios from "axios"
+import SmileyAIBottomNav from "../../../components/Common/BottomNav"
+import SmileyAINavbar from "../../../components/Common/SmileyAINav"
+import { initFlowbite } from "flowbite"
 
 const IndividualStickerPacks = () => {
     const params = useParams()
@@ -14,7 +16,6 @@ const IndividualStickerPacks = () => {
     const [sticker, setSticker] = useState('')
     const [appError, setAppError] = useState("");
     const [appIcon, setAppIcon] = useState(null);
-    const [appPreview, setAppPreview] = useState("");
     const [btnLoading, setBtnLoading] = useState(false);
     const [avatar, setAvatar] = useState([])
     const [selectedAvatar, setSelectedAvatar] = useState(null)
@@ -55,8 +56,6 @@ const IndividualStickerPacks = () => {
                 setAppError("Image Format sholud be .jpeg or .jpg or .png");
             } else {
                 setAppIcon(file);
-                setAppPreview(URL.createObjectURL(file));
-
             }
         } else {
             setAppError("Image Upload Failed. Please try again..");
@@ -140,24 +139,21 @@ const IndividualStickerPacks = () => {
                 setAnimatedSticker([...smileyAI.gif])
             }
         }
+        initFlowbite()
     }, [])
 
-    return <main className="container sm:mx-auto py-4">
-        <StickerNavbar />
-        {/* Your Photo
-        Arrow gif */}
-        <div className="px-4 sm:px-8 sm:py-4 max-lg:my-4">
-            <h4 className="text-xl font-semibold text-center mb-2.5">{sticker?.title || ""}</h4>
+    return <main >
+        <SmileyAINavbar title="- Cartoon" />
+        <div className="container sm:mx-auto px-4 sm:px-8 sm:py-4 max-lg:mb-10">
             <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div>
-                    <Image src={convertedGif?.PreviewUrl ? convertedGif.PreviewUrl : sticker?.imageUrl || '/sticker/template-1.gif'} width={240} height={240} alt="photo-sticker" className="w-full h-full rounded-lg" />
+                    <Image src={convertedGif?.PreviewUrl ? convertedGif.PreviewUrl : sticker?.imageUrl || '/sticker/template-1.gif'} width={200} height={200} alt="photo-sticker" className="w-full h-full rounded-lg" />
                 </div>
                 <div>
                     <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900" for="file_input">Upload Your Photo</label>
-                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="file_input_help" id="file_input" type="file" onChange={handleFileUpload} />
-                        <p class="mt-1 text-sm text-gray-500" id="file_input_help">PNG, JPG only.</p>
-
+                        <label className="block mb-2 text-sm font-medium text-gray-900" htmlFor="file_input">Upload Your Photo</label>
+                        <input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="file_input_help" id="file_input" type="file" onChange={handleFileUpload} />
+                        <p className="mt-1 text-xs text-gray-500" id="file_input_help">PNG, JPG only accecpted.</p>
                     </div>
                     <div className="flex overflow-x-auto gap-4 mt-4">
                         {
@@ -166,11 +162,14 @@ const IndividualStickerPacks = () => {
                             </div>) : null
                         }
                     </div>
+                    {
+                        avatar?.length && <div className="text-xs mt-1">Select Your Face Above</div>
+                    }
                     <div className="flex flex-col items-center justify-center gap-4 mt-4">
                         <button
+                            data-modal-target="sticker-instruction-modal" data-modal-toggle="sticker-instruction-modal"
                             disabled={btnLoading}
                             className="bg-[#FE5000] text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80  focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4 max-lg:w-full disabled:opacity-50 disabled:cursor-not-allowed"
-                            onClick={postAvatar}
                         >
                             Convert Now
                         </button>
@@ -185,8 +184,32 @@ const IndividualStickerPacks = () => {
                     </div>
                 </div>
             </div>
-
         </div>
+        <SmileyAIBottomNav />
+        <div id="sticker-instruction-modal" tabindex="-1" aria-hidden="true" className="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div className="relative p-4 w-full max-w-md max-h-full">
+                <div className="relative bg-white rounded-lg shadow border border-orange-500">
+                    <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
+                        <h3 className="text-xl font-semibold text-gray-900 ">
+                            Sticker Instruction
+                        </h3>
+                        <button type="button" className="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="sticker-instruction-modal">
+                            <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            </svg>
+                            <span className="sr-only">Close modal</span>
+                        </button>
+                    </div>
+                    <div className="p-4 md:p-5">
+                        <div className="flex flex-col gap-4">
+                            <Image src='/sticker/sticker-instruct.png' width={100} height={100} alt="instruct" className="w-full" />
+                            <button type="submit" className="w-full text-white bg-[#FE5000] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" data-modal-hide="sticker-instruction-modal" onClick={postAvatar}>Confirm </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 }
 export default IndividualStickerPacks

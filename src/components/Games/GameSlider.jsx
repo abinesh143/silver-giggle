@@ -8,12 +8,12 @@ const GameSlider = () => {
         initFlowbite()
     }, [])
     return <div id="default-carousel" className="relative w-full" data-carousel="slide">
-        <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
+        <div className="relative h-56 overflow-hidden rounded-lg md:h-96 sm:mt-4">
             <div className="hidden duration-700 ease-in-out" data-carousel-item>
                 <a href="https://pyk5dwtzo.play.gamezop.com/g/rkWfy2pXq0r" target="_blank" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     <img
                         src={"https://static.gamezop.com/rkWfy2pXq0r/wall.png"}
-                        className="d-block w-100"
+                        className="d-block w-full"
                         alt="Friut Chop"
                     />
                 </a>
@@ -22,7 +22,7 @@ const GameSlider = () => {
                 <a href="https://pyk5dwtzo.play.gamezop.com/g/rkWfy2pXq0r" target="_blank" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     <img
                         src={"https://static.gamezop.com/rkWfy2pXq0r/wall.png"}
-                        className="d-block w-100"
+                        className="d-block w-full"
                         alt="Friut Chop"
                     />
                 </a>
@@ -31,7 +31,7 @@ const GameSlider = () => {
                 <a href="https://pyk5dwtzo.play.gamezop.com/g/ryN9EGAQa" target="_blank" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     <img
                         src="https://static.gamezop.com/ryN9EGAQa/wall.png"
-                        className="d-block w-100"
+                        className="d-block w-full"
                         alt="Slap Fest"
                     />
                 </a>
@@ -40,7 +40,7 @@ const GameSlider = () => {
                 <a href="https://pyk5dwtzo.play.gamezop.com/g/rkwCYBZuV" target="_blank" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     <img
                         src="https://static.gamezop.com/rkwCYBZuV/wall.png"
-                        className="d-block w-100"
+                        className="d-block w-full"
                         alt="Furious Speed"
                     />
                 </a>
@@ -49,7 +49,7 @@ const GameSlider = () => {
                 <a href="https://pyk5dwtzo.play.gamezop.com/g/SkhljT2fdgb" target="_blank" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     <img
                         src="https://static.gamezop.com/SkhljT2fdgb/wall.png"
-                        className="d-block w-100"
+                        className="d-block w-full"
                         alt="Ludo Game"
                     />
                 </a>
@@ -58,7 +58,7 @@ const GameSlider = () => {
                 <a href="https://pyk5dwtzo.play.gamezop.com/g/r1zG1h6m90H" target="_blank" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     <img
                         src="https://static.gamezop.com/r1zG1h6m90H/wall.png"
-                        className="d-block w-100"
+                        className="d-block w-full"
                         alt="Candy Fiesta"
                     />
                 </a>
@@ -67,7 +67,7 @@ const GameSlider = () => {
                 <a href="https://pyk5dwtzo.play.gamezop.com/g/BkXW1a__" target="_blank" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     <img
                         src="https://static.gamezop.com/BkXW1a__/wall.png"
-                        className="d-block w-100"
+                        className="d-block w-full"
                         alt="Jimpo Jump"
                     />
                 </a>
@@ -76,7 +76,7 @@ const GameSlider = () => {
                 <a href="https://pyk5dwtzo.play.gamezop.com/g/B1jZWUoXUIe" target="_blank" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     <img
                         src="https://static.gamezop.com/B1jZWUoXUIe/wall.png"
-                        className="d-block w-100"
+                        className="d-block w-full"
                         alt="Zombie Shooter"
                     />
                 </a>

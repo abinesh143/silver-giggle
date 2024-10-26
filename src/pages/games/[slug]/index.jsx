@@ -1,10 +1,11 @@
 'use client'
 
-import GameNav from "../../../components/Games/GameNav"
 import PageLoader from "@/components/PageLoader";
 import game from "../../../json/games.json";
 import { useParams } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
+import SmileyAINavbar from '../../../components/Common/SmileyAINav'
+import SmileyAIBottomNav  from '../../../components/Common/BottomNav'
 
 const UniqueGames = () => {
   const [slug, setSlug] = useState("HJP4afkvqJQ")
@@ -34,11 +35,11 @@ const UniqueGames = () => {
 
   return (
     <main>
-      <GameNav />
+      <SmileyAINavbar title="- Games" />
       {mrGame ? (
-        <div className="flex justify-center mt-5 mt-1">
+        <div className="flex justify-center sm:mt-4 mb-20">
           <div className="w-50 mx-auto shadow-xl p-3">
-            <a href={mrGame.url} target="_blank">
+            <a href={mrGame.url} target="_blank" className="flex justify-center">
               <img
                 src={mrGame.assets.cover}
                 className="rounded-lg cursor-pointer"
@@ -48,24 +49,24 @@ const UniqueGames = () => {
             <div className="mt-3">
               <h5 className="text-lg">{mrGame.name.en}</h5>
               <p className="">{mrGame.description.en}</p>
-              <div className="flex sm:flex-row flex-col">
+              <div className="flex flex-col sm:flex-row items-center gap-4">
                 <a
                   href={mrGame.url}
                   target="_blank"
-                  className="p-2 rounded-lg cursor-pointer btn-orange-moon px-5"
+                  className="p-2 text-center rounded-lg cursor-pointer btn-orange-moon px-5 w-full h-12"
                 >
                   Play Game
                 </a>
                 <a
                   href={`https://wa.me/?text=${shareText}`}
                   target="_blank"
-                  className="p-2 rounded-lg cursor-pointer btn-green-moon my-2 px-5"
+                  className="p-2 text-center rounded-lg cursor-pointer btn-green-moon px-5 w-full h-12"
                 >
                   Share Game
                 </a>
-                <div className="flex justify-center align-center my-2 mx-5">
-                  <img src="/images/online.png" width={20} height={20}></img>
-                  <div className="text-green-500 font-bold px-1">
+                <div className="flex justify-center align-center">
+                  <img src="/images/online.png" width={20} height={20} className="w-5 h-5" />
+                  <div className="text-green-500 font-bold px-1 sm:w-60">
                     {Math.floor(mrGame.gamePlays)} Users
                   </div>
                 </div>
@@ -79,6 +80,7 @@ const UniqueGames = () => {
           <PageLoader />
         </div>
       )}
+      <SmileyAIBottomNav />
     </main>
   );
 };

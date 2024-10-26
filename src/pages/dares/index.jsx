@@ -1,14 +1,14 @@
+import SmileyAIBottomNav from '../../components/Common/BottomNav'
+import SmileyAINavbar from '../../components/Common/SmileyAINav'
 import DareContent from '../../components/DareMsg/DareContent'
-import DareNavbar from '../../components/DareMsg/DareNav'
 import DareSlider from '../../components/DareMsg/DareSlider'
-import Footer from '../../components/Footer'
 
 const DareGames = () => {
     return <main className='bg-gray-100'>
-        <DareNavbar />
+       <SmileyAINavbar title="- Dares" />
         <DareSlider />
         <DareContent />
-        <Footer />
+        <SmileyAIBottomNav />
     </main>
 }
 

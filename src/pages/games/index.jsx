@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
-import Footer from "@/components/Footer";
 import GameSlider from "../../components/Games/GameSlider";
 import GameSection from "../../components/Games/GameSection";
-import GameNavbar from "../../components/Games/GameNav";
+import SmileyAIBottomNav from "../../components/Common/BottomNav";
+import SmileyAINavbar from "../../components/Common/SmileyAINav";
 
 export default function SmileyGames() {
 
@@ -43,11 +42,13 @@ export default function SmileyGames() {
 
 
   return (
-    <main className="bg-light container sm:mx-auto">
-        <GameNavbar />
-      <GameSlider />
-      <GameSection data={gameConfig[1]} />
-      <Footer />
+    <main className="">
+      <SmileyAINavbar title="- Games" />
+      <section className="bg-light container sm:mx-auto">
+        <GameSlider />
+        <GameSection data={gameConfig[1]} />
+      </section>
+      <SmileyAIBottomNav />
     </main>
   );
 }
