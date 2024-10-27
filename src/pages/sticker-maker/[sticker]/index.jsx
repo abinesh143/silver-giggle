@@ -233,6 +233,7 @@ const IndividualStickerPacks = () => {
                             (convertedGif && fileName) ? <div className="flex flex-col lg:flex-row gap-4 w-full">
                                 <a
                                     href={`https://wa.me/?text=${shareText}?gif=${fileName}`}
+                                    target="_blank"
                                     className="bg-purple-700 text-center text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80  focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4 max-lg:w-full"
                                 >
                                     Share on Whatsapp

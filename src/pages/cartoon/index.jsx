@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const url = `https://resource.mojipop.com/web-render/result/`
 
-const myCartoonSticker = (props) => {
+const MyCartoonSticker = (props) => {
     const [data, setData] = useState('')
     const router = useRouter();
 
@@ -30,4 +30,4 @@ const myCartoonSticker = (props) => {
     </main>
 }
 
-export default myCartoonSticker
+export default MyCartoonSticker
