@@ -27,7 +27,7 @@ const DareContent = () => {
                 toastProvider("error", "Failed to copy text");
             });
     };
-    return <main>
+    return <main className="pb-16">
         <h2 className="text-2xl font-semibold capitalize text-center">Dare Messages</h2>
         <div className="rounded-lg bg-white my-4 shadow-xl border-gray-100 mx-2 p-3">
             <h4 className="text-lg font-semibold">Question:</h4>

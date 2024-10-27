@@ -53,7 +53,7 @@ export default function SmileyGames() {
         />
       </Head>
       <SmileyAINavbar title="- Games" />
-      <section className="bg-light container sm:mx-auto">
+      <section className="bg-light container sm:mx-auto pb-16">
         <GameSlider />
         <GameSection data={gameConfig[1]} />
       </section>

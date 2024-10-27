@@ -11,6 +11,12 @@ import { initFlowbite } from "flowbite"
 import { toastProvider } from "@/helpers/utils";
 import Head from "next/head"
 
+const newLine = "\n";
+const shareText = encodeURIComponent(
+    `Hai Friend,${newLine}*${"Here is my Cartoon Gif"
+    }*${newLine}${'click below and vote me'}${newLine}${newLine}https://www.freeappmaker.pro/cartoon`
+);
+
 const IndividualStickerPacks = () => {
     const params = useParams()
 
@@ -23,10 +29,12 @@ const IndividualStickerPacks = () => {
     const [selectedAvatar, setSelectedAvatar] = useState(null)
     const [animatedSticker, setAnimatedSticker] = useState([])
     const [convertedGif, setConvertedGif] = useState(null)
+    const [fileName, setFileName] = useState("");
 
     const postTemplateImage = async (ava) => {
         setBtnLoading(true);
-        if (!ava.AvatarId) {
+        if (!ava?.AvatarId) {
+            setBtnLoading(false);
             return toastProvider("error", "Please Upload an Photo");
         }
         const data = {
@@ -44,6 +52,9 @@ const IndividualStickerPacks = () => {
             if (myData && myData.data && myData.data.Result) {
                 setAnimatedSticker(myData.data.Result)
                 setConvertedGif(myData.data.Result)
+                if (myData.data.Result?.PreviewUrl) {
+                    saveFileName(myData.data.Result?.PreviewUrl)
+                }
                 toastProvider("success", "Sticker Made Successfully")
             }
         }
@@ -55,8 +66,8 @@ const IndividualStickerPacks = () => {
         if (file) {
             if (file.size > 5000000) {
                 toastProvider("error", "Image File should be less than 5 Mb");
-            } else if (file.type !== "image/jpg" && file.type !== "image/png") {
-                toastProvider("error", "Image Format sholud be .jpeg or .jpg or .png");
+            } else if (!/\.jpg$|\.png$/i.test(file.name)) {
+                toastProvider("error", "Image Format sholud be .jpg or .png, Try Another Picture");
             } else {
                 setAppIcon(file);
             }
@@ -85,6 +96,8 @@ const IndividualStickerPacks = () => {
                             setSelectedAvatar(response.data.Result)
                             localStorage.setItem("smileyai", JSON.stringify({ avatar: [...avatar, response.data.Result] }));
                             await postTemplateImage(response.data.Result)
+                        } else {
+                            toastProvider("error", "Image Format sholud be .jpg or .png, Unsupported File");
                         }
                     }
                 })
@@ -120,7 +133,23 @@ const IndividualStickerPacks = () => {
         }
     };
 
-    useLayoutEffect(() => {
+    const saveFileName = (url) => {
+        const extractedFileName = url.substring(url.lastIndexOf('/') + 1);
+        setFileName(extractedFileName);
+    };
+
+    const handleCopyText = (shareText) => {
+        const decodedText = decodeURIComponent(shareText);
+        navigator.clipboard.writeText(decodedText)
+            .then(() => {
+                toastProvider("success", "Text copied to clipboard!");
+            })
+            .catch((err) => {
+                toastProvider("error", "Failed to copy text");
+            });
+    };
+
+    useEffect(() => {
         if (params?.sticker) {
             setStickerIndex(params.sticker)
             const imageIndex = StickerJson.findIndex((s) => s.id === params.sticker)
@@ -155,7 +184,7 @@ const IndividualStickerPacks = () => {
             />
         </Head>
         <SmileyAINavbar title="- Cartoon" />
-        <div className="container sm:mx-auto px-4 sm:px-8 sm:py-4 max-lg:mb-10">
+        <div className="container sm:mx-auto px-4 sm:px-8 sm:py-4 max-lg:mb-10 pb-16">
             <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div>
                     <Image src={convertedGif?.PreviewUrl ? convertedGif.PreviewUrl : sticker?.imageUrl || '/sticker/template-1.gif'} width={200} height={200} alt="photo-sticker" className="w-full h-full rounded-lg" />
@@ -180,9 +209,17 @@ const IndividualStickerPacks = () => {
                         <button
                             data-modal-target="sticker-instruction-modal" data-modal-toggle="sticker-instruction-modal"
                             disabled={btnLoading}
-                            className="bg-[#FE5000] text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80  focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4 max-lg:w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="bg-[#FE5000] text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80  focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4 max-lg:w-full disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center"
                         >
-                            Convert Now
+                            {btnLoading ? (
+                                <Image
+                                    src="/svg/spin.svg"
+                                    width={24}
+                                    height={24}
+                                    alt="spin"
+                                    className="inline w-4 h-4 me-3 text-white animate-spin"
+                                />
+                            ) : null}  Convert Now
                         </button>
                         {
                             convertedGif ? <button
@@ -191,6 +228,22 @@ const IndividualStickerPacks = () => {
                             >
                                 Download
                             </button> : null
+                        }
+                        {
+                            (convertedGif && fileName) ? <div className="flex flex-col lg:flex-row gap-4 w-full">
+                                <a
+                                    href={`https://wa.me/?text=${shareText}?gif=${fileName}`}
+                                    className="bg-purple-700 text-center text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80  focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4 max-lg:w-full"
+                                >
+                                    Share on Whatsapp
+                                </a>
+                                <button
+                                    className="bg-yellow-400 text-center text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80  focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 lg:px-10 lg:py-2 2xl:px-16 2xl:py-4 max-lg:w-full"
+                                    onClick={() => handleCopyText(`${shareText}?gif=${fileName}`)}
+                                >
+                                    Copy Gif Link
+                                </button>
+                            </div> : null
                         }
                     </div>
                 </div>
@@ -213,7 +266,7 @@ const IndividualStickerPacks = () => {
                     </div>
                     <div className="p-4 md:p-5">
                         <div className="flex flex-col gap-4">
-                            <Image src='/sticker/sticker-instruct.png' width={100} height={100} alt="instruct" className="w-full" />
+                            <Image src='/sticker/sticker-instruct.webp' width={100} height={100} alt="instruct" className="w-full" />
                             <button type="submit" className="w-full text-white bg-[#FE5000] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" data-modal-hide="sticker-instruction-modal" onClick={postAvatar}>Confirm </button>
                         </div>
                     </div>
