@@ -5,7 +5,8 @@ import game from "../../../json/games.json";
 import { useParams } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
 import SmileyAINavbar from '../../../components/Common/SmileyAINav'
-import SmileyAIBottomNav  from '../../../components/Common/BottomNav'
+import SmileyAIBottomNav from '../../../components/Common/BottomNav'
+import Head from "next/head";
 
 const UniqueGames = () => {
   const [slug, setSlug] = useState("HJP4afkvqJQ")
@@ -20,10 +21,8 @@ const UniqueGames = () => {
   const text = `Play this amazing game with me`;
   const newLine = "\n";
   const shareText = encodeURIComponent(
-    `Hai,${newLine}*${
-      mrGame.name.en || "Smiley"
-    } Game*${newLine}${text}${newLine}${newLine}https://www.freeappmaker.pro/games/${
-      mrGame.code
+    `Hai,${newLine}*${mrGame.name.en || "Smiley"
+    } Game*${newLine}${text}${newLine}${newLine}https://www.freeappmaker.pro/games/${mrGame.code
     }`
   );
 
@@ -31,10 +30,18 @@ const UniqueGames = () => {
     if (params?.slug) {
       setSlug(params.slug)
     }
-  },[params])
+  }, [params])
 
   return (
     <main>
+      <Head>
+        <title>Free Online Games for Everyone | Free multiplayer games online - {mrGame.name.en || ''}</title>
+        <meta
+          name="description"
+          content={mrGame.description.en || "Free multiplayer games online"}
+          key="desc"
+        />
+      </Head>
       <SmileyAINavbar title="- Games" />
       {mrGame ? (
         <div className="flex justify-center sm:mt-4 mb-20">

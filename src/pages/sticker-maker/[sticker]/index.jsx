@@ -9,6 +9,7 @@ import SmileyAIBottomNav from "../../../components/Common/BottomNav"
 import SmileyAINavbar from "../../../components/Common/SmileyAINav"
 import { initFlowbite } from "flowbite"
 import { toastProvider } from "@/helpers/utils";
+import Head from "next/head"
 
 const IndividualStickerPacks = () => {
     const params = useParams()
@@ -60,7 +61,7 @@ const IndividualStickerPacks = () => {
                 setAppIcon(file);
             }
         } else {
-            toastProvider("error","Image Upload Failed. Please try again..");
+            toastProvider("error", "Image Upload Failed. Please try again..");
         }
     };
 
@@ -89,7 +90,7 @@ const IndividualStickerPacks = () => {
                 })
                 .catch((error) => {
                     console.error(error);
-                    toastProvider("error","Image Uploading Failed.. Please try again");
+                    toastProvider("error", "Image Uploading Failed.. Please try again");
                 })
                 .finally(() => {
                     setBtnLoading(false);
@@ -145,6 +146,14 @@ const IndividualStickerPacks = () => {
     }, [])
 
     return <main >
+        <Head>
+            <title>Smiley AI - Photo to cartoon GIF maker</title>
+            <meta
+                name="description"
+                content="Create caricature from photo, Telegram sticker maker from photo, Personalized caricature stickers, Cartoonize your photos for GIFs, Make cartoon animations for chat"
+                key="desc"
+            />
+        </Head>
         <SmileyAINavbar title="- Cartoon" />
         <div className="container sm:mx-auto px-4 sm:px-8 sm:py-4 max-lg:mb-10">
             <div className="grid grid-cols-1 lg:grid-cols-2">

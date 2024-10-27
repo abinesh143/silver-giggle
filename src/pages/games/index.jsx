@@ -4,6 +4,7 @@ import GameSlider from "../../components/Games/GameSlider";
 import GameSection from "../../components/Games/GameSection";
 import SmileyAIBottomNav from "../../components/Common/BottomNav";
 import SmileyAINavbar from "../../components/Common/SmileyAINav";
+import Head from "next/head";
 
 export default function SmileyGames() {
 
@@ -43,6 +44,14 @@ export default function SmileyGames() {
 
   return (
     <main className="">
+      <Head>
+        <title>Play Free Online Games | Fun & Addictive Games for Everyone | No Download Required</title>
+        <meta
+          name="description"
+          content="Play the best free online games! From action and adventure to puzzles and sports, explore a huge collection of games without downloads. Find your new favorite game now!"
+          key="desc"
+        />
+      </Head>
       <SmileyAINavbar title="- Games" />
       <section className="bg-light container sm:mx-auto">
         <GameSlider />

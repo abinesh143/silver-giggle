@@ -36,25 +36,6 @@ export default function Home() {
     }
   };
 
-  //   function extractEmail(emails) {
-  //     const emailArray = emails.split(',').map(email => email.trim());
-  //     const contactEmail = emailArray.find(email => !email.includes('legal'));
-
-  //     return contactEmail || emailArray[0];
-  // }
-
-  //   useEffect(() => {
-  //     const response = sampleJson.map((s) => ({
-  //       NAME : s.NAME,
-  //       WEBSITE: s.WEBSITE,
-  //       EMAIL: extractEmail(s.EMAIL),
-  //     }))
-
-  //     const filterResponse = response.filter((s) => s.EMAIL !== '*** waiting for processing ***' && s.EMAIL !== '')
-
-  //     console.log(filterResponse)
-  //   },[])
-
   useEffect(() => {
     const userData = localStorage.getItem("appMaker");
     if (userData) {
@@ -65,10 +46,13 @@ export default function Home() {
     <main>
       <div className="container sm:mx-auto py-4">
         <Head>
-          <title>Web to App Converter</title>
+          <title>
+            Convert Any Website to Native Mobile App – Shopify, WooCommerce, Wix
+            & More for Android & IOS
+          </title>
           <meta
             name="description"
-            content="Turn your website to app, quickly with no coding required."
+            content="Convert your Shopify, WooCommerce, BigCommerce, Squarespace, Dukaan, Wordpress, or Wix website into a high-performing native Android and iOS app. Launch your mobile app effortlessly to reach more customers on mobile with fast, user-friendly solutions!"
             key="desc"
           />
           <meta property="og:title" content="Web to App Converter" />

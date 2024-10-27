@@ -8,18 +8,18 @@ export default function StickerMakerAI() {
     return (
         <main>
             <Head>
-                <title>WASticker Maker AI</title>
+                <title>Smiley AI - Convert Your Photos into Cartoon GIFs, Caricatures & Animated Stickers for WhatsApp & Telegram</title>
                 <meta
                     name="description"
-                    content="Turn your photos to sticker, quickly with no coding required."
+                    content="Transform your photos into fun cartoon GIFs, personalized caricatures, and animated stickers for WhatsApp, Telegram, and more. Create unique digital expressions for every occasion!"
                     key="desc"
                 />
-                <meta property="og:title" content="WASticker Maker AI" />
+                <meta property="og:title" content="Smiley AI" />
                 <meta
                     property="og:description"
-                    content="Turn your photos to sticker, quickly with no coding required."
+                    content="Transform your photos into fun cartoon GIFs, personalized caricatures, and animated stickers for WhatsApp, Telegram, and more. Create unique digital expressions for every occasion!"
                 />
-                <meta property="og:site_name" content="WASticker Maker AI" />
+                <meta property="og:site_name" content="Smiley AI" />
             </Head>
             <SmileyAINavbar title="" />
             <div className="container sm:mx-auto">

@@ -1,0 +1,8 @@
+User-Agent: Googlebot
+Allow: /
+
+User-Agent: Applebot
+User-Agent: Bingbot
+Allow: /
+
+Sitemap: https://www.freeappmaker.pro/sitemap.xml

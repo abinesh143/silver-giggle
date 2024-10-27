@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ResellerModal from "@/components/ResellerModal";
 import { Modal } from "flowbite";
+import Head from "next/head";
 
 const Reseller = () => {
   const toggleModal = (type: string, id: string) => {
@@ -13,12 +14,22 @@ const Reseller = () => {
 
   return (
     <main>
+      <Head>
+        <title>
+          Become a Reseller or White-Label Partner | Convert Websites to Apps
+          for Android & iOS
+        </title>
+        <meta
+          name="description"
+          content="Partner with us as a Reseller or White-Label Partner to offer website-to-app conversion services. Provide your clients with Android and iOS apps for Shopify, WooCommerce, BigCommerce, and more under your brand."
+        />
+      </Head>
       <div className="container sm:mx-auto py-4">
         <Navbar />
         <div className="mt-10 md:mt-24 px-4 ">
-          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-semibold text-center mb-4">
+          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-semibold text-center mb-4">
             Welcome Resellers and WhiteLabel Partners
-          </h2>
+          </h1>
           <div className="flex justify-center">
             <p className="text-lg text-center lg:w-3/4">
               Provide additional value to your clients by turning their website
