@@ -80,12 +80,62 @@ const Navbar = (props) => {
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/#faqs"
-                    className="uppercase border-black pb-2 hover:text-[#FE5000] sm:hover:border-b-2"
+                  <button
+                    id="dropdownSmileyLink"
+                    data-dropdown-toggle="dropdownSmiley"
+                    class="flex items-center justify-between py-2 px-3 text-gray-900 rounded hover:text-[#FE5000] border-0 p-0 w-auto"
                   >
-                    Faqs
-                  </Link>
+                    Smiley AI
+                    <svg
+                      class="w-2.5 h-2.5 ms-2.5"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 10 6"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m1 1 4 4 4-4"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    id="dropdownSmiley"
+                    class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
+                  >
+                    <ul
+                      class="py-2 text-sm text-gray-700 "
+                      aria-labelledby="dropdownLargeButton"
+                    >
+                      <li>
+                        <Link
+                          href="/sticker-maker"
+                          class="block px-4 py-2 hover:text-[#FE5000] hover:bg-orange-50 "
+                        >
+                          Cartoon Gif Maker
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href="/dares"
+                          class="block px-4 py-2 hover:bg-orange-50 hover:text-[#FE5000]"
+                        >
+                          Dare Games
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href="/games"
+                          class="block px-4 py-2 hover:bg-orange-50 hover:text-[#FE5000]"
+                        >
+                          Smiley Games
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
                 </li>
                 {props.user ? (
                   <li>
@@ -229,6 +279,27 @@ const Navbar = (props) => {
                       data-modal-hide="main-menu-modal"
                     >
                       Reseller
+                    </Link>
+                    <Link
+                      href="/sticker-maker"
+                      className="text-white text-xl font-semibold border-b border-[#3A3A3A] px-4 pb-5"
+                      data-modal-hide="main-menu-modal"
+                    >
+                      Cartoon Gif Maker (AI)
+                    </Link>
+                    <Link
+                      href="/dares"
+                      className="text-white text-xl font-semibold border-b border-[#3A3A3A] px-4 pb-5"
+                      data-modal-hide="main-menu-modal"
+                    >
+                      Dare Games
+                    </Link>
+                    <Link
+                      href="/games"
+                      className="text-white text-xl font-semibold border-b border-[#3A3A3A] px-4 pb-5"
+                      data-modal-hide="main-menu-modal"
+                    >
+                      Smiley Games
                     </Link>
                     {props.user && (
                       <Link
