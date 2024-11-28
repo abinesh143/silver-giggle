@@ -15,7 +15,7 @@ const DareContent = () => {
         `8. Tell me the name of your BF/GF. 💑\n\n` +
         `9. What is your memorable day 😇\n\n` +
         `10. 50 rs. recharge on my number 🤑\n\n` +
-        `More Dare Games : https://www.freeappmaker.pro/cartoon`
+        `More Dare Games : https://www.freeappmaker.pro/sticker-maker`
     );
 
     const handleCopyText = (shareText) => {
