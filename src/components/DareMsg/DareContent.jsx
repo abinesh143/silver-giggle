@@ -14,7 +14,8 @@ const DareContent = () => {
         `7. First thing you notice in me when you meet me first 🤗\n\n` +
         `8. Tell me the name of your BF/GF. 💑\n\n` +
         `9. What is your memorable day 😇\n\n` +
-        `10. 50 rs. recharge on my number 🤑`
+        `10. 50 rs. recharge on my number 🤑\n\n` +
+        `More Dare Games : https://www.freeappmaker.pro/cartoon`
     );
 
     const handleCopyText = (shareText) => {
