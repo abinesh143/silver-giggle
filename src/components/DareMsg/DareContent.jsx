@@ -337,7 +337,7 @@ const DareContent = () => {
         {/* Dare 4 */}
         <div className="rounded-lg bg-white my-4 shadow-xl border-gray-100 mx-2 p-3">
             <h4 className="text-lg font-semibold">Question 4:</h4>
-            <div>Choose any one alphabet from A to Z. I will give you a dare to complete. Try it, it's going to be really interesting. </div>
+            <div>Choose any one alphabet from A to Z. I will give you a dare to complete. Try it, it&apos;s going to be really interesting. </div>
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareQuestion4}`} className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
                 <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion1)}>Copy Question</button>
@@ -383,7 +383,7 @@ const DareContent = () => {
 
                 T = Make our one together pic and put it on your DP for one day. <br /><br />
 
-                U = Tell me something that you always wanted to say but you couldn't…  <br /><br />
+                U = Tell me something that you always wanted to say but you couldn&apos;t…  <br /><br />
 
                 V = Your felling about me. <br /><br />
 
@@ -403,7 +403,7 @@ const DareContent = () => {
         {/* Dare 5 */}
         <div className="rounded-lg bg-white my-4 shadow-xl border-gray-100 mx-2 p-3">
             <h4 className="text-lg font-semibold">Question 5:</h4>
-            <div>Let’s play the Naughty Emoji Game! Choose from one of these emojis and I'll give you a naughty dare: 🤤, 😇, 🤭, 😈, 💦, 🎆, ❤️, 🍑, 🍆, 👅, 🔥, 💥.</div>
+            <div>Let&apos;s play the Naughty Emoji Game! Choose from one of these emojis and I&apos;ll give you a naughty dare: 🤤, 😇, 🤭, 😈, 💦, 🎆, ❤️, 🍑, 🍆, 👅, 🔥, 💥.</div>
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareQuestion5}`} className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
                 <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion1)}>Copy Question</button>
@@ -413,13 +413,13 @@ const DareContent = () => {
             <h4 className="text-lg font-semibold">Answer 5:</h4>
             <div>1. 🤤 Seduce me with your words.<br /><br />
 
-                2. 😇 Playing it safe, are we? Answer this: what's the hottest fantasy you have?<br /><br />
+                2. 😇 Playing it safe, are we? Answer this: what&apos;s the hottest fantasy you have?<br /><br />
 
-                3. 🤭 I'm curious, what do you like most about me?<br /><br />
+                3. 🤭 I&apos;m curious, what do you like most about me?<br /><br />
 
-                4. 😈 Tell me, what’s your wildest sexual desire?<br /><br />
+                4. 😈 Tell me, what&apos;s your wildest sexual desire?<br /><br />
 
-                5. 💦 What’s your naughtiest secret?<br /><br />
+                5. 💦 What&apos;s your naughtiest secret?<br /><br />
 
                 6. 🎆 Kiss me the next time we meet.<br /><br />
 
@@ -483,7 +483,7 @@ const DareContent = () => {
         {/* Dare 7 */}
         <div className="rounded-lg bg-white my-4 shadow-xl border-gray-100 mx-2 p-3">
             <h4 className="text-lg font-semibold">Question 7:</h4>
-            <div>With this next game predict your friend's future. So what is going to happen in 2025 will be decided when they choose the number between 1-15.</div>
+            <div>With this next game predict your friend&apos;s future. So what is going to happen in 2025 will be decided when they choose the number between 1-15.</div>
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareQuestion7}`} className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
                 <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion1)}>Copy Question</button>
