@@ -127,7 +127,7 @@ const shareAnswer6 = encodeURIComponent(
 
 
 const shareQuestion7 = encodeURIComponent(
-    `ith this next game predict your friend's future. So what is going to happen in 2025 will be decided when they choose the number between 1-15.`
+    `With this next game predict your friend's future. So what is going to happen in 2025 will be decided when they choose the number between 1-15.`
 );
 
 const shareAnswer7 = encodeURIComponent(
