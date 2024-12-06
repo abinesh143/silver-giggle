@@ -268,7 +268,7 @@ const DareContent = () => {
             <div>Select a number between 1-10. Then I will send you a dare that you will have to complete. </div>
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareQuestion2}`} className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
-                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion1)}>Copy Question</button>
+                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion2)}>Copy Question</button>
             </div>
         </div>
         <div className="rounded-lg bg-white my-4 shadow-xl border-gray-100 mx-2 p-3">
@@ -295,7 +295,7 @@ const DareContent = () => {
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareAnswer2}`}
                     target="_blank" className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
-                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareAnswer1)}>Copy Question</button>
+                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareAnswer2)}>Copy Question</button>
             </div>
         </div>
         {/* Dare 3 */}
@@ -304,7 +304,7 @@ const DareContent = () => {
             <div>Select a triple number between 000, 111, 222 to 999 and I will tell you about your personality.</div>
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareQuestion3}`} className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
-                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion1)}>Copy Question</button>
+                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion3)}>Copy Question</button>
             </div>
         </div>
         <div className="rounded-lg bg-white my-4 shadow-xl border-gray-100 mx-2 p-3">
@@ -331,7 +331,7 @@ const DareContent = () => {
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareAnswer3}`}
                     target="_blank" className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
-                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareAnswer1)}>Copy Question</button>
+                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareAnswer3)}>Copy Question</button>
             </div>
         </div>
         {/* Dare 4 */}
@@ -340,7 +340,7 @@ const DareContent = () => {
             <div>Choose any one alphabet from A to Z. I will give you a dare to complete. Try it, it&apos;s going to be really interesting. </div>
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareQuestion4}`} className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
-                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion1)}>Copy Question</button>
+                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion4)}>Copy Question</button>
             </div>
         </div>
         <div className="rounded-lg bg-white my-4 shadow-xl border-gray-100 mx-2 p-3">
@@ -397,7 +397,7 @@ const DareContent = () => {
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareAnswer4}`}
                     target="_blank" className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
-                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareAnswer1)}>Copy Question</button>
+                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareAnswer4)}>Copy Question</button>
             </div>
         </div>
         {/* Dare 5 */}
@@ -406,7 +406,7 @@ const DareContent = () => {
             <div>Let&apos;s play the Naughty Emoji Game! Choose from one of these emojis and I&apos;ll give you a naughty dare: 🤤, 😇, 🤭, 😈, 💦, 🎆, ❤️, 🍑, 🍆, 👅, 🔥, 💥.</div>
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareQuestion5}`} className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
-                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion1)}>Copy Question</button>
+                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion5)}>Copy Question</button>
             </div>
         </div>
         <div className="rounded-lg bg-white my-4 shadow-xl border-gray-100 mx-2 p-3">
@@ -435,7 +435,7 @@ const DareContent = () => {
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareAnswer5}`}
                     target="_blank" className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
-                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareAnswer1)}>Copy Question</button>
+                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareAnswer5)}>Copy Question</button>
             </div>
         </div>
         {/* Dare 6 */}
@@ -444,7 +444,7 @@ const DareContent = () => {
             <div>Which Character would you like to play in my life if you get a chance to be born again? Share your answer with me and ask the same question to others to get interesting answers. You can also ask the same question to me. If you want you can share the different answers you get on your story. </div>
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareQuestion6}`} className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
-                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion1)}>Copy Question</button>
+                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion6)}>Copy Question</button>
             </div>
         </div>
         <div className="rounded-lg bg-white my-4 shadow-xl border-gray-100 mx-2 p-3">
@@ -477,7 +477,7 @@ const DareContent = () => {
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareAnswer6}`}
                     target="_blank" className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
-                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareAnswer1)}>Copy Question</button>
+                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareAnswer6)}>Copy Question</button>
             </div>
         </div>
         {/* Dare 7 */}
@@ -486,7 +486,7 @@ const DareContent = () => {
             <div>With this next game predict your friend&apos;s future. So what is going to happen in 2025 will be decided when they choose the number between 1-15.</div>
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareQuestion7}`} className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
-                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion1)}>Copy Question</button>
+                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion7)}>Copy Question</button>
             </div>
         </div>
         <div className="rounded-lg bg-white my-4 shadow-xl border-gray-100 mx-2 p-3">
@@ -523,7 +523,7 @@ const DareContent = () => {
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareAnswer7}`}
                     target="_blank" className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
-                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareAnswer1)}>Copy Question</button>
+                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareAnswer7)}>Copy Question</button>
             </div>
         </div>
         {/* Dare 8 */}
@@ -545,7 +545,7 @@ const DareContent = () => {
                 Grapes🍇</div>
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareQuestion8}`} className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
-                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion1)}>Copy Question</button>
+                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion8)}>Copy Question</button>
             </div>
         </div>
         <div className="rounded-lg bg-white my-4 shadow-xl border-gray-100 mx-2 p-3">
@@ -566,7 +566,7 @@ const DareContent = () => {
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareAnswer8}`}
                     target="_blank" className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
-                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareAnswer1)}>Copy Question</button>
+                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareAnswer8)}>Copy Question</button>
             </div>
         </div>
         {/* Dare 9 */}
@@ -602,7 +602,7 @@ const DareContent = () => {
                 Violet</div>
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareQuestion9}`} className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
-                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion1)}>Copy Question</button>
+                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareQuestion9)}>Copy Question</button>
             </div>
         </div>
         <div className="rounded-lg bg-white my-4 shadow-xl border-gray-100 mx-2 p-3">
@@ -639,7 +639,7 @@ const DareContent = () => {
             <div className="flex justify-between gap-4 mt-6">
                 <a href={`https://wa.me/?text=${shareAnswer9}`}
                     target="_blank" className="bg-green-500 rounded-lg w-full p-2 text-white text-center text-sm">Share on Whatsapp</a>
-                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareAnswer1)}>Copy Question</button>
+                <button className="bg-orange-500 rounded-lg w-full p-2 py-1 text-white text-sm" onClick={() => handleCopyText(shareAnswer9)}>Copy Question</button>
             </div>
         </div>
     </main>
