@@ -65,6 +65,10 @@ export default function Home() {
             name="google-site-verification"
             content="-41E5If5IV2N-CtmI2hI5MAR5HQ9S-i8BEksUDDvG58"
           />
+          <meta
+            name="impact-site-verification"
+            content="ef3a9037-75c4-4f3c-b16f-b0eba76822d3"
+          />
         </Head>
         <Navbar user={user} />
         <Banner checkUserExists={() => checkUserExists()} />
