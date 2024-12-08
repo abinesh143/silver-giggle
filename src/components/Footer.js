@@ -83,6 +83,9 @@ const Footer = () => {
               <li className="mb-2">
                 <Link href="/privacy-policy">Privacy Policy</Link>
               </li>
+              <li className="mb-2">
+                <Link href="/refund-policy">Refund Policy</Link>
+              </li>
             </ul>
           </div>
           <div className="basis-3/12 max-md:mt-5">
