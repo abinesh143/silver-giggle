@@ -48,7 +48,7 @@ const Reseller = () => {
                 your Own Cost.
               </p>
               <a
-                href="https://wa.me/916382441797?text=App%20Maker%20AI%20Custom"
+                href="mailto:smileysoftwares@gmail.com"
                 className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 2xl:px-16 2xl:py-4"
               >
                 Contact Sales
@@ -79,7 +79,7 @@ const Reseller = () => {
                 Price - 1000$ / One Time
               </p>
               <a
-                href="https://wa.me/916382441797?text=App%20Maker%20AI%20Custom"
+                href="mailto:smileysoftwares@gmail.com"
                 className="bg-black text-white text-xs sm:text-base lg:text-sm xl:text-base font-medium rounded-lg sm:rounded-xl hover:bg-opacity-80 focus:ring-gray-400 focus:ring-4 focus:outline-none px-8 py-3 sm:px-14 sm:py-3 2xl:px-16 2xl:py-4"
               >
                 Contact Sales

@@ -91,9 +91,6 @@ const Footer = () => {
             </h2>
             <ul className="text-xs sm:text-base lg:text-sm xl:text-base font-medium">
               <li className="mb-2">
-                <Link href="https://wa.me/916382441797">+91 6382 441 797</Link>
-              </li>
-              <li className="mb-2">
                 <Link href="mailto:smileysoftwares@gmail.com">
                   smileysoftwares@gmail.com
                 </Link>

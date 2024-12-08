@@ -498,18 +498,6 @@ const Account = () => {
             ) : null}
           </div>
           <LogoutModal />
-          <Link
-            href={"https://wa.me/916382441797?text=App%20Maker%20AI%20Custom"}
-            className="fixed right-5 bottom-5"
-          >
-            <Image
-              src="/images/whats.png"
-              width={50}
-              height={50}
-              alt="whats"
-              className="animate-bounce"
-            />
-          </Link>
         </>
       )}
     </main>
