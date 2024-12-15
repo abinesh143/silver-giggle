@@ -137,7 +137,7 @@ const Premium = (props) => {
           const paymentDetails = await res.json();
           if (paymentDetails.payment_session_id) {
             const cashfree = Cashfree({
-              mode: "sandbox",
+              mode: "production",
             });
             let checkoutOptions = {
               paymentSessionId: paymentDetails.payment_session_id,
