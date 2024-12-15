@@ -136,10 +136,14 @@ const Premium = (props) => {
         if (res.status === 200) {
           const paymentDetails = await res.json();
           if (paymentDetails.payment_session_id) {
-            const cashfree = new window.Cashfree(
-              paymentDetails.payment_session_id
-            );
-            cashfree.redirect();
+            const cashfree = Cashfree({
+              mode: "sandbox",
+            });
+            let checkoutOptions = {
+              paymentSessionId: paymentDetails.payment_session_id,
+              redirectTarget: "_self",
+            };
+            cashfree.checkout(checkoutOptions);
           }
         }
       } catch (error) {
@@ -170,10 +174,7 @@ const Premium = (props) => {
   return (
     <main>
       <Head>
-        <script
-          src="https://sdk.cashfree.com/js/ui/2.0.0/cashfree.sandbox.js"
-          defer
-        ></script>
+        <script src="https://sdk.cashfree.com/js/v3/cashfree.js" defer></script>
       </Head>
       <div className="2xl:p-8 bg-[#F9F9F9] lg:rounded-2xl">
         <section className="max-w-6xl mx-auto py-4 px-8">
