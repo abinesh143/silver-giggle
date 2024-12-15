@@ -2,6 +2,7 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 import { loadScript } from "@paypal/paypal-js";
 import PayPal from "@/components/Paypal";
+import Head from "next/head";
 
 /* eslint-disable @next/next/no-img-element */
 const Premium = (props) => {
@@ -111,9 +112,47 @@ const Premium = (props) => {
     }
   };
 
+  const startPayment = async (type) => {
+    if (props.user?.userCountry === "India") {
+      const body = {
+        order_amount: type === "basic" ? 1 : type === "lite" ? 4000 : 5000,
+        order_currency: "INR",
+        customer_details: {
+          customer_id: props.user._id || "123456",
+          customer_phone: props.user.phoneNumber || "6382441797",
+          customer_email: props.user.userEmail || "",
+        },
+        order_meta: {
+          return_url: `https://www.freeappmaker.pro/payment-status?order_id={order_id}`,
+        },
+      };
+
+      try {
+        let res = await fetch("/api/payment", {
+          method: "POST",
+          body: JSON.stringify(body),
+        });
+
+        if (res.status === 200) {
+          const paymentDetails = await res.json();
+          if (paymentDetails.payment_session_id) {
+            const cashfree = new window.Cashfree(
+              paymentDetails.payment_session_id
+            );
+            cashfree.redirect();
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   useEffect(() => {
-    addPayPalScript();
-  }, []);
+    if (props.user && props.user?.userCountry !== "India") {
+      addPayPalScript();
+    }
+  }, [props.user]);
 
   // AfsLgMyn0DsgW0saDSqdoSQkkWRzUWyW4EE3nHtjmOEHkrAfzvqQNXD59_JhZ-g2TWF3_k0XASWIrZLz
 
@@ -130,6 +169,12 @@ const Premium = (props) => {
   // AaCgl6fEyzLZ1zuQyyh-guTWf2z5gCkZ6k7nDEvMXq7XjcHkCCEZUjtypAoJSYeP0VvJiERd0vSUUTvx
   return (
     <main>
+      <Head>
+        <script
+          src="https://sdk.cashfree.com/js/ui/2.0.0/cashfree.sandbox.js"
+          defer
+        ></script>
+      </Head>
       <div className="2xl:p-8 bg-[#F9F9F9] lg:rounded-2xl">
         <section className="max-w-6xl mx-auto py-4 px-8">
           <div className=" mx-auto mb-14 text-center">
@@ -193,7 +238,10 @@ const Premium = (props) => {
               {paypalActive ? (
                 <PayPal amount={25} />
               ) : (
-                <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-6 text-center text-white  sm:text-xl">
+                <button
+                  className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-6 text-center text-white  sm:text-xl"
+                  onClick={() => startPayment("basic")}
+                >
                   Choose Plan
                   <img
                     src="https://res.cloudinary.com/williamsondesign/arrow-right.svg"
@@ -252,7 +300,10 @@ const Premium = (props) => {
               {paypalActive ? (
                 <PayPal amount={99} />
               ) : (
-                <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-6 text-center text-white sm:text-2xl">
+                <button
+                  className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-6 text-center text-white sm:text-2xl"
+                  onClick={() => startPayment("standard")}
+                >
                   Choose Plan
                   <img
                     src="https://res.cloudinary.com/williamsondesign/arrow-right.svg"
@@ -314,7 +365,10 @@ const Premium = (props) => {
               {paypalActive ? (
                 <PayPal amount={79} />
               ) : (
-                <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-6 text-center text-white sm:text-xl">
+                <button
+                  className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-6 text-center text-white sm:text-xl"
+                  onClick={() => startPayment("lite")}
+                >
                   Choose Plan
                   <img
                     src="https://res.cloudinary.com/williamsondesign/arrow-right.svg"

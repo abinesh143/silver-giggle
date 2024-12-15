@@ -1,9 +1,14 @@
 
 
+"use client";
+
 /* eslint-disable @next/next/no-img-element */
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { Modal } from "flowbite";
 import Head from "next/head";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const andriodPremium = [
     {
@@ -96,6 +101,32 @@ const iosPremium = [
 ];
 
 const Pricing = () => {
+    const router = useRouter();
+    const [user, setUser] = useState(null);
+
+    const toggleModal = (type) => {
+        const modalElement = document.getElementById("auth-modal");
+        const modal = new Modal(modalElement, { closable: false });
+        type === "show" ? modal.show() : modal.hide();
+    };
+
+    const checkUserExists = () => {
+        const userData = localStorage.getItem("appMaker");
+        const parsedData = userData ? JSON.parse(userData) : null;
+        if (parsedData) {
+            router.push("/account?tab=pro");
+        } else {
+            toggleModal("show");
+        }
+    };
+
+    useEffect(() => {
+        const userData = localStorage.getItem("appMaker");
+        if (userData) {
+            userData ? setUser(JSON.parse(userData)) : null;
+        }
+    }, []);
+
     return (
         <main>
             <Head>
@@ -110,7 +141,7 @@ const Pricing = () => {
                 />
             </Head>
             <div className="container sm:mx-auto py-4">
-                <Navbar />
+                <Navbar user={user} />
                 <div className="mt-10 sm:mt-24 max-sm:px-4">
                     <main>
                         <div className="2xl:p-8 bg-[#F9F9F9] lg:rounded-2xl">
@@ -168,7 +199,7 @@ const Pricing = () => {
                                             })}
                                         </ul>
 
-                                        <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-10 text-center text-white  sm:text-xl">
+                                        <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-10 text-center text-white  sm:text-xl" onClick={() => checkUserExists()}>
                                             Choose Plan
                                             <img
                                                 src="https://res.cloudinary.com/williamsondesign/arrow-right.svg"
@@ -219,7 +250,7 @@ const Pricing = () => {
                                             })}
                                         </ul>
 
-                                        <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-10 text-center text-white sm:text-2xl">
+                                        <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-10 text-center text-white sm:text-2xl" onClick={() => checkUserExists()}>
                                             Choose Plan
                                             <img
                                                 src="https://res.cloudinary.com/williamsondesign/arrow-right.svg"
@@ -272,7 +303,7 @@ const Pricing = () => {
                                             })}
                                         </ul>
 
-                                        <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-10 text-center text-white sm:text-xl">
+                                        <button className="flex justify-center items-center bg-indigo-600 rounded-xl py-4 px-10 text-center text-white sm:text-xl" onClick={() => checkUserExists()}>
                                             Choose Plan
                                             <img
                                                 src="https://res.cloudinary.com/williamsondesign/arrow-right.svg"

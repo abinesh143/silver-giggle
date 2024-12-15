@@ -18,7 +18,7 @@ import PageLoader from "@/components/PageLoader";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { initFlowbite } from "flowbite";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 
 const Account = () => {
@@ -26,6 +26,8 @@ const Account = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const query = searchParams.get("tab");
 
   // const getDashboardData = async (userEmail: string) => {
   //   try {
@@ -42,6 +44,12 @@ const Account = () => {
   //     setIsLoading(false);
   //   }
   // };
+
+  useEffect(() => {
+    if (query) {
+      setActiveTab(query);
+    }
+  }, [query]);
 
   useEffect(() => {
     initFlowbite();

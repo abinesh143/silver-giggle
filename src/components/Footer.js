@@ -93,6 +93,9 @@ const Footer = () => {
               Stay in Touch
             </h2>
             <ul className="text-xs sm:text-base lg:text-sm xl:text-base font-medium">
+            <li className="mb-2">
+                <Link href="/contact-us">Contact Us</Link>
+              </li>
               <li className="mb-2">
                 <Link href="mailto:smileysoftwares@gmail.com">
                   smileysoftwares@gmail.com
