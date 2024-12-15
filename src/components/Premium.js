@@ -11,22 +11,27 @@ const Premium = (props) => {
     {
       normal: "Publish in",
       bold: "PlayStore",
+      status: false,
     },
     {
       normal: "App Push",
       bold: "Notification",
+      status: true,
     },
     {
       normal: "Google AdMob",
       bold: "Ads",
+      status: true,
     },
     {
       normal: "Free 5 Star",
       bold: "Reviews",
+      status: true,
     },
     {
       normal: "Customer",
       bold: "Support",
+      status: true,
     },
   ];
 
@@ -34,33 +39,45 @@ const Premium = (props) => {
     {
       normal: "Publish in",
       bold: "PlayStore",
+      status: true,
     },
     {
-      normal: "Publish in",
-      bold: "AppStore",
+      normal: "We Publish your App in our",
+      bold: "developer account with ASO",
+      status: true,
     },
     {
       normal: "App Push",
       bold: "Notification",
+      status: true,
     },
     {
       normal: "Google AdMob",
       bold: "Ads",
+      status: true,
     },
     {
       normal: "Free 5 Star",
       bold: "Reviews",
+      status: true,
     },
     {
       normal: "Customer",
       bold: "Support",
+      status: true,
     },
   ];
 
   const iosPremium = [
     {
       normal: "Publish in",
-      bold: "AppStore",
+      bold: "Playstore",
+      status: false,
+    },
+    {
+      normal: "We Guide to publish in your",
+      bold: "developer account with ASO",
+      status: true,
     },
     {
       normal: "App Push",
@@ -203,7 +220,7 @@ const Premium = (props) => {
                 />
                 <div className="ml-5">
                   <span className="block text-xl sm:text-2xl lg:text-xl 2xl:text-2xl font-semibold text-white">
-                    Andriod & Ios
+                    Andriod & Playstore Publish
                   </span>
                   <span>
                     <span className="font-medium text-lg sm:text-xl align-top">
@@ -262,7 +279,7 @@ const Premium = (props) => {
                 />
                 <div className="ml-5">
                   <span className="block text-xl sm:text-2xl lg:text-xl 2xl:text-2xl font-semibold">
-                    Ios
+                    Andriod & ASO Support
                   </span>
                   <span>
                     <span className="font-medium text-gray-500 text-xl align-top">

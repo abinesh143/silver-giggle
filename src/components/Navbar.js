@@ -65,10 +65,10 @@ const Navbar = (props) => {
                 </li>
                 <li>
                   <Link
-                    href="/#discover"
+                    href="/pricing"
                     className="uppercase border-black pb-2 hover:text-[#FE5000] sm:hover:border-b-2"
                   >
-                    Features
+                    Pricing
                   </Link>
                 </li>
                 <li>

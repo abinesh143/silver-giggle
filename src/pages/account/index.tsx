@@ -11,6 +11,7 @@ import Publish from "@/components/Publish";
 import FreeRating from "@/components/FreeRating";
 import Promotion from "@/components/Promotion";
 import EditApp from "@/components/AppMaker/EditApp";
+import TutorialVideo from "@/components/AppMaker/Tutorial";
 import Help from "@/components/Help";
 import LogoutModal from "@/components/LogoutModal";
 import PageLoader from "@/components/PageLoader";
@@ -21,26 +22,26 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 const Account = () => {
-  const [activeTab, setActiveTab] = useState("info");
+  const [activeTab, setActiveTab] = useState("edit");
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
   const router = useRouter();
 
-  const getDashboardData = async (userEmail: string) => {
-    try {
-      const response = await fetch(`/api/metadata?email=${userEmail}`, {
-        method: "GET",
-      });
-      const appDetails = await response.json();
-      if (response.status === 200) {
-        localStorage.setItem("appMakerPro", JSON.stringify(appDetails));
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  // const getDashboardData = async (userEmail: string) => {
+  //   try {
+  //     const response = await fetch(`/api/metadata?email=${userEmail}`, {
+  //       method: "GET",
+  //     });
+  //     const appDetails = await response.json();
+  //     if (response.status === 200) {
+  //       localStorage.setItem("appMakerPro", JSON.stringify(appDetails));
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   useEffect(() => {
     initFlowbite();
@@ -51,7 +52,8 @@ const Account = () => {
     if (userData) {
       const parsedData = JSON.parse(userData);
       userData ? setUser(parsedData) : null;
-      getDashboardData(parsedData["userEmail"]);
+      setIsLoading(false);
+      // getDashboardData(parsedData["userEmail"]);
     } else {
       router.push("/");
     }
@@ -104,7 +106,7 @@ const Account = () => {
                 </span>
               </Link>
               <ul className="space-y-4 font-medium pt-6 text-xl">
-                <li>
+                {/* <li>
                   <div
                     className={`${
                       activeTab === "info" ? "bg-blue-500" : "hover:bg-gray-100"
@@ -126,7 +128,7 @@ const Account = () => {
                     </svg>
                     <span className="ms-3">App Info</span>
                   </div>
-                </li>
+                </li> */}
                 <li>
                   <div
                     className={`${
@@ -138,16 +140,61 @@ const Account = () => {
                     <svg
                       className={`${
                         activeTab === "edit" ? "text-gray-900" : "text-gray-500"
-                      } w-5 h-5 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`}
+                      } w-6 h-6 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`}
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
                       fill="currentColor"
-                      viewBox="0 0 18 18"
+                      viewBox="0 0 24 24"
                     >
-                      <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
+                      <path
+                        fill-rule="evenodd"
+                        d="M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352l2.914-3.086Z"
+                        clip-rule="evenodd"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M19.846 4.318a2.148 2.148 0 0 0-.437-.692 2.014 2.014 0 0 0-.654-.463 1.92 1.92 0 0 0-1.544 0 2.014 2.014 0 0 0-.654.463l-.546.578 2.852 3.02.546-.579a2.14 2.14 0 0 0 .437-.692 2.244 2.244 0 0 0 0-1.635ZM17.45 8.721 14.597 5.7 9.82 10.76a.54.54 0 0 0-.137.27l-.536 2.84c-.07.37.239.696.588.622l2.682-.567a.492.492 0 0 0 .255-.145l4.778-5.06Z"
+                        clip-rule="evenodd"
+                      />
                     </svg>
                     <span className="flex-1 ms-3 whitespace-nowrap">
                       Edit App
+                    </span>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    className={`${
+                      activeTab === "tutorial"
+                        ? "bg-blue-500"
+                        : "hover:bg-gray-100"
+                    } flex items-center p-2 text-gray-900 rounded-lg dark:text-white cursor-pointer dark:hover:bg-gray-700 group`}
+                    onClick={() => setActiveTab("tutorial")}
+                    data-drawer-hide="logo-sidebar"
+                  >
+                    <svg
+                      className={`${
+                        activeTab === "tutorial"
+                          ? "text-gray-900"
+                          : "text-gray-500"
+                      } w-6 h-6 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`}
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M14 7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7Zm2 9.387 4.684 1.562A1 1 0 0 0 22 17V7a1 1 0 0 0-1.316-.949L16 7.613v8.774Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      Tutorial Video
                     </span>
                   </div>
                 </li>
@@ -261,7 +308,7 @@ const Account = () => {
                     </span>
                   </div>
                 </li> */}
-                <li>
+                {/* <li>
                   <div
                     className={`${
                       activeTab === "download"
@@ -294,7 +341,7 @@ const Account = () => {
                       Download
                     </span>
                   </div>
-                </li>
+                </li> */}
                 {/* <li>
                   <div
                     className={`${
@@ -478,7 +525,14 @@ const Account = () => {
               </div>
             ) : activeTab === "edit" ? (
               <div>
-                <EditApp />
+                <EditApp
+                  user={user}
+                  setTab={(value: string) => setActiveTab(value)}
+                />
+              </div>
+            ) : activeTab === "tutorial" ? (
+              <div>
+                <TutorialVideo />
               </div>
             ) : activeTab === "design" ? (
               <div>

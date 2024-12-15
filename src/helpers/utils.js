@@ -28,6 +28,7 @@ export const setItemLocalStorage = (key, value) => {
       "appNotification",
       "appAds",
       "appReview",
+      "freeapp-editor",
     ].includes(key)
   ) {
     setting[key] = value;
@@ -57,11 +58,11 @@ export const toastProvider = (icon, title) => {
 export const currentTime = () => {
   const now = DateTime.local();
   const currentTime = now.toFormat("dd/LL/yyyy,HH:mm");
-  const formatedTime = currentTime.split(",")
+  const formatedTime = currentTime.split(",");
   return (
     <p className="text-sm sm:text-lg xl:text-xl">
-      {formatedTime[0] || '06/02/2024'},{' '}
-      <span className="font-semibold">{formatedTime[1] || '18:26'} ⏰</span>
+      {formatedTime[0] || "06/02/2024"},{" "}
+      <span className="font-semibold">{formatedTime[1] || "18:26"} ⏰</span>
     </p>
   );
 

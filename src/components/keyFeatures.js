@@ -17,21 +17,21 @@ const KeyFeatures = (props) => {
       description: "You can publish andriod app in PlayStore!",
       image: "/svg/play.svg",
     },
-    {
-      title: "Publish in App Store",
-      description: "You can publish ios app in AppStore!",
-      image: "/svg/apps.svg",
-    },
+    // {
+    //   title: "Publish in App Store",
+    //   description: "You can publish ios app in AppStore!",
+    //   image: "/svg/apps.svg",
+    // },
     {
       title: "Send Notification",
       description: "Send unlimited notifications to the app users.",
       image: "/images/notify.png",
     },
-    // {
-    //   title: "Earn from Ads",
-    //   description: "Get More Revenue by using Ads",
-    //   image: "/svg/admob.svg",
-    // },
+    {
+      title: "Earn from Ads",
+      description: "Get More Revenue by using Ads",
+      image: "/svg/admob.svg",
+    },
     {
       title: "Customer Support",
       description: "Fast Support by Email, Phone and Whatsapp",
@@ -76,7 +76,7 @@ const KeyFeatures = (props) => {
           </button>
         </div>
       </div>
-      {/* <div className="mt-10 sm:mt-24 max-sm:px-4">
+      <div className="mt-10 sm:mt-24 max-sm:px-4">
         <h2 className="text-xl sm:text-3xl lg:text-5xl font-semibold text-center mb-4 ">
           No Developer Account to Publish Apps
           <span className="sm:hidden">! Don&apos;t Worry!</span>
@@ -132,7 +132,7 @@ const KeyFeatures = (props) => {
             </button>
           </div>
         </div>
-      </div> */}
+      </div>
     </main>
   );
 };
