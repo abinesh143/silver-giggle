@@ -115,7 +115,7 @@ const Premium = (props) => {
   const startPayment = async (type) => {
     if (props.user?.userCountry === "India") {
       const body = {
-        order_amount: type === "basic" ? 1 : type === "lite" ? 4000 : 5000,
+        order_amount: type === "basic" ? 3000 : type === "lite" ? 4000 : 5000,
         order_currency: "INR",
         customer_details: {
           customer_id: props.user._id || "123456",
