@@ -123,7 +123,11 @@ const Premium = (props) => {
           customer_email: props.user.userEmail || "",
         },
         order_meta: {
-          return_url: `https://www.freeappmaker.pro/payment-status?order_id={order_id}`,
+          return_url: `${
+            process.env.NODE_ENV === "development"
+              ? "http://localhost:3001"
+              : "https://www.freeappmaker.pro"
+          }/payment-status?order_id={order_id}`,
         },
       };
 
@@ -137,7 +141,11 @@ const Premium = (props) => {
           const paymentDetails = await res.json();
           if (paymentDetails.payment_session_id) {
             const cashfree = Cashfree({
-              mode: "production",
+              mode: `${
+                process.env.NODE_ENV === "development"
+                  ? "sandbox"
+                  : "production"
+              }`,
             });
             let checkoutOptions = {
               paymentSessionId: paymentDetails.payment_session_id,

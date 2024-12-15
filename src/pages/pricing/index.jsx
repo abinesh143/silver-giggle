@@ -142,7 +142,7 @@ const Pricing = () => {
             </Head>
             <div className="container sm:mx-auto py-4">
                 <Navbar user={user} />
-                <div className="mt-10 sm:mt-24 max-sm:px-4">
+                <div className="my-10 sm:my-16 max-sm:px-4">
                     <main>
                         <div className="2xl:p-8 bg-[#F9F9F9] lg:rounded-2xl">
                             <section className="max-w-6xl mx-auto py-4 px-8">

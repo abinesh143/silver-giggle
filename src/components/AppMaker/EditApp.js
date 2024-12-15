@@ -73,7 +73,7 @@ const EditApp = (props) => {
     initFlowbite();
   }, []);
 
-// eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const appDetails = getItemLocalStorage("freeapp-editor");
     if (appDetails) {
@@ -87,7 +87,9 @@ const EditApp = (props) => {
     <main>
       <div className="p-4  lg:rounded-2xl">
         <div className="flex justify-between border-b pb-3 sm:pb-4 mb-5 sm:mb-10">
-          <div className="sm:text-xl xl:text-2xl font-semibold">App Editor 1.0</div>
+          <div className="sm:text-xl xl:text-2xl font-semibold">
+            App Editor 1.0
+          </div>
           {currentTime()}
         </div>
         {data ? (
@@ -222,7 +224,7 @@ const EditApp = (props) => {
                 <div className="flex items-center mt-6 gap-6 p-3">
                   <a
                     data-tooltip-target="tooltip-apk"
-                    href={`https://apk.e-droid.net/apk/app${data.appId}.apk`}
+                    href={`https://apk.e-droid.net/apk/app${data.appId}-fdbh6c.apk`}
                     class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                   >
                     Download Apk
@@ -308,7 +310,8 @@ const EditApp = (props) => {
                     <span class="font-medium">Note:</span> If the App is not
                     found
                     <span className="font-semibold ms-2">
-                      You can regenerate it from &apos;Name and Icon Section&apos;
+                      You can regenerate it from &apos;Name and Icon
+                      Section&apos;
                     </span>
                   </div>
                 </div>
