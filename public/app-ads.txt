@@ -1,0 +1,7 @@
+google.com, pub-1239168645353113, DIRECT, f08c47fec0942fa0
+facebook.com, 3013817052201886, DIRECT, c3e20eee3f780d68
+
+
+adingo.jp,26374, RESELLER
+rubiconproject.com, 22884, DIRECT, 0bfd66d529a55807
+media.net, 8CUSQ33VB, DIRECT
