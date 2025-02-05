@@ -221,7 +221,7 @@ const Premium = (props) => {
                   </span>
                   <span>
                     <span className="font-medium text-gray-500 text-lg sm:text-xl align-top">
-                      $&thinsp;
+                      ₹&thinsp;
                     </span>
                     <span className="text-xl sm:text-3xl lg:text-xl 2xl:text-3xl font-bold">
                       3000{" "}
@@ -286,7 +286,7 @@ const Premium = (props) => {
                   </span>
                   <span>
                     <span className="font-medium text-lg sm:text-xl align-top">
-                      $&thinsp;
+                      ₹&thinsp;
                     </span>
                     <span className="text-xl sm:text-3xl lg:text-xl 2xl:text-3xl font-bold text-white">
                     5000{" "}
@@ -348,7 +348,7 @@ const Premium = (props) => {
                   </span>
                   <span>
                     <span className="font-medium text-gray-500 text-xl align-top">
-                      $&thinsp;
+                      ₹&thinsp;
                     </span>
                     <span className="text-xl sm:text-3xl lg:text-xl 2xl:text-3xl font-bold">
                       4000{" "}
