@@ -410,12 +410,13 @@ const EditApp = (props) => {
               </div>
               <div className="w-full h-[600px] flex justify-center items-center overflow-hidden rounded-xl bg-white p-6 relative">
                 {data?.appId ? (
-                  <iframe
-                    key={count}
-                    src={`https://www.appcreator24.com/app${data.appId}-fdbh6c`}
-                    title="Free App Maker AI"
-                    className="w-[350px] h-full border-none"
-                  ></iframe>
+                  <a
+                    data-tooltip-target="tooltip-apk"
+                    href={`https://apk.e-droid.net/apk/app${data.appId}-fdbh6c.apk`}
+                    className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 shadow-lg shadow-green-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                  >
+                    Download Application
+                  </a>
                 ) : null}
                 <div className="absolute bottom-0 left-0 w-full h-[250px] rounded-xl bg-white">
                   <div className="flex justify-center text-lg font-semibold mb-4">
