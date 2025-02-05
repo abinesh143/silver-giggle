@@ -15,6 +15,11 @@ const Premium = (props) => {
       status: false,
     },
     {
+      normal: "We wont publish your",
+      bold: "app",
+      status: false,
+    },
+    {
       normal: "App Push",
       bold: "Notification",
       status: true,
@@ -219,7 +224,7 @@ const Premium = (props) => {
                       $&thinsp;
                     </span>
                     <span className="text-xl sm:text-3xl lg:text-xl 2xl:text-3xl font-bold">
-                      25{" "}
+                      3000{" "}
                     </span>
                   </span>
                   <span className="text-gray-500 font-medium">/ one time</span>
@@ -284,7 +289,7 @@ const Premium = (props) => {
                       $&thinsp;
                     </span>
                     <span className="text-xl sm:text-3xl lg:text-xl 2xl:text-3xl font-bold text-white">
-                      99{" "}
+                    5000{" "}
                     </span>
                   </span>
                   <span className="font-medium">/ one time</span>
@@ -346,7 +351,7 @@ const Premium = (props) => {
                       $&thinsp;
                     </span>
                     <span className="text-xl sm:text-3xl lg:text-xl 2xl:text-3xl font-bold">
-                      79{" "}
+                      4000{" "}
                     </span>
                   </span>
                   <span className="text-gray-500 font-medium">/ one time</span>

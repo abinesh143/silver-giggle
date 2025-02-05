@@ -17,6 +17,11 @@ const andriodPremium = [
         status: false,
     },
     {
+        normal: "We won't publish your",
+        bold: "app",
+        status: false,
+    },
+    {
         normal: "App Push",
         bold: "Notification",
         status: true,

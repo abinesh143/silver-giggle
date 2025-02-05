@@ -74,7 +74,7 @@ export default function Home() {
         <Banner checkUserExists={() => checkUserExists()} />
         <KeyFeatures checkUserExists={() => checkUserExists()} />
         <Working />
-        <Features />
+        {/* <Features /> */}
         {/* <Referal /> */}
         <div className="sm:bg-[url('/images/faq-bg.png')] bg-center bg-no-repeat">
           <Review />
