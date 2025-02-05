@@ -267,7 +267,7 @@ const IndividualStickerPacks = () => {
                     </div>
                     <div className="p-4 md:p-5">
                         <div className="flex flex-col gap-4">
-                            <Image src='/sticker/sticker-instruct.webp' width={100} height={100} alt="instruct" className="w-full" />
+                            <img src='/sticker/sticker-instruct.webp' width={100} height={100} alt="instruct" className="w-full" />
                             <button type="submit" className="w-full text-white bg-[#FE5000] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" data-modal-hide="sticker-instruction-modal" onClick={postAvatar}>Confirm </button>
                         </div>
                     </div>
