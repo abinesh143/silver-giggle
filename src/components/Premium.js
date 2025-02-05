@@ -125,7 +125,7 @@ const Premium = (props) => {
         customer_details: {
           customer_id: props.user._id || "123456",
           customer_phone: props.user.phoneNumber || "6382441797",
-          customer_email: props.user.userEmail || "",
+          customer_email: "smileysoftwares@gmail.com",
         },
         order_meta: {
           return_url: `${
@@ -289,7 +289,7 @@ const Premium = (props) => {
                       ₹&thinsp;
                     </span>
                     <span className="text-xl sm:text-3xl lg:text-xl 2xl:text-3xl font-bold text-white">
-                    5000{" "}
+                      5000{" "}
                     </span>
                   </span>
                   <span className="font-medium">/ one time</span>

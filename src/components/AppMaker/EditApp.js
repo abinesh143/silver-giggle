@@ -14,6 +14,7 @@ import Image from "next/image";
 const EditApp = (props) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [count, setCount] = useState(0);
 
   const handleCopyText = (shareText) => {
     navigator.clipboard
@@ -73,6 +74,7 @@ const EditApp = (props) => {
   };
 
   const toggleModal = (type, id) => {
+    setCount((c) => c + 1);
     const modalElement = document.getElementById(id);
     const modal = new Modal(modalElement, { closable: false });
     type === "show" ? modal.show() : modal.hide();
@@ -286,18 +288,17 @@ const EditApp = (props) => {
                   </svg>
                   <span className="sr-only">Info</span>
                   <div>
-                    <span className="font-medium">Note:</span> If the App is not
-                    found
+                    <span className="font-medium">Note: </span>
+                    For IOS Application Build:
                     <span className="font-semibold ms-2">
-                      You can regenerate it from &apos;Name and Icon
-                      Section&apos;
+                      Please contact support team : Price: Rs.10,000
                     </span>
                   </div>
                 </div>
               </div>
             </div>
             <div className="h-96 overflow-hidden bg-white p-6 relative md:hidden">
-             <span> This Section is not viewed in mobile & tab</span>
+              <span> This Section is not viewed in mobile & tab</span>
               <div className=" w-full h-[162px] bg-white">
                 <div className="flex flex-col items-center mt-6 gap-6 p-3">
                   <button
@@ -354,11 +355,10 @@ const EditApp = (props) => {
                   </svg>
                   <span className="sr-only">Info</span>
                   <div>
-                    <span className="font-medium">Note:</span> If the App is not
-                    found
+                    <span className="font-medium">Note:</span>
+                    For Ios Application Build:
                     <span className="font-semibold ms-2">
-                      You can regenerate it from &apos;Name and Icon
-                      Section&apos;
+                      Please contact us : Price: Rs.10,000
                     </span>
                   </div>
                 </div>
@@ -411,12 +411,13 @@ const EditApp = (props) => {
               <div className="w-full h-[600px] flex justify-center items-center overflow-hidden rounded-xl bg-white p-6 relative">
                 {data?.appId ? (
                   <iframe
+                    key={count}
                     src={`https://www.appcreator24.com/app${data.appId}-fdbh6c`}
                     title="Free App Maker AI"
                     className="w-[350px] h-full border-none"
                   ></iframe>
                 ) : null}
-                <div className="absolute bottom-0 left-0 w-full h-[210px] rounded-xl bg-white">
+                <div className="absolute bottom-0 left-0 w-full h-[250px] rounded-xl bg-white">
                   <div className="flex justify-center text-lg font-semibold mb-4">
                     AAB File to Publish in Playstore
                   </div>
