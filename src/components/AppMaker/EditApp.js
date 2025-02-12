@@ -408,18 +408,23 @@ const EditApp = (props) => {
                   <span className="sr-only">Close modal</span>
                 </button>
               </div>
-              <div className="w-full h-[600px] flex justify-center items-center overflow-hidden rounded-xl bg-white p-6 relative">
+              <div className="w-full  flex flex-col justify-center items-center overflow-hidden rounded-xl bg-white p-6 relative">
+                <div className="flex justify-center text-lg font-semibold mb-4">
+                  APK File to Test in Andriod
+                </div>
                 {data?.appId ? (
                   <a
                     key={count}
                     data-tooltip-target="tooltip-apk"
-                    href={`https://apk.e-droid.net/apk/app${data.appId}-fdbh6c.apk?${new Date()}`}
+                    href={`https://apk.e-droid.net/apk/app${
+                      data.appId
+                    }-fdbh6c.apk?${new Date()}`}
                     className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 shadow-lg shadow-green-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                   >
                     Download Application
                   </a>
                 ) : null}
-                <div className="absolute bottom-0 left-0 w-full h-[250px] rounded-xl bg-white">
+                <div className="w-full h-[250px] rounded-xl bg-white mt-6">
                   <div className="flex justify-center text-lg font-semibold mb-4">
                     AAB File to Publish in Playstore
                   </div>
@@ -480,8 +485,8 @@ const EditApp = (props) => {
                     </ul>
                   </div>
                 </div>
-                <div className="absolute top-[88px] left-40 w-60 rounded-xl h-8 bg-[#eeeeee]"></div>
-                <div className="absolute top-2 left-28 w-96 rounded-xl h-16 bg-white"></div>
+                {/* <div className="absolute top-[88px] left-40 w-60 rounded-xl h-8 bg-[#eeeeee]"></div>
+                <div className="absolute top-2 left-28 w-96 rounded-xl h-16 bg-white"></div> */}
               </div>
             </div>
           </div>
